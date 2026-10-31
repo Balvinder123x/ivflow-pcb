@@ -1,0 +1,16 @@
+(kicad_sch
+	(version 20250114)
+	(generator "ivflow_scripts")
+	(uuid "5226476a-c803-4268-9324-1436557aadc2")
+	(paper "A4")
+	(title_block
+		(title "IVFlow")
+		(rev "v1")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

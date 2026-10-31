@@ -1,0 +1,15 @@
+# KiCad backups, locks, caches and per-user UI state
+*-backups/
+_autosave-*
+*.lck
+~*.lck
+fp-info-cache
+*.kicad_prl
+\#auto_saved_files#
+
+# Python
+__pycache__/
+*.pyc
+
+# Freerouting scratch
+*.ses.bak
