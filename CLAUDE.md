@@ -48,8 +48,12 @@ Current status, tool paths and open questions live in `PROGRESS.md` — read it 
   pads IN+, IN−, BAT+, BAT−, OUT+, OUT−.
   ⚠ Ask me for the pad positions measured from my module. Mount it at a board
   edge so the USB-C port faces outward.
-- J_OLED: 1×4 2.54 mm header for an I2C OLED module.
-  ⚠ Ask me for the pin order printed on my module (it varies: GND-VCC or VCC-GND).
+- J_OLED: 1×4 2.54 mm male header; the OLED module is wired to it with jumper
+  wires, so the board order is fixed (GND, VCC, SCL, SDA) and labelled on silk.
+  No custom part needed (Connector_Generic:Conn_01x04).
+
+Design principle (decided 2026-10-31): off-board parts (OLED, LDR strip, LED) plug
+in through connectors so the assembled PCB only needs the parts attached.
 
 ### Nets and circuit
 
@@ -78,10 +82,10 @@ LDR SENSORS (off-board strip, 5-wire cable)
 - Place R/C for each channel close to U1's pins; keep these traces away from
   the buzzer and power path.
 
-LED (illuminates the drip chamber)
-- D2: 5 mm THT LED. GPIO5 → R20 82 Ω → D2 anode, cathode → GND.
-- Place D2 at the board edge facing the drip chamber (leads bent 90°),
-  vertically centered on the LDR column. Ask me where the chamber sits.
+LED (illuminates the drip chamber) — off-board, on a cable
+- J_LED: JST-XH 2-pin. GPIO5 → R20 82 Ω → J_LED pin 1 (LED anode, "+"),
+  J_LED pin 2 (LED cathode, "−") → GND. R20 stays on the board.
+- The 5 mm LED itself is mounted at the drip chamber; silk marks + / −.
 
 BUZZER
 - BZ1 3–5 V active buzzer (THT, 12 mm): + to VSYS_SW, − to Q3 drain.
@@ -89,7 +93,7 @@ BUZZER
 - D3 1N4148W across BZ1 (cathode to VSYS_SW).
 
 OLED + BUTTON + EXPANSION
-- J_OLED: GND, +3V3, SCL = GPIO9, SDA = GPIO8 (order per my module).
+- J_OLED pins 1-4: GND, +3V3, SCL = GPIO9, SDA = GPIO8.
 - R23, R24 4.7k pull-ups SDA/SCL → +3V3, marked DNP (most modules have them).
 - SW2 tactile button: GPIO10 → GND. C6 100 nF across it.
 - J_EXP 1×5 header: GND, VSYS_SW, +3V3, GPIO20, GPIO21 (future servo / spare).
@@ -104,8 +108,8 @@ OLED + BUTTON + EXPANSION
 
 ## Stages
 0. Environment check + project skeleton. 🛑
-1. Custom library: SuperMini, TP4056 module, OLED header symbols and
-   footprints (after I give measurements). 🛑
+1. Custom library: SuperMini and TP4056 module symbols and footprints
+   (after I give measurements). 🛑
 2. Schematic on one A4 sheet, grouped into labeled blocks: Power, Battery
    sense, Sensors, LED, Buzzer, OLED/Button/Expansion. Run ERC. 🛑
 3. Footprint assignment + BOM (CSV with LCSC part numbers where possible). 🛑
