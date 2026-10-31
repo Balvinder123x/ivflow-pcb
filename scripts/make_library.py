@@ -12,6 +12,7 @@ verified=False is a published/typical value awaiting the user's measurement.
 """
 import os
 import subprocess
+import sys
 
 import pcbnew
 from kiutils.items.common import Effects, Fill, Font, Justify, Position, Property, Stroke
@@ -20,7 +21,9 @@ from kiutils.symbol import Symbol, SymbolLib, SymbolPin
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LIB = "ivflow_lib"
-LIB_DIR = os.path.join(ROOT, "ivflow", LIB)
+# `--out DIR` writes the library to DIR/ivflow_lib instead (for dry runs)
+OUT = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else os.path.join(ROOT, "ivflow")
+LIB_DIR = os.path.join(OUT, LIB)
 SYM_FILE = os.path.join(LIB_DIR, f"{LIB}.kicad_sym")
 FP_DIR = os.path.join(LIB_DIR, f"{LIB}.pretty")
 KICAD_CLI = r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"
@@ -29,14 +32,16 @@ KICAD_CLI = r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"
 # ESP32-C3 SuperMini, viewed from the TOP (components up), USB-C end at the top.
 # Pads 1-8 = left row from the USB end, pads 9-16 = right row from the USB end.
 SUPERMINI = dict(
+    # Pin order confirmed by the user from their board's pinout diagram (2026-10-31).
+    # Dimensions are still published/typical values awaiting measurement.
     verified=False,
     length=22.52,          # mm, USB end to antenna end (published value)
     width=18.0,            # mm (published value)
     row_spacing=15.24,     # mm, pin centre to pin centre across the board (typical)
     first_pin_offset=None,  # mm, USB-end board edge to first pin centre; None = pins centred
     antenna_len=6.0,       # mm of the antenna end kept free of copper/tracks (typical)
-    left_row=["5V", "GND", "3V3", "GPIO4", "GPIO3", "GPIO2", "GPIO1", "GPIO0"],
-    right_row=["GPIO5", "GPIO6", "GPIO7", "GPIO8", "GPIO9", "GPIO10", "GPIO20", "GPIO21"],
+    left_row=["GPIO5", "GPIO6", "GPIO7", "GPIO8", "GPIO9", "GPIO10", "GPIO20", "GPIO21"],
+    right_row=["5V", "GND", "3V3", "GPIO4", "GPIO3", "GPIO2", "GPIO1", "GPIO0"],
 )
 PITCH = 2.54
 HDR_PAD = 1.7    # same as KiCad's PinSocket_1x08_P2.54mm_Vertical
@@ -71,11 +76,15 @@ def new_symbol(name, ref, value, footprint, description, keywords, half_w, half_
     s.properties[0].effects = Effects(font=Font(height=1.27, width=1.27), justify=Justify(horizontally="left"))
     s.properties[1].position = Position(X=-half_w, Y=-half_h - 1.27, angle=0)
     s.properties[1].effects = Effects(font=Font(height=1.27, width=1.27), justify=Justify(horizontally="left"))
-    hidden = Effects(font=Font(height=1.27, width=1.27), hide=True)
+    hidden = Effects(font=Font(height=1.27, width=1.27), justify=Justify(horizontally="left"), hide=True)
     s.properties += [
-        Property(key="Description", value=description, id=4, effects=hidden),
-        Property(key="ki_keywords", value=keywords, id=5, effects=hidden),
+        Property(key="Description", value=description, id=4),
+        Property(key="ki_keywords", value=keywords, id=5),
     ]
+    # Stack hidden fields under the Value so they don't clutter the body in the editor
+    for i, prop in enumerate(s.properties[2:]):
+        prop.position = Position(X=-half_w, Y=-half_h - 3.81 - i * 2.54, angle=0)
+        prop.effects = hidden
     body = Symbol()
     body.libId = f"{name}_0_1"
     body.graphicItems.append(SyRect(start=Position(X=-half_w, Y=half_h), end=Position(X=half_w, Y=-half_h),
@@ -126,6 +135,7 @@ def tp4056_symbol():
 def make_symbols():
     lib = SymbolLib(version="20211014", generator="ivflow_scripts")
     lib.symbols = [supermini_symbol(), tp4056_symbol()]
+    os.makedirs(LIB_DIR, exist_ok=True)
     lib.to_file(SYM_FILE)
     subprocess.run([KICAD_CLI, "sym", "upgrade", "--force", SYM_FILE], check=True)
     print(f"wrote: {os.path.relpath(SYM_FILE, ROOT)}")
