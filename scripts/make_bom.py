@@ -23,9 +23,10 @@ KICAD_CLI = r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"
 # specific part has been checked; these are generic and easy to buy locally.
 OFFBOARD = [
     (2, "Female header 1x8, 2.54 mm, straight", "U1", "Socket for the ESP32-C3 SuperMini"),
+    ("TBD", "Female headers + male pins, 2.54 mm", "U2", "TP4056 daughterboard; count after measuring"),
     (1, "Li-Po battery 3.7 V with JST-PH 2.0 plug", "J1", "Check red wire = pin 1 (BATT+)"),
     (1, "LDR strip (4x LDR, e.g. GL5528) on a 5-wire cable", "J2", "Cable order: +3V3, LDR1..LDR4"),
-    (1, "5 mm LED", "J3", "Pin 1 = anode (+, long leg)"),
+    (1, "5 mm LED, green or red (standard brightness)", "J3", "Pin 1 = anode (+, long leg); white/blue too dim at 3.3 V"),
     (1, "0.96in I2C OLED module (SSD1306) + 4 female-female jumper wires", "J4", "Wire GND, VCC, SCL, SDA"),
     (1, "Panel-mount power switch, rated >= 1 A (toggle or rocker)", "J6", "Wired across J6; closed = ON"),
     (1, "Active buzzer 3-5 V, 12 mm", "J7", "Pin 1 = +, pin 2 = -"),
