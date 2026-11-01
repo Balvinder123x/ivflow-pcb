@@ -33,12 +33,14 @@ KICAD_CLI = r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe"
 # Pads 1-8 = left row from the USB end, pads 9-16 = right row from the USB end.
 SUPERMINI = dict(
     # Pin order confirmed by the user from their board's pinout diagram (2026-10-31).
-    # Dimensions are still published/typical values awaiting measurement.
+    # Row spacing confirmed by the user: 5 empty breadboard holes between the rows (2026-11-01).
+    # Still provisional: the first-pin offset is not measured, so pins are assumed centred.
     verified=False,
-    length=22.52,          # mm, USB end to antenna end (published value)
-    width=18.0,            # mm (published value)
-    row_spacing=15.24,     # mm, pin centre to pin centre across the board (typical)
+    length=22.52,          # mm, USB end to antenna end (user, provisional)
+    width=18.0,            # mm (user, provisional)
+    row_spacing=15.24,     # mm, pin centre to pin centre: (5 empty holes + 1) x 2.54
     first_pin_offset=None,  # mm, USB-end board edge to first pin centre; None = pins centred
+    usb_overhang=2.0,      # mm the USB-C shell sticks out past the USB end (user, approximate)
     antenna_len=6.0,       # mm of the antenna end kept free of copper/tracks (typical)
     left_row=["GPIO5", "GPIO6", "GPIO7", "GPIO8", "GPIO9", "GPIO10", "GPIO20", "GPIO21"],
     right_row=["5V", "GND", "3V3", "GPIO4", "GPIO3", "GPIO2", "GPIO1", "GPIO0"],
@@ -47,16 +49,17 @@ PITCH = 2.54
 HDR_PAD = 1.7    # same as KiCad's PinSocket_1x08_P2.54mm_Vertical
 HDR_DRILL = 1.0
 
-# TP4056 USB-C module with DW01+8205 protection. Pad map is fixed here; the
-# footprint is only generated once the measured pad positions are filled in.
+# TP4056 USB-C module with DW01+8205 protection, mounted as a removable daughterboard
+# (male pins in its holes, female headers on the main board). Until the pad positions
+# are measured the footprint is an outline only: NO copper pads are invented.
 TP4056_PINS = [("1", "IN+"), ("2", "IN-"), ("3", "BAT+"), ("4", "BAT-"), ("5", "OUT+"), ("6", "OUT-")]
 TP4056 = dict(
     verified=False,
-    length=None, width=None,      # mm
+    length=28.0, width=17.0,      # mm, USB-C end to far end x across (user, approximate)
     pads=None,                    # {"IN+": (x, y), ...} from bottom-left corner, USB-C at top
     pad_type=None,                # "tht" (give drill) or "castellated"
     drill=None,
-    usb_overhang=None,
+    usb_overhang=None,            # mm past the USB end; None = not measured
 )
 
 # ---------------------------------------------------------------- symbols
@@ -231,7 +234,7 @@ def supermini_footprint():
     L, W, S = p["length"], p["width"], p["row_spacing"]
     top = -L / 2  # USB end
     y0 = top + p["first_pin_offset"] if p["first_pin_offset"] is not None else -3.5 * PITCH
-    status = "VERIFIED" if p["verified"] else "UNVERIFIED DRAFT"
+    status = "VERIFIED" if p["verified"] else "PROVISIONAL, first-pin offset not measured"
     fp = new_footprint(
         "ESP32-C3_SuperMini", "U**",
         f"ESP32-C3 SuperMini on two 1x08 2.54 mm sockets, row spacing {S} mm, module {L}x{W} mm ({status})",
@@ -249,12 +252,20 @@ def supermini_footprint():
         else:
             add_text(fp, label, x - 1.25, y, pcbnew.F_SilkS, 0.8, 0.12, pcbnew.GR_TEXT_H_ALIGN_RIGHT)
 
-    # Module outline (silk + fab) and courtyard
+    # Module outline (silk + fab) and courtyard; the courtyard includes the USB-C overhang
+    usb = p["usb_overhang"] or 0
     add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_SilkS, 0.12)
     add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_Fab, 0.1)
-    add_rect(fp, -W / 2 - 0.25, top - 0.25, W / 2 + 0.25, -top + 0.25, pcbnew.F_CrtYd, 0.05)
+    add_rect(fp, -W / 2 - 0.25, top - usb - 0.25, W / 2 + 0.25, -top + 0.25, pcbnew.F_CrtYd, 0.05)
+    if usb:
+        add_line(fp, -W / 4, top - usb, W / 4, top - usb, pcbnew.F_Fab, 0.1)
+        add_text(fp, f"USB-C ~{usb:g} mm overhang", 0, top - usb - 1.0, pcbnew.F_Fab, 0.8, 0.12)
     add_text(fp, "USB", 0, top + 1.5, pcbnew.F_SilkS, size=1.0)
     add_text(fp, "ANT", 0, -top - 1.5, pcbnew.F_SilkS, size=1.0)
+    if not p["verified"]:
+        add_text(fp, "PROVISIONAL", 0, -2.0, pcbnew.F_Fab, 1.0, 0.15)
+        add_text(fp, "first-pin offset", 0, 2.0, pcbnew.F_Fab, 0.8, 0.12)
+        add_text(fp, "not measured", 0, 3.2, pcbnew.F_Fab, 0.8, 0.12)
 
     # Antenna end: no tracks, vias or pour on either layer between the socket rows
     inner = S / 2 - HDR_PAD / 2 - 0.3
@@ -262,18 +273,49 @@ def supermini_footprint():
     add_keepout(fp, [(-inner, ant_top), (inner, ant_top), (inner, -top), (-inner, -top)])
     add_line(fp, -inner, ant_top, inner, ant_top, pcbnew.F_Fab, 0.1)
 
-    fp.Reference().SetPosition(v(0, top - 1.5))
+    fp.Reference().SetPosition(v(0, -top + 1.5))
     fp.Reference().SetLayer(pcbnew.F_SilkS)
     fp.Value().SetPosition(v(0, 0))
     fp.Value().SetLayer(pcbnew.F_Fab)
+    fp.Value().SetTextSize(v(0.8, 0.8))
+    fp.Value().SetTextThickness(mm(0.12))
     save_footprint(fp, "ESP32-C3_SuperMini")
+
+
+def tp4056_footprint():
+    """Outline-only placeholder until the pads are measured; pads are added from TP4056["pads"]."""
+    p = TP4056
+    L, W = p["length"], p["width"]
+    top = -L / 2  # USB-C end
+    if p["pads"] is not None:
+        raise SystemExit("TP4056 pads given: add the pad code (positions, pad type, drill) before generating")
+    fp = new_footprint(
+        "TP4056_Module_USB-C", "U**",
+        f"TP4056 USB-C charger module, {W}x{L} mm, removable on female headers. "
+        "PROVISIONAL OUTLINE ONLY: no pads until the module's pad positions are measured",
+        "TP4056 charger module USB-C provisional")
+    add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_SilkS, 0.12)
+    add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_Fab, 0.1)
+    add_rect(fp, -W / 2 - 0.25, top - 0.25, W / 2 + 0.25, -top + 0.25, pcbnew.F_CrtYd, 0.05)
+    add_text(fp, "USB-C", 0, top + 1.5, pcbnew.F_SilkS, size=1.0)
+    add_text(fp, "PROVISIONAL", 0, -3.0, pcbnew.F_Fab, 1.2, 0.18)
+    add_text(fp, "NO PADS:", 0, -0.5, pcbnew.F_Fab, 1.0, 0.15)
+    add_text(fp, "pad positions", 0, 1.2, pcbnew.F_Fab, 1.0, 0.15)
+    add_text(fp, "not measured", 0, 2.9, pcbnew.F_Fab, 1.0, 0.15)
+    add_text(fp, "USB-C overhang: not measured", 0, top - 1.2, pcbnew.F_Fab, 0.8, 0.12)
+    fp.Reference().SetPosition(v(0, -top + 1.5))
+    fp.Reference().SetLayer(pcbnew.F_SilkS)
+    fp.Value().SetPosition(v(0, 6.0))
+    fp.Value().SetLayer(pcbnew.F_Fab)
+    fp.Value().SetTextSize(v(0.8, 0.8))
+    fp.Value().SetTextThickness(mm(0.12))
+    save_footprint(fp, "TP4056_Module_USB-C")
 
 
 def make_footprints():
     os.makedirs(FP_DIR, exist_ok=True)
     supermini_footprint()
-    if TP4056["pads"] is None:
-        print("skip: TP4056_Module_USB-C footprint (waiting for measured pad positions)")
+    tp4056_footprint()
 
 
 if __name__ == "__main__":

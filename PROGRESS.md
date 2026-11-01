@@ -51,10 +51,16 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - Symbol `ESP32-C3_SuperMini` ✔ — pin order **confirmed** from the user's board diagram (2026-10-31):
     top view, USB up: left row GPIO5,6,7,8,9,10,20,21 (pads 1-8); right row 5V, GND, 3V3,
     GPIO4,3,2,1,0 (pads 9-16). Antenna at the end opposite USB.
-  - Footprint `ESP32-C3_SuperMini` — pin order confirmed; **dimensions still unverified**
-    (module 22.52 × 18.0 mm, rows 15.24 mm apart, pins centred, 6 mm antenna keepout)
+  - Footprint `ESP32-C3_SuperMini` — **PROVISIONAL** (2026-11-01). Pin order confirmed; row
+    spacing 15.24 mm confirmed (user counted 5 empty breadboard holes); module 18 × 22.52 mm and
+    USB-C overhang ~2 mm from the user (approximate, courtyard includes it). **First-pin offset
+    not measured** → pins assumed centred. Marked "PROVISIONAL" on F.Fab.
   - Symbol `TP4056_Module_USB-C` ✔ (pads 1 IN+, 2 IN−, 3 BAT+, 4 BAT−, 5 OUT+, 6 OUT−)
-  - Footprint `TP4056_Module_USB-C` — **not made**, needs measurements
+  - Footprint `TP4056_Module_USB-C` — **PROVISIONAL OUTLINE ONLY** (2026-11-01): 17 × 28 mm
+    (approximate), USB-C end marked, **no copper pads** (positions not measured; none invented).
+    Mounting: removable daughterboard on female headers. Pads are added once measured.
+  - Gate: no final placement and no fab outputs until both footprints are verified against
+    the purchased modules. A PCB built now would show U2's 6 pins as unconnected (no pads).
 - [x] **2. Schematic + ERC** — approved 2026-11-01 (connector polarities checked by the user)
   - One A4 sheet, blocks: Power, MCU, Battery sense, Sensors, LED, Buzzer, OLED/Button/Expansion
   - Netlist check: all 110 pin connections match the spec
@@ -71,7 +77,7 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - All LCSC numbers checked against lcsc.com product pages. No number for J4/J5 (generic headers),
     U1/U2 (modules).
   - Footprint check: every footprint exists except `ivflow_lib:TP4056_Module_USB-C` (measurements).
-  - ERC: 0 errors, 1 warning (same TP4056 footprint warning as Stage 2).
+  - ERC: 0 errors, 0 warnings since the provisional TP4056 footprint exists (2026-11-01).
   - From Stage 4 on, symbol UUIDs link schematic ↔ board: the schematic must NOT be regenerated
     after the board is populated — targeted edits only.
   - Connector silkscreen labels defined in `scripts/silk_labels.py` (title naming the part that
@@ -81,14 +87,22 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
 - [ ] 5. Routing + pours + DRC
 - [ ] 6. Fab outputs
 
+## Power-path / safety review (2026-11-01)
+TP4056 is only a charger; the board adds the rest:
+- Load sharing: with USB present the system runs from VBUS through D1 and Q1 is off
+  (gate = VBUS), so the TP4056 charges the battery only and terminates correctly. Without USB,
+  R1 pulls Q1's gate low and the battery feeds VSYS through Q1.
+- Battery protection: DW01A + 8205A on the module (over-discharge ~2.4 V, over-current, short);
+  the board takes power from the protected OUT+/OUT−, and BAT− never touches GND.
+- Firmware must add a low-battery shutdown (≈3.3–3.4 V via BAT_SENSE): DW01A's cut-off is too
+  deep for Li-Po life, and AP2112K drops out below ≈3.5 V input at full load.
+
 ## Open questions
-1. **SuperMini dimensions** (pin order is confirmed): row spacing 15.24 mm (5 empty breadboard
-   holes between the rows)? Module 22.52 × 18 mm? Needed before Stage 4 placement.
-2. **TP4056 module** (top view, USB-C at top): length × width; X/Y of each pad
-   (IN+, IN−, BAT+, BAT−, OUT+, OUT−) from the bottom-left corner; pad type (holes + drill
-   size, or edge castellations); how far USB-C sticks out past the module edge.
-3. TP4056 mounting: straight pin headers through its holes (module sits on top), or soldered flat?
-   Is the module's underside flat (no parts)?
+Waiting for the modules to be purchased and measured:
+1. **SuperMini**: distance from the USB-end board edge to the centre of the first pin.
+2. **TP4056** (top view, USB-C at top): X/Y of each pad (IN+, IN−, B+, B−, OUT+, OUT−) from the
+   bottom-left corner; pad type (holes + drill size, or edge half-holes); USB-C overhang;
+   confirm 17 × 28 mm. Pads must accept male pins for the female-header mounting.
 
 Resolved 2026-11-01: power switch → J6 connector; buzzer + button → J7/J8 connectors;
 mis-plug risk handled with clear silk labels; repo pushed to

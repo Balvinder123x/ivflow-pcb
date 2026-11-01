@@ -47,7 +47,12 @@ Current status, tool paths and open questions live in `PROGRESS.md` — read it 
 - U2: TP4056 charger module with protection (DW01 + 8205), USB-C version,
   pads IN+, IN−, BAT+, BAT−, OUT+, OUT−.
   ⚠ Ask me for the pad positions measured from my module. Mount it at a board
-  edge so the USB-C port faces outward.
+  edge so the USB-C port faces outward. Removable daughterboard (decided 2026-11-01):
+  male pins in the module, female headers on the main board.
+- Both module footprints are PROVISIONAL until I buy and measure the real modules
+  (SuperMini first-pin offset; all TP4056 pad positions, pad type and USB overhang).
+  Never invent pad positions. Do not finalize PCB placement or generate fab outputs
+  before the footprints are verified.
 - J_OLED: 1×4 2.54 mm male header; the OLED module is wired to it with jumper
   wires, so the board order is fixed (GND, VCC, SCL, SDA) and labelled on silk.
   No custom part needed (Connector_Generic:Conn_01x04).
