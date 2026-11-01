@@ -20,6 +20,7 @@ CONNECTOR_LABELS = {
     "J6": ("POWER SWITCH", ["", ""]),
     "J7": ("BUZZER", ["+", "-"]),
     "J8": ("BUTTON", ["", ""]),
+    "J9": ("CHARGER TP4056", ["IN+", "IN-", "B+", "B-", "OUT+", "OUT-"]),
 }
 
 # mm: text height, stroke width. JLCPCB minimum is 1.0 mm high, 0.15 mm stroke.
@@ -33,12 +34,18 @@ def _mm(v):
     return pcbnew.FromMM(v)
 
 
-def _text(fp, s, x, y, h, w, hjust=pcbnew.GR_TEXT_H_ALIGN_CENTER):
+def _width(s, h):
+    """Rough width of a KiCad stroke-font string (mm)."""
+    return len(s) * 1.0 * h
+
+
+def _text(fp, s, x, y, h, w, hjust=pcbnew.GR_TEXT_H_ALIGN_CENTER, angle=0):
     t = pcbnew.PCB_TEXT(fp)
     t.SetText(s)
     t.SetLayer(pcbnew.F_SilkS)
     t.SetTextSize(pcbnew.VECTOR2I(_mm(h), _mm(h)))
     t.SetTextThickness(_mm(w))
+    t.SetTextAngle(pcbnew.EDA_ANGLE(angle, pcbnew.DEGREES_T))
     t.SetHorizJustify(hjust)
     t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
     if hasattr(t, "SetKeepUpright"):
@@ -70,9 +77,16 @@ def add_labels(fp, ref):
     xs, ys = [p[1] for p in pads], [p[2] for p in pads]
     row_along_x = (max(xs) - min(xs)) >= (max(ys) - min(ys))
     if row_along_x:
-        # Pin labels in a line just below the body, title below them
+        # Pin labels in a line just below the body, title below them. Labels wider than the
+        # pin pitch are turned 90 degrees and read downward from the body.
         y = bottom + GAP
-        if any(pin_labels):
+        pitch = (max(xs) - min(xs)) / (len(pads) - 1)
+        if any(len(s) > 1 and _width(s, PIN_H) > 0.9 * pitch for s in pin_labels):
+            for (_, px, _), s in zip(pads, pin_labels):
+                if s:
+                    _text(fp, s, px, y, PIN_H, PIN_W, pcbnew.GR_TEXT_H_ALIGN_RIGHT, angle=90)
+            y += max(_width(s, PIN_H) for s in pin_labels) + GAP
+        elif any(pin_labels):
             row_h = max(SIGN_H if s in "+-" else PIN_H for s in pin_labels if s)
             for (_, px, _), s in zip(pads, pin_labels):
                 if s:

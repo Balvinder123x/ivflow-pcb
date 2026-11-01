@@ -37,47 +37,50 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   switch or button cable in J7 shorts VSYS_SW to GND through Q3 when the buzzer turns on,
   and the LED in J7 has no series resistor. User chose clear silkscreen labels (2026-11-01);
   a 3-pin keyed J6 is still possible if wanted.
+- 2026-11-01: **TP4056 moved off-board** (user decision, so the PCB doesn't wait for the module
+  to arrive; online pad layouts differ between sellers, lengths 22–29 mm). New **J9 CHARGER**,
+  JST-XH 6-pin: 1 IN+ (VBUS), 2 IN− (GND), 3 B+ (BATT+), 4 B− (BATT−), 5 OUT+ (VBAT_P),
+  6 OUT− (GND). U2 kept in schematic + BOM, `on_board no`, no footprint. The TP4056
+  placeholder footprint was deleted. The user solders a 6-pin XH cable to the module's pads.
+  Current through J9 ≤ ~1.3 A (1 A charge + load); XH is rated 3 A.
+- 2026-11-01: SuperMini footprint from **published dimensions** (user decision; no source gives
+  the first-pin offset → pins centred). Check the real board on a 1:1 printout before ordering.
 - Reference designators: KiCad treats references without a number as unannotated, so the
   spec's connector names map to numbered refs (the Value field carries the name):
   J1 = J_BAT (BATTERY), J2 = J_LDR (LDR STRIP), J3 = J_LED (LED), J4 = J_OLED (OLED),
-  J5 = J_EXP (EXPANSION), J6 POWER SW, J7 BUZZER, J8 BUTTON. Power flag = #FLG01.
+  J5 = J_EXP (EXPANSION), J6 POWER SW, J7 BUZZER, J8 BUTTON, J9 CHARGER. Power flag = #FLG01.
 - Net names used for internal nodes: LED_EN (GPIO5), BUZ_EN (GPIO6), BAT_EN (GPIO7), BTN (GPIO10),
   EXP_IO20/21, LED_A, BUZ_N (buzzer −), Q2_D, Q2_G, Q3_G, BATT+/BATT− (battery side of U2).
 
 ## Stages
 - [x] **0. Environment + skeleton** — approved, committed
-- [ ] **1. Custom library** — partially done
+- [ ] **1. Custom library** — done, 🛑 waiting for review
   - `scripts/make_library.py` generates `ivflow/ivflow_lib/`
   - Symbol `ESP32-C3_SuperMini` ✔ — pin order **confirmed** from the user's board diagram (2026-10-31):
     top view, USB up: left row GPIO5,6,7,8,9,10,20,21 (pads 1-8); right row 5V, GND, 3V3,
     GPIO4,3,2,1,0 (pads 9-16). Antenna at the end opposite USB.
-  - Footprint `ESP32-C3_SuperMini` — **PROVISIONAL** (2026-11-01). Pin order confirmed; row
-    spacing 15.24 mm confirmed (user counted 5 empty breadboard holes); module 18 × 22.52 mm and
-    USB-C overhang ~2 mm from the user (approximate, courtyard includes it). **First-pin offset
-    not measured** → pins assumed centred. Marked "PROVISIONAL" on F.Fab.
-  - Symbol `TP4056_Module_USB-C` ✔ (pads 1 IN+, 2 IN−, 3 BAT+, 4 BAT−, 5 OUT+, 6 OUT−)
-  - Footprint `TP4056_Module_USB-C` — **PROVISIONAL OUTLINE ONLY** (2026-11-01): 17 × 28 mm
-    (approximate), USB-C end marked, **no copper pads** (positions not measured; none invented).
-    Mounting: removable daughterboard on female headers. Pads are added once measured.
-  - Gate: no final placement and no fab outputs until both footprints are verified against
-    the purchased modules. A PCB built now would show U2's 6 pins as unconnected (no pads).
+  - Footprint `ESP32-C3_SuperMini` — published dimensions 22.52 × 18 mm; row spacing 15.24 mm
+    (also confirmed by the user's breadboard count); USB-C overhang ~2 mm (user, in courtyard);
+    pins assumed centred (no source gives the offset). Marked "PUBLISHED DIMS – check on arrival"
+    on F.Fab. **Before ordering the PCB: print the board 1:1 and lay the real SuperMini on it.**
+  - Symbol `TP4056_Module_USB-C` ✔ (pads 1 IN+, 2 IN−, 3 BAT+, 4 BAT−, 5 OUT+, 6 OUT−), no
+    footprint (module is off-board on J9).
 - [x] **2. Schematic + ERC** — approved 2026-11-01 (connector polarities checked by the user)
   - One A4 sheet, blocks: Power, MCU, Battery sense, Sensors, LED, Buzzer, OLED/Button/Expansion
-  - Netlist check: all 110 pin connections match the spec
-  - ERC: 0 errors, 1 warning — `TP4056_Module_USB-C` footprint not in `ivflow_lib` yet
-    (expected; clears when the footprint is made from measurements)
+  - Netlist check: all 116 pin connections match the spec (with J9, 2026-11-01)
+  - ERC: 0 errors, 0 warnings
 - [ ] **3. Footprints + BOM** — done, 🛑 waiting for review
   - Footprints + `LCSC` field set per part in `scripts/make_schematic.py` (schematic regenerated;
     it had not been edited in KiCad). Hand-soldering pad variants for 0805 / SOT-23 / SOT-23-5 / SMA.
   - Connectors: J1 JST-PH B2B-PH-K; J2 JST-XH B5B-XH-A; J3, J6, J7, J8 JST-XH B2B-XH-A;
-    J4, J5 2.54 mm pin headers.
-  - `scripts/make_bom.py` → `ivflow/bom/ivflow_bom.csv` (25 lines, 40 parts, exported from the
+    J9 JST-XH B6B-XH-A (C144397); J4, J5 2.54 mm pin headers.
+  - `scripts/make_bom.py` → `ivflow/bom/ivflow_bom.csv` (26 lines, 41 parts, exported from the
     schematic by kicad-cli) and `ivflow/bom/ivflow_offboard.csv` (things plugged into connectors,
     housings, hardware). Re-run it after any schematic edit.
   - All LCSC numbers checked against lcsc.com product pages. No number for J4/J5 (generic headers),
     U1/U2 (modules).
-  - Footprint check: every footprint exists except `ivflow_lib:TP4056_Module_USB-C` (measurements).
-  - ERC: 0 errors, 0 warnings since the provisional TP4056 footprint exists (2026-11-01).
+  - Footprint check: every on-board part has an existing footprint.
+  - ERC: 0 errors, 0 warnings.
   - From Stage 4 on, symbol UUIDs link schematic ↔ board: the schematic must NOT be regenerated
     after the board is populated — targeted edits only.
   - Connector silkscreen labels defined in `scripts/silk_labels.py` (title naming the part that
@@ -98,11 +101,9 @@ TP4056 is only a charger; the board adds the rest:
   deep for Li-Po life, and AP2112K drops out below ≈3.5 V input at full load.
 
 ## Open questions
-Waiting for the modules to be purchased and measured:
-1. **SuperMini**: distance from the USB-end board edge to the centre of the first pin.
-2. **TP4056** (top view, USB-C at top): X/Y of each pad (IN+, IN−, B+, B−, OUT+, OUT−) from the
-   bottom-left corner; pad type (holes + drill size, or edge half-holes); USB-C overhang;
-   confirm 17 × 28 mm. Pads must accept male pins for the female-header mounting.
+None blocking. When the parts arrive (before ordering the PCB):
+1. Print the board 1:1 and check the SuperMini sits on its pads (pins centred assumption).
+2. Check the battery plug is JST-PH 2.0 with red = pin 1, and the OLED pin order.
 
 Resolved 2026-11-01: power switch → J6 connector; buzzer + button → J7/J8 connectors;
 mis-plug risk handled with clear silk labels; repo pushed to

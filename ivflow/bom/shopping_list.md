@@ -4,15 +4,16 @@ Everything needed to build one IVFlow. LCSC numbers were checked on lcsc.com (20
 "Board qty" is what one board uses. "Buy" adds spares: small SMD parts are easy to lose
 and cost very little.
 
-⚠ **Order the PCB last.** The module footprints are provisional until you measure the real
-modules, so buy and measure the modules (section 1) first.
+The PCB uses published SuperMini dimensions, so everything can be ordered at the same time.
+When the parts arrive, lay the SuperMini on a 1:1 printout of the board before ordering the
+PCB (or order the PCB right away if you accept that small risk).
 
-## 1. Modules (buy first, then measure)
+## 1. Modules
 
 | Part | Board qty | Buy | Notes |
 |---|---|---|---|
-| ESP32-C3 SuperMini | 1 | 2 | Usually comes with loose male pin headers |
-| TP4056 charger module, **USB-C**, **with protection** (DW01A + 8205A) | 1 | 2 | Must have 6 pads: IN+, IN−, B+, B−, OUT+, OUT−. The 4-pad version has no protection. |
+| ESP32-C3 SuperMini (standard, **2 × 8 pins**) | 1 | 2 | Not the "SuperMini **Plus**", which has a different pin layout. Usually comes with loose male pin headers. |
+| TP4056 charger module, **USB-C**, **with protection** (DW01A + 8205A) | 1 | 2 | Must have 6 pads: IN+, IN−, B+, B−, OUT+, OUT−. The 4-pad version has no protection. Sits off the board, wired to J9. |
 
 ## 2. Parts soldered on the PCB
 
@@ -38,9 +39,9 @@ All resistors and capacitors are 0805.
 | J1 | JST-PH 2-pin header, vertical (B2B-PH-K-S) | 1 | 3 | C131337 |
 | J2 | JST-XH 5-pin header, vertical (B5B-XH-A) | 1 | 3 | C157991 |
 | J3, J6, J7, J8 | JST-XH 2-pin header, vertical (B2B-XH-A) | 4 | 6 | C158012 |
+| J9 | JST-XH 6-pin header, vertical (B6B-XH-A) | 1 | 3 | C144397 |
 | J4, J5 | Male pin header, 2.54 mm (cut 1×4 and 1×5 from a 1×40 strip) | 9 pins | 1 strip | any brand |
 | U1 socket | Female header 1×8, 2.54 mm | 2 | 4 | any brand |
-| U2 socket | Female headers + male pins for the TP4056, 2.54 mm | TBD | 1×40 strip of each | Count after measuring the module |
 
 ## 3. Parts that plug into the connectors
 
@@ -62,7 +63,11 @@ All resistors and capacitors are 0805.
 |---|---|---|
 | **Easiest** | Pre-crimped JST-XH 2.5 mm cable, 2-pin | 4 (buy 6) |
 | | Pre-crimped JST-XH 2.5 mm cable, 5-pin | 1 (buy 2) |
-| Or crimp your own | XHP-2 housing ×4, XHP-5 housing ×1, SXH-001T-P0.6 crimp contacts ×13 (buy 20) | needs a JST-style crimp tool |
+| | Pre-crimped JST-XH 2.5 mm cable, 6-pin (for the TP4056; 22–24 AWG, ≥ 1 A) | 1 (buy 2) |
+| Or crimp your own | XHP-2 housing ×4, XHP-5 ×1, XHP-6 ×1, SXH-001T-P0.6 crimp contacts ×19 (buy 30) | needs a JST-style crimp tool |
+
+TP4056 cable wiring, J9 pin → module pad: 1 → IN+, 2 → IN−, 3 → B+, 4 → B−, 5 → OUT+, 6 → OUT−.
+Double-check B− and OUT− before soldering: swapping them bypasses the battery protection.
 
 ## 5. PCB and hardware
 
@@ -70,6 +75,7 @@ All resistors and capacitors are 0805.
 |---|---|---|
 | PCB from JLCPCB: 2-layer, 1.6 mm, HASL | 5 (JLC minimum) | **Order only after the footprints are verified** |
 | M2 screws + M2 standoffs | 4 each | Length depends on your case |
+| Hot glue or 2 small screws | — | To hold the TP4056 at the case wall with USB-C in a cutout |
 | Hook-up wire 22–24 AWG + heat-shrink tubing | some | For the switch, button, buzzer and LED leads |
 
 ## 6. Tools and consumables (if you don't already have them)
@@ -83,5 +89,6 @@ and calipers for measuring the modules.
 LED, which is good. A white or blue LED needs about 3 V, so it would be dim and unreliable at 3.3 V.
 LDRs are also most sensitive to green light.
 
-**B. Check before you solder.** Battery plug polarity (red = +), OLED pin order, and that the
-TP4056 module has the protection chips (two extra small ICs next to the battery pads).
+**B. Check before you solder.** Battery plug polarity (red = +), OLED pin order, that the
+TP4056 module has the protection chips (two extra small ICs next to the battery pads), and the
+J9 cable order above.

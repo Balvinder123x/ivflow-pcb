@@ -410,7 +410,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "ivflow_lib:TP4056_Module_USB-C"
+		(property "Footprint" ""
 			(at -7.62 -11.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -434,7 +434,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "TP4056 Li-ion charger module, USB-C, DW01+8205 protection. IN- and OUT- are common; BAT- is separate."
+		(property "Description" "TP4056 Li-ion charger module, USB-C, DW01+8205 protection. IN- and OUT- are common; BAT- is separate. Off-board: wired to the main board through a connector."
 			(at -7.62 -16.51 0)
 			(show_name no)
 			(do_not_autoplace no)

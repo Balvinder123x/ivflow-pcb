@@ -45,14 +45,14 @@ Current status, tool paths and open questions live in `PROGRESS.md` — read it 
   before making the footprint. Leave the SuperMini's 5V pin UNCONNECTED.
   The antenna end must overhang the board edge or sit over a copper keepout.
 - U2: TP4056 charger module with protection (DW01 + 8205), USB-C version,
-  pads IN+, IN−, BAT+, BAT−, OUT+, OUT−.
-  ⚠ Ask me for the pad positions measured from my module. Mount it at a board
-  edge so the USB-C port faces outward. Removable daughterboard (decided 2026-11-01):
-  male pins in the module, female headers on the main board.
-- Both module footprints are PROVISIONAL until I buy and measure the real modules
-  (SuperMini first-pin offset; all TP4056 pad positions, pad type and USB overhang).
-  Never invent pad positions. Do not finalize PCB placement or generate fab outputs
-  before the footprints are verified.
+  pads IN+, IN−, BAT+, BAT−, OUT+, OUT−. OFF-BOARD (decided 2026-11-01): module layouts
+  differ between sellers, so it is wired to J9 CHARGER (JST-XH 6-pin: 1 IN+, 2 IN−,
+  3 B+, 4 B−, 5 OUT+, 6 OUT−) and mounted at the case wall with USB-C in a cutout.
+  U2 stays in the schematic and BOM but has no footprint.
+- SuperMini footprint uses published dimensions (decided 2026-11-01 to avoid waiting
+  for delivery): 22.52 × 18 mm, rows 15.24 mm, pins assumed centred. Layout may go
+  ahead; check the real board against a 1:1 printout before ordering the PCB.
+  Never invent dimensions that no source gives.
 - J_OLED: 1×4 2.54 mm male header; the OLED module is wired to it with jumper
   wires, so the board order is fixed (GND, VCC, SCL, SDA) and labelled on silk.
   No custom part needed (Connector_Generic:Conn_01x04).
@@ -65,7 +65,7 @@ JST-XH 2-pin connectors (J6 POWER SW, J7 BUZZER, J8 BUTTON). D3 and C6 stay on t
 ### Nets and circuit
 
 POWER
-- U2 IN+ = VBUS. U2 IN− and U2 OUT− = GND (system ground).
+- U2 IN+ = VBUS. U2 IN− and U2 OUT− = GND (system ground). (All through J9.)
   U2 BAT+/BAT− → J_BAT (JST-PH 2-pin, Li-Po 3.7 V). BAT− must NOT touch GND.
 - U2 OUT+ = VBAT_P.
 - Power path: D1 SS14 Schottky, anode VBUS → cathode VSYS.

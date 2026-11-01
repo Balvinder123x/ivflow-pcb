@@ -41,12 +41,13 @@ FP_C = "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 FP_SOT23 = "Package_TO_SOT_SMD:SOT-23_Handsoldering"
 FP_XH2 = "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 FP_XH5 = "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
+FP_XH6 = "Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical"
 FP_PH2 = "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
 FP_HDR = "Connector_PinHeader_2.54mm:PinHeader_1x{:02d}_P2.54mm_Vertical"
 # LCSC numbers checked against lcsc.com product pages (2026-11-01)
 LCSC_R = {"100k": "C149504", "10k": "C17414", "100": "C17408", "4.7k": "C17673", "82": "C17841"}
 LCSC_C = {"100n": "C49678", "10u": "C15850", "22u": "C45783", "10n": "C1710"}
-LCSC_XH2, LCSC_XH5, LCSC_PH2 = "C158012", "C157991", "C131337"
+LCSC_XH2, LCSC_XH5, LCSC_XH6, LCSC_PH2 = "C158012", "C157991", "C144397", "C131337"
 
 # ---------------------------------------------------------------- the design
 # Blocks: (title, frame origin, frame size). Part coordinates are relative to the origin.
@@ -63,9 +64,15 @@ BLOCKS = {
 # part: ref, lib_id, value, block, (x, y), rotation, {pin number or name: net}, extras
 PARTS = [
     # ---- POWER
-    dict(ref="U2", lib="ivflow_lib:TP4056_Module_USB-C", value="TP4056 USB-C", block="POWER", at=(8, 10),
+    # The TP4056 module is off-board (layouts differ between sellers): it is wired to J9 with
+    # a 6-pin JST-XH cable, so it stays in the BOM but has no footprint on the PCB.
+    dict(ref="U2", lib="ivflow_lib:TP4056_Module_USB-C", value="TP4056 USB-C (off-board)", block="POWER", at=(8, 10),
          nets={"IN+": "VBUS", "IN-": "GND", "OUT+": "VBAT_P", "OUT-": "GND", "BAT+": "BATT+", "BAT-": "BATT-"},
-         fp="ivflow_lib:TP4056_Module_USB-C"),
+         offboard=True, desc="TP4056 USB-C charger module with DW01A+8205A protection. Off-board, wired to J9"),
+    dict(ref="J9", lib="Connector_Generic:Conn_01x06", value="CHARGER", block="POWER", at=(12, 20),
+         nets={"1": "VBUS", "2": "GND", "3": "BATT+", "4": "BATT-", "5": "VBAT_P", "6": "GND"},
+         stub={"2": 4, "6": 4}, fp=FP_XH6, lcsc=LCSC_XH6,
+         desc="JST-XH 6-pin cable to the TP4056 module: 1 IN+, 2 IN-, 3 B+, 4 B-, 5 OUT+, 6 OUT-"),
     dict(ref="J1", lib="Connector_Generic:Conn_01x02", value="BATTERY", block="POWER", at=(24, 11),
          nets={"1": "BATT+", "2": "BATT-"}, desc="Li-Po 3.7 V, JST-PH 2-pin. BAT- is NOT system GND.",
          fp=FP_PH2, lcsc=LCSC_PH2),
@@ -174,6 +181,7 @@ LINK_LABELS = {("Q3", "G"): 90}
 NOTES = [
     ("POWER", (1, 27), "USB 5 V feeds VSYS through D1; Q1 connects the battery when USB is absent."),
     ("POWER", (1, 28), "J6 goes to a panel-mount power switch on the case (closed = ON)."),
+    ("POWER", (1, 26), "U2 (TP4056) is off-board, wired to J9 with a 6-pin JST-XH cable."),
     ("MCU", (1, 27), "SuperMini 5V pin intentionally unconnected. Antenna end over keepout / board edge."),
     ("BUZZER", (1, 3.2), "Buzzer off-board on J7; D3 stays on board"),
     ("BATTERY SENSE", (1, 26.5), "GPIO7 high enables the divider; BAT_SENSE = VSYS_SW / 2"),
@@ -233,12 +241,13 @@ class Sheet:
         return self.lib_symbols[lib_id]
 
     def place(self, ref, lib_id, value, origin, rot=0, dnp=False, fields=None, desc=None, hide_ref=False,
-              value_at=None, fp=None, lcsc=None):
+              value_at=None, fp=None, lcsc=None, offboard=False):
         sym = self.lib_symbol(lib_id)
         pins = k.symbol_pins(sym)
+        board = "no" if offboard else "yes"
         node = ["symbol", ["lib_id", q(lib_id)], at(origin[0], origin[1], rot), ["unit", 1], ["body_style", 1],
-                ["exclude_from_sim", "no"], ["in_bom", "yes"], ["on_board", "yes"],
-                ["in_pos_files", "yes"], ["dnp", "yes" if dnp else "no"], ["uuid", k.new_uuid()]]
+                ["exclude_from_sim", "no"], ["in_bom", "yes"], ["on_board", board],
+                ["in_pos_files", board], ["dnp", "yes" if dnp else "no"], ["uuid", k.new_uuid()]]
         for prop in k.find_all(sym, "property"):
             key = str(prop[1])
             if key.startswith("ki_"):
@@ -246,8 +255,8 @@ class Sheet:
             text = {"Reference": ref, "Value": value}.get(key, str(prop[2]))
             if key == "Description" and desc:
                 text = desc
-            if key == "Footprint" and fp:
-                text = fp
+            if key == "Footprint":
+                text = fp or ("" if offboard else text)
             pat = k.find(prop, "at")
             px, py = lib_to_sch(origin, rot, float(pat[1]), float(pat[2]))
             lib_eff = k.find(prop, "effects")
@@ -339,7 +348,8 @@ def build(root_uuid):
         rot = part.get("rot", 0)
         pins = sh.place(part["ref"], part["lib"], part["value"], origin, rot=rot, dnp=part.get("dnp", False),
                         fields=part.get("fields"), desc=part.get("desc"),
-                        hide_ref=part["ref"].startswith("#"), fp=part.get("fp"), lcsc=part.get("lcsc"))
+                        hide_ref=part["ref"].startswith("#"), fp=part.get("fp"), lcsc=part.get("lcsc"),
+                        offboard=part.get("offboard", False))
         by_name = {p["name"]: num for num, p in pins.items()}
         for name, num in by_name.items():
             if name and name not in pins:
@@ -438,10 +448,10 @@ def check_netlist(sh, path):
 
 
 def check_footprints():
-    """Every placed part has a footprint, and that footprint exists in its library."""
+    """Every on-board part has a footprint, and that footprint exists in its library."""
     bad = []
     for part in PARTS:
-        if part["ref"].startswith("#"):
+        if part["ref"].startswith("#") or part.get("offboard"):
             continue
         fp = part.get("fp")
         if not fp:
@@ -473,6 +483,6 @@ if __name__ == "__main__":
     sheet = build(root)
     write(sheet, SCH)
     ok = check_netlist(sheet, SCH)
-    check_footprints()  # TP4056 footprint stays missing until the module is measured
+    check_footprints()
     run_erc(SCH)
     sys.exit(0 if ok else 1)
