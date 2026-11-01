@@ -35,7 +35,8 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   All JST-XH 2-pin. D3 (flyback) and C6 (debounce) stay on the board.
   ⚠ J3/J6/J7/J8 are identical, so cables can be swapped. Most swaps are harmless, but the
   switch or button cable in J7 shorts VSYS_SW to GND through Q3 when the buzzer turns on,
-  and the LED in J7 has no series resistor. See open question 3.
+  and the LED in J7 has no series resistor. User chose clear silkscreen labels (2026-11-01);
+  a 3-pin keyed J6 is still possible if wanted.
 - Reference designators: KiCad treats references without a number as unannotated, so the
   spec's connector names map to numbered refs (the Value field carries the name):
   J1 = J_BAT (BATTERY), J2 = J_LDR (LDR STRIP), J3 = J_LED (LED), J4 = J_OLED (OLED),
@@ -73,6 +74,9 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - ERC: 0 errors, 1 warning (same TP4056 footprint warning as Stage 2).
   - From Stage 4 on, symbol UUIDs link schematic ↔ board: the schematic must NOT be regenerated
     after the board is populated — targeted edits only.
+  - Connector silkscreen labels defined in `scripts/silk_labels.py` (title naming the part that
+    plugs in + a label per pin, "+"/"−" drawn large). Added to each footprint in Stage 4 so they
+    move with the connector. Preview: `docs/connector_labels.png`.
 - [ ] 4. Outline, holes, placement
 - [ ] 5. Routing + pours + DRC
 - [ ] 6. Fab outputs
@@ -83,8 +87,9 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
 2. **TP4056 module** (top view, USB-C at top): length × width; X/Y of each pad
    (IN+, IN−, BAT+, BAT−, OUT+, OUT−) from the bottom-left corner; pad type (holes + drill
    size, or edge castellations); how far USB-C sticks out past the module edge.
-3. **Mis-plug protection for the 2-pin sockets**: make J6 (power switch) a 3-pin XH with the
-   middle pin unused, so the switch cable cannot fit J7? Or keep 2-pin and rely on silk labels?
-4. Push this repo to GitHub? (needs a repo created on github.com; nothing pushed yet)
+3. TP4056 mounting: straight pin headers through its holes (module sits on top), or soldered flat?
+   Is the module's underside flat (no parts)?
 
-Resolved: power switch → J6 connector; buzzer + button → J7/J8 connectors (2026-11-01).
+Resolved 2026-11-01: power switch → J6 connector; buzzer + button → J7/J8 connectors;
+mis-plug risk handled with clear silk labels; repo pushed to
+https://github.com/Balvinder123x/ivflow-pcb (remote `origin`, push after every stage commit).
