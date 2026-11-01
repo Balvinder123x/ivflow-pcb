@@ -29,10 +29,15 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - J_OLED: 1×4 male header, fixed order GND, VCC, SCL, SDA (jumper wires to module) → no custom part.
   - LED: D2 replaced by **J_LED** (JST-XH 2-pin, pin 1 = anode/+, pin 2 = cathode/−). R20 stays on board.
   - J_LDR unchanged (JST-XH 5-pin).
+- 2026-11-01: power switch, buzzer and button also moved off-board (user decision):
+  SW1 → **J6 POWER SW** (1 VSYS, 2 VSYS_SW, to a panel-mount switch ≥ 1 A),
+  BZ1 → **J7 BUZZER** (1 + VSYS_SW, 2 − BUZ_N), SW2 → **J8 BUTTON** (1 BTN, 2 GND).
+  All JST-XH 2-pin. D3 (flyback) and C6 (debounce) stay on the board.
+  Swapping any two 2-pin XH cables is harmless (checked each combination: no shorts).
 - Reference designators: KiCad treats references without a number as unannotated, so the
   spec's connector names map to numbered refs (the Value field carries the name):
   J1 = J_BAT (BATTERY), J2 = J_LDR (LDR STRIP), J3 = J_LED (LED), J4 = J_OLED (OLED),
-  J5 = J_EXP (EXPANSION). Power flag = #FLG01.
+  J5 = J_EXP (EXPANSION), J6 POWER SW, J7 BUZZER, J8 BUTTON. Power flag = #FLG01.
 - Net names used for internal nodes: LED_EN (GPIO5), BUZ_EN (GPIO6), BAT_EN (GPIO7), BTN (GPIO10),
   EXP_IO20/21, LED_A, BUZ_N (buzzer −), Q2_D, Q2_G, Q3_G, BATT+/BATT− (battery side of U2).
 
@@ -47,13 +52,25 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     (module 22.52 × 18.0 mm, rows 15.24 mm apart, pins centred, 6 mm antenna keepout)
   - Symbol `TP4056_Module_USB-C` ✔ (pads 1 IN+, 2 IN−, 3 BAT+, 4 BAT−, 5 OUT+, 6 OUT−)
   - Footprint `TP4056_Module_USB-C` — **not made**, needs measurements
-- [ ] **2. Schematic + ERC** — done, 🛑 waiting for review
+- [x] **2. Schematic + ERC** — approved 2026-11-01 (connector polarities checked by the user)
   - One A4 sheet, blocks: Power, MCU, Battery sense, Sensors, LED, Buzzer, OLED/Button/Expansion
   - Netlist check: all 110 pin connections match the spec
   - ERC: 0 errors, 1 warning — `TP4056_Module_USB-C` footprint not in `ivflow_lib` yet
     (expected; clears when the footprint is made from measurements)
-  - SW1 drawn as an on-board SPDT slide switch (pin C unused) pending open question 3
-- [ ] 3. Footprints + BOM
+- [ ] **3. Footprints + BOM** — done, 🛑 waiting for review
+  - Footprints + `LCSC` field set per part in `scripts/make_schematic.py` (schematic regenerated;
+    it had not been edited in KiCad). Hand-soldering pad variants for 0805 / SOT-23 / SOT-23-5 / SMA.
+  - Connectors: J1 JST-PH B2B-PH-K; J2 JST-XH B5B-XH-A; J3, J6, J7, J8 JST-XH B2B-XH-A;
+    J4, J5 2.54 mm pin headers.
+  - `scripts/make_bom.py` → `ivflow/bom/ivflow_bom.csv` (25 lines, 40 parts, exported from the
+    schematic by kicad-cli) and `ivflow/bom/ivflow_offboard.csv` (things plugged into connectors,
+    housings, hardware). Re-run it after any schematic edit.
+  - All LCSC numbers checked against lcsc.com product pages. No number for J4/J5 (generic headers),
+    U1/U2 (modules).
+  - Footprint check: every footprint exists except `ivflow_lib:TP4056_Module_USB-C` (measurements).
+  - ERC: 0 errors, 1 warning (same TP4056 footprint warning as Stage 2).
+  - From Stage 4 on, symbol UUIDs link schematic ↔ board: the schematic must NOT be regenerated
+    after the board is populated — targeted edits only.
 - [ ] 4. Outline, holes, placement
 - [ ] 5. Routing + pours + DRC
 - [ ] 6. Fab outputs
@@ -64,7 +81,6 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
 2. **TP4056 module** (top view, USB-C at top): length × width; X/Y of each pad
    (IN+, IN−, BAT+, BAT−, OUT+, OUT−) from the bottom-left corner; pad type (holes + drill
    size, or edge castellations); how far USB-C sticks out past the module edge.
-3. **SW1 power switch**: which part? KiCad's stock CK OS102011MS2Q is only 100 mA.
-   Option: a 2-pin connector to a panel-mount switch, in line with the connector approach.
-4. Buzzer (BZ1) and button (SW2): keep on the board, or also move them to connectors?
-5. Push this repo to GitHub? (needs a repo created on github.com; nothing pushed yet)
+3. Push this repo to GitHub? (needs a repo created on github.com; nothing pushed yet)
+
+Resolved: power switch → J6 connector; buzzer + button → J7/J8 connectors (2026-11-01).

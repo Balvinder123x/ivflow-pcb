@@ -34,6 +34,20 @@ G = 2.54          # layout grid: all coordinates below are in units of 2.54 mm
 POWER_NETS = {"GND": "power:GND", "+3V3": "power:+3V3"}
 NC = "NC"
 
+# ---------------------------------------------------------------- footprints + LCSC (Stage 3)
+# Hand-assembled: 0805 passives and SOT parts use KiCad's hand-soldering pad variants.
+FP_R = "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+FP_C = "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+FP_SOT23 = "Package_TO_SOT_SMD:SOT-23_Handsoldering"
+FP_XH2 = "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+FP_XH5 = "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
+FP_PH2 = "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+FP_HDR = "Connector_PinHeader_2.54mm:PinHeader_1x{:02d}_P2.54mm_Vertical"
+# LCSC numbers checked against lcsc.com product pages (2026-11-01)
+LCSC_R = {"100k": "C149504", "10k": "C17414", "100": "C17408", "4.7k": "C17673", "82": "C17841"}
+LCSC_C = {"100n": "C49678", "10u": "C15850", "22u": "C45783", "10n": "C1710"}
+LCSC_XH2, LCSC_XH5, LCSC_PH2 = "C158012", "C157991", "C131337"
+
 # ---------------------------------------------------------------- the design
 # Blocks: (title, frame origin, frame size). Part coordinates are relative to the origin.
 BLOCKS = {
@@ -50,20 +64,24 @@ BLOCKS = {
 PARTS = [
     # ---- POWER
     dict(ref="U2", lib="ivflow_lib:TP4056_Module_USB-C", value="TP4056 USB-C", block="POWER", at=(8, 10),
-         nets={"IN+": "VBUS", "IN-": "GND", "OUT+": "VBAT_P", "OUT-": "GND", "BAT+": "BATT+", "BAT-": "BATT-"}),
+         nets={"IN+": "VBUS", "IN-": "GND", "OUT+": "VBAT_P", "OUT-": "GND", "BAT+": "BATT+", "BAT-": "BATT-"},
+         fp="ivflow_lib:TP4056_Module_USB-C"),
     dict(ref="J1", lib="Connector_Generic:Conn_01x02", value="BATTERY", block="POWER", at=(24, 11),
-         nets={"1": "BATT+", "2": "BATT-"}, desc="Li-Po 3.7 V, JST-PH 2-pin. BAT- is NOT system GND."),
+         nets={"1": "BATT+", "2": "BATT-"}, desc="Li-Po 3.7 V, JST-PH 2-pin. BAT- is NOT system GND.",
+         fp=FP_PH2, lcsc=LCSC_PH2),
     dict(ref="D1", lib="Diode:SS14", value="SS14", block="POWER", at=(34, 7), rot=180,
-         nets={"A": "VBUS", "K": "VSYS"}),
+         nets={"A": "VBUS", "K": "VSYS"}, fp="Diode_SMD:D_SMA_Handsoldering", lcsc="C2480"),
     dict(ref="Q1", lib="Transistor_FET:AO3401A", value="AO3401A", block="POWER", at=(34, 18),
-         nets={"G": "VBUS", "D": "VBAT_P", "S": "VSYS"}),
+         nets={"G": "VBUS", "D": "VBAT_P", "S": "VSYS"}, fp=FP_SOT23, lcsc="C15127"),
     dict(ref="R1", lib="Device:R", value="100k", block="POWER", at=(42, 18), nets={"1": "VBUS", "2": "GND"}),
-    dict(ref="SW1", lib="Switch:SW_SPDT", value="POWER", block="POWER", at=(50, 8),
-         nets={"B": "VSYS", "A": "VSYS_SW", "C": NC}, desc="Slide switch, rated >= 1 A"),
+    dict(ref="J6", lib="Connector_Generic:Conn_01x02", value="POWER SW", block="POWER", at=(52, 8),
+         nets={"1": "VSYS", "2": "VSYS_SW"}, fp=FP_XH2, lcsc=LCSC_XH2,
+         desc="JST-XH 2-pin to the panel-mount power switch (rated >= 1 A). Closed = ON"),
     dict(ref="C1", lib="Device:C", value="10u", block="POWER", at=(60, 10), nets={"1": "VSYS_SW", "2": "GND"}),
     dict(ref="#FLG01", lib="power:PWR_FLAG", value="PWR_FLAG", block="POWER", at=(64, 6), nets={"1": "VSYS_SW"}),
     dict(ref="U3", lib="Regulator_Linear:AP2112K-3.3", value="AP2112K-3.3", block="POWER", at=(52, 23),
-         nets={"VIN": "VSYS_SW", "EN": "VSYS_SW", "GND": "GND", "NC": NC, "VOUT": "+3V3"}),
+         nets={"VIN": "VSYS_SW", "EN": "VSYS_SW", "GND": "GND", "NC": NC, "VOUT": "+3V3"},
+         fp="Package_TO_SOT_SMD:SOT-23-5_HandSoldering", lcsc="C51118"),
     dict(ref="C2", lib="Device:C", value="10u", block="POWER", at=(60, 24), nets={"1": "+3V3", "2": "GND"}),
     dict(ref="C3", lib="Device:C", value="100n", block="POWER", at=(64, 24), nets={"1": "+3V3", "2": "GND"}),
     # ---- MCU
@@ -71,7 +89,8 @@ PARTS = [
          nets={"5V": NC, "3V3": "+3V3", "GND": "GND",
                "GPIO0": "LDR1", "GPIO1": "LDR2", "GPIO2": "BAT_SENSE", "GPIO3": "LDR3", "GPIO4": "LDR4",
                "GPIO5": "LED_EN", "GPIO6": "BUZ_EN", "GPIO7": "BAT_EN", "GPIO8": "SDA", "GPIO9": "SCL",
-               "GPIO10": "BTN", "GPIO20": "EXP_IO20", "GPIO21": "EXP_IO21"}),
+               "GPIO10": "BTN", "GPIO20": "EXP_IO20", "GPIO21": "EXP_IO21"},
+         fp="ivflow_lib:ESP32-C3_SuperMini"),
     dict(ref="C4", lib="Device:C", value="22u", block="MCU", at=(6, 16), nets={"1": "+3V3", "2": "GND"},
          desc="Bulk capacitor, place next to U1 3V3 pin"),
     # ---- BATTERY SENSE
@@ -82,7 +101,7 @@ PARTS = [
     dict(ref="R3", lib="Device:R", value="100k", block="BATTERY SENSE", at=(14, 10),
          nets={"1": "BAT_SENSE", "2": "Q2_D"}),
     dict(ref="Q2", lib="Transistor_FET:2N7002", value="2N7002", block="BATTERY SENSE", at=(18, 21),
-         nets={"D": "Q2_D", "G": "Q2_G", "S": "GND"}),
+         nets={"D": "Q2_D", "G": "Q2_G", "S": "GND"}, fp=FP_SOT23, lcsc="C8545"),
     dict(ref="R4", lib="Device:R", value="100", block="BATTERY SENSE", at=(21, 10),
          nets={"1": "BAT_EN", "2": "Q2_G"}),
     dict(ref="R5", lib="Device:R", value="100k", block="BATTERY SENSE", at=(26, 10),
@@ -90,19 +109,22 @@ PARTS = [
     # ---- SENSORS
     dict(ref="J2", lib="Connector_Generic:Conn_01x05", value="LDR STRIP", block="SENSORS (LDR strip)",
          at=(29, 12), nets={"1": "+3V3", "2": "LDR1", "3": "LDR2", "4": "LDR3", "5": "LDR4"},
-         desc="JST-XH 5-pin to the off-board LDR strip"),
+         desc="JST-XH 5-pin to the off-board LDR strip", fp=FP_XH5, lcsc=LCSC_XH5),
     # ---- LED
     dict(ref="R20", lib="Device:R", value="82", block="LED (drip chamber)", at=(4, 8),
          nets={"1": "LED_EN", "2": "LED_A"}),
     dict(ref="J3", lib="Connector_Generic:Conn_01x02", value="LED", block="LED (drip chamber)", at=(14, 8),
-         nets={"1": "LED_A", "2": "GND"}, desc="JST-XH 2-pin to the off-board 5 mm LED. 1 = anode (+)"),
+         nets={"1": "LED_A", "2": "GND"}, desc="JST-XH 2-pin to the off-board 5 mm LED. 1 = anode (+)",
+         fp=FP_XH2, lcsc=LCSC_XH2),
     # ---- BUZZER
-    dict(ref="BZ1", lib="Device:Buzzer", value="BUZZER", block="BUZZER", at=(14, 8),
-         nets={"+": "VSYS_SW", "-": "BUZ_N"}, desc="3-5 V active buzzer, 12 mm THT"),
+    dict(ref="J7", lib="Connector_Generic:Conn_01x02", value="BUZZER", block="BUZZER", at=(14, 8),
+         nets={"1": "VSYS_SW", "2": "BUZ_N"}, fp=FP_XH2, lcsc=LCSC_XH2,
+         desc="JST-XH 2-pin to the off-board 3-5 V active buzzer. 1 = +, 2 = -"),
     dict(ref="D3", lib="Diode:1N4148W", value="1N4148W", block="BUZZER", at=(19, 15), rot=270,
-         nets={"K": "VSYS_SW", "A": "BUZ_N"}, fields=((-2.5, -0.5), (-2.5, 0.5))),
+         nets={"K": "VSYS_SW", "A": "BUZ_N"}, fields=((-2.5, -0.5), (-2.5, 0.5)),
+         fp="Diode_SMD:D_SOD-123", lcsc="C81598"),
     dict(ref="Q3", lib="Transistor_FET:AO3400A", value="AO3400A", block="BUZZER", at=(12, 20),
-         nets={"D": "BUZ_N", "G": "Q3_G", "S": "GND"}),
+         nets={"D": "BUZ_N", "G": "Q3_G", "S": "GND"}, fp=FP_SOT23, lcsc="C20917"),
     dict(ref="R21", lib="Device:R", value="100", block="BUZZER", at=(6, 20), rot=90,
          nets={"1": "BUZ_EN", "2": "Q3_G"}, fields=((0, -1.5), (0, 1.5))),
     dict(ref="R22", lib="Device:R", value="100k", block="BUZZER", at=(10, 25),
@@ -110,18 +132,19 @@ PARTS = [
     # ---- OLED / BUTTON / EXPANSION
     dict(ref="J4", lib="Connector_Generic:Conn_01x04", value="OLED", block="OLED / BUTTON / EXPANSION",
          at=(12, 6), nets={"1": "GND", "2": "+3V3", "3": "SCL", "4": "SDA"}, stub={"1": 3},
-         desc="1x4 2.54 mm header, jumper wires to the I2C OLED"),
+         desc="1x4 2.54 mm header, jumper wires to the I2C OLED", fp=FP_HDR.format(4)),
     dict(ref="R23", lib="Device:R", value="4.7k", block="OLED / BUTTON / EXPANSION", at=(24, 6), dnp=True,
          nets={"1": "+3V3", "2": "SDA"}),
     dict(ref="R24", lib="Device:R", value="4.7k", block="OLED / BUTTON / EXPANSION", at=(28, 6), dnp=True,
          nets={"1": "+3V3", "2": "SCL"}),
-    dict(ref="SW2", lib="Switch:SW_Push", value="BUTTON", block="OLED / BUTTON / EXPANSION", at=(37, 5),
+    dict(ref="J8", lib="Connector_Generic:Conn_01x02", value="BUTTON", block="OLED / BUTTON / EXPANSION",
+         at=(40, 5), nets={"1": "BTN", "2": "GND"}, fp=FP_XH2, lcsc=LCSC_XH2,
+         desc="JST-XH 2-pin to the off-board push button (BTN to GND)"),
+    dict(ref="C6", lib="Device:C", value="100n", block="OLED / BUTTON / EXPANSION", at=(45, 6),
          nets={"1": "BTN", "2": "GND"}),
-    dict(ref="C6", lib="Device:C", value="100n", block="OLED / BUTTON / EXPANSION", at=(37, 9), rot=90,
-         nets={"1": "BTN", "2": "GND"}, fields=((0, -1.5), (0, 1.5))),
     dict(ref="J5", lib="Connector_Generic:Conn_01x05", value="EXPANSION", block="OLED / BUTTON / EXPANSION",
          at=(57, 6), nets={"1": "GND", "2": "VSYS_SW", "3": "+3V3", "4": "EXP_IO20", "5": "EXP_IO21"},
-         desc="1x5 2.54 mm header: future servo / spare I/O"),
+         desc="1x5 2.54 mm header: future servo / spare I/O", fp=FP_HDR.format(5)),
 ]
 # LDR channel n: R(10+n) 10k and C(10+n) 10n from LDRn to GND, R row above C row
 for n in range(1, 5):
@@ -129,23 +152,30 @@ for n in range(1, 5):
                       at=(3 + 5 * (n - 1), 8), nets={"1": f"LDR{n}", "2": "GND"}))
     PARTS.append(dict(ref=f"C{10 + n}", lib="Device:C", value="10n", block="SENSORS (LDR strip)",
                       at=(5 + 5 * (n - 1), 17), nets={"1": f"LDR{n}", "2": "GND"}))
+for _p in PARTS:
+    if _p["lib"] == "Device:R":
+        _p.setdefault("fp", FP_R)
+        _p.setdefault("lcsc", LCSC_R[_p["value"]])
+    elif _p["lib"] == "Device:C":
+        _p.setdefault("fp", FP_C)
+        _p.setdefault("lcsc", LCSC_C[_p["value"]])
 
 # Direct wires between neighbouring pins (both pins must be on the same net)
 LINKS = [
     (("R21", "2"), ("Q3", "G")),
     (("R22", "1"), ("Q3", "G")),
-    (("SW2", "1"), ("C6", "1")),
-    (("SW2", "2"), ("C6", "2")),
 ]
 # Linked pins normally get no stub; these still get their label / power symbol
 # because the net continues elsewhere on the sheet.
-KEEP_STUB = {("SW2", "1"), ("C6", "2")}
+KEEP_STUB = set()
 # Nets that only exist as wires still get a name: (ref, pin) -> label direction
 LINK_LABELS = {("Q3", "G"): 90}
 
 NOTES = [
     ("POWER", (1, 27), "USB 5 V feeds VSYS through D1; Q1 connects the battery when USB is absent."),
+    ("POWER", (1, 28), "J6 goes to a panel-mount power switch on the case (closed = ON)."),
     ("MCU", (1, 27), "SuperMini 5V pin intentionally unconnected. Antenna end over keepout / board edge."),
+    ("BUZZER", (1, 3.2), "Buzzer off-board on J7; D3 stays on board"),
     ("BATTERY SENSE", (1, 26.5), "GPIO7 high enables the divider; BAT_SENSE = VSYS_SW / 2"),
     ("SENSORS (LDR strip)", (1, 22.5), "R11-R14 value is a placeholder: tune for the LDRs used"),
     ("OLED / BUTTON / EXPANSION", (1, 11.4), "R23/R24 DNP: most OLED modules already have I2C pull-ups"),
@@ -203,11 +233,11 @@ class Sheet:
         return self.lib_symbols[lib_id]
 
     def place(self, ref, lib_id, value, origin, rot=0, dnp=False, fields=None, desc=None, hide_ref=False,
-              value_at=None):
+              value_at=None, fp=None, lcsc=None):
         sym = self.lib_symbol(lib_id)
         pins = k.symbol_pins(sym)
         node = ["symbol", ["lib_id", q(lib_id)], at(origin[0], origin[1], rot), ["unit", 1], ["body_style", 1],
-                ["exclude_from_sim", "no"], ["in_bom", "no" if dnp else "yes"], ["on_board", "yes"],
+                ["exclude_from_sim", "no"], ["in_bom", "yes"], ["on_board", "yes"],
                 ["in_pos_files", "yes"], ["dnp", "yes" if dnp else "no"], ["uuid", k.new_uuid()]]
         for prop in k.find_all(sym, "property"):
             key = str(prop[1])
@@ -216,6 +246,8 @@ class Sheet:
             text = {"Reference": ref, "Value": value}.get(key, str(prop[2]))
             if key == "Description" and desc:
                 text = desc
+            if key == "Footprint" and fp:
+                text = fp
             pat = k.find(prop, "at")
             px, py = lib_to_sch(origin, rot, float(pat[1]), float(pat[2]))
             lib_eff = k.find(prop, "effects")
@@ -237,6 +269,8 @@ class Sheet:
             fangle = 90 if rot in (90, 270) else 0
             node.append(["property", q(key), q(text), at(px, py, fangle),
                          font_effects(justify=justify, hide=hidden)])
+        if lcsc:
+            node.append(["property", q("LCSC"), q(lcsc), at(origin[0], origin[1], 0), font_effects(hide=True)])
         for num in pins:
             node.append(["pin", q(num), ["uuid", k.new_uuid()]])
         node.append(["instances", ["project", q(PROJECT),
@@ -305,7 +339,7 @@ def build(root_uuid):
         rot = part.get("rot", 0)
         pins = sh.place(part["ref"], part["lib"], part["value"], origin, rot=rot, dnp=part.get("dnp", False),
                         fields=part.get("fields"), desc=part.get("desc"),
-                        hide_ref=part["ref"].startswith("#"))
+                        hide_ref=part["ref"].startswith("#"), fp=part.get("fp"), lcsc=part.get("lcsc"))
         by_name = {p["name"]: num for num, p in pins.items()}
         for name, num in by_name.items():
             if name and name not in pins:
@@ -403,6 +437,24 @@ def check_netlist(sh, path):
     return True
 
 
+def check_footprints():
+    """Every placed part has a footprint, and that footprint exists in its library."""
+    bad = []
+    for part in PARTS:
+        if part["ref"].startswith("#"):
+            continue
+        fp = part.get("fp")
+        if not fp:
+            bad.append(f"  {part['ref']}: no footprint assigned")
+            continue
+        nick, name = fp.split(":")
+        base = os.path.join(OUT, "ivflow_lib") if nick == "ivflow_lib" else os.path.join(k.KICAD_SHARE, "footprints")
+        if not os.path.isfile(os.path.join(base, f"{nick}.pretty", f"{name}.kicad_mod")):
+            bad.append(f"  {part['ref']}: {fp} not found")
+    print("footprint check: " + ("all parts have an existing footprint" if not bad else "\n" + "\n".join(bad)))
+    return not bad
+
+
 def run_erc(path):
     rpt = os.path.splitext(path)[0] + "_erc.rpt"
     subprocess.run([KICAD_CLI, "sch", "erc", "--severity-all", "-o", rpt, path], capture_output=True)
@@ -421,5 +473,6 @@ if __name__ == "__main__":
     sheet = build(root)
     write(sheet, SCH)
     ok = check_netlist(sheet, SCH)
+    check_footprints()  # TP4056 footprint stays missing until the module is measured
     run_erc(SCH)
     sys.exit(0 if ok else 1)

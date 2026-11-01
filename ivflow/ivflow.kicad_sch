@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "IVFlow")
-		(date "2026-10-31")
+		(date "2026-11-01")
 		(rev "v1")
 		(comment 1 "Battery-powered IV drip monitor - main board")
 	)
@@ -1094,196 +1094,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Switch:SW_SPDT"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SW_SPDT"
-				(at 0 -5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Switch, single pole double throw"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SW_SPDT_0_1"
-				(circle
-					(center -2.032 0)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.651 0.254) (xy 1.651 2.286)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 -2.54)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SW_SPDT_1_1"
-				(rectangle
-					(start -3.175 3.81)
-					(end 3.175 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2837,183 +2647,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Buzzer"
-			(pin_names
-				(offset 0.0254)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "BZ"
-				(at 3.81 1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Buzzer"
-				(at 3.81 -1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at -0.635 2.54 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at -0.635 2.54 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Buzzer, polarized"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "quartz resonator ceramic"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "*Buzzer*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Buzzer_0_1"
-				(polyline
-					(pts
-						(xy -1.651 1.905) (xy -1.143 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.397 2.159) (xy -1.397 1.651)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 3.175)
-					(mid 3.1612 0)
-					(end 0 -3.175)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 3.175) (xy 0 -3.175)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Buzzer_1_1"
-				(pin passive line
-					(at -2.54 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Diode:1N4148W"
 			(pin_numbers
 				(hide yes)
@@ -3732,170 +3365,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Switch:SW_Push"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 1.27 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "SW_Push"
-				(at 0 -1.524 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Push button switch, generic, two pins"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "switch normally-open pushbutton push-button"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SW_Push_0_1"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.27) (xy 0 3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 1.27) (xy -2.54 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(rectangle
 		(start 12.7 12.7)
@@ -3907,7 +3376,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "624228ad-8868-40c8-b1ba-ed9241d76d1a")
+		(uuid "bc7f66fa-3f1f-4dda-888b-bdbc1f47ce5b")
 	)
 	(text "POWER"
 		(exclude_from_sim no)
@@ -3919,7 +3388,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f3092a56-7d98-45f1-a657-01bc35e3fac4")
+		(uuid "6fb92608-6624-4844-8a19-d337415b7bba")
 	)
 	(rectangle
 		(start 185.42 12.7)
@@ -3931,7 +3400,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "f181c5aa-3e22-4bdb-b7c3-336692a680d3")
+		(uuid "ba26f1da-1c5e-4cab-8e70-5a4af5353537")
 	)
 	(text "MCU"
 		(exclude_from_sim no)
@@ -3943,7 +3412,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "63707295-389a-4a00-b101-5a5e61d98225")
+		(uuid "14106a4a-351d-4f92-bf06-3db3d48fe8b8")
 	)
 	(rectangle
 		(start 12.7 91.44)
@@ -3955,7 +3424,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "a9a27b2a-4fd2-4ed2-a7cf-ea40e9f4499e")
+		(uuid "905ac469-0925-4e47-8544-ba213d93b46f")
 	)
 	(text "BATTERY SENSE"
 		(exclude_from_sim no)
@@ -3967,7 +3436,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "069a6059-0588-42d1-a94a-487ddd94a3a8")
+		(uuid "8dd5b848-7d13-4bdf-aede-880173d56e51")
 	)
 	(rectangle
 		(start 93.98 91.44)
@@ -3979,7 +3448,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "2185aa0e-b7fc-40c7-8307-95f07f5d3ca8")
+		(uuid "1c746cbf-09cc-45af-9f14-2c053371c876")
 	)
 	(text "SENSORS (LDR strip)"
 		(exclude_from_sim no)
@@ -3991,7 +3460,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "52783585-8089-4fd1-ae8b-12092b15a6de")
+		(uuid "1dcfdcef-d2cf-4006-9cc6-f585747fe801")
 	)
 	(rectangle
 		(start 185.42 91.44)
@@ -4003,7 +3472,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "b4e2a0a3-4057-4860-bdf1-8960815e5a28")
+		(uuid "a534924d-6a51-4aea-b159-554116d04edd")
 	)
 	(text "LED (drip chamber)"
 		(exclude_from_sim no)
@@ -4015,7 +3484,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f099cd22-b3c4-40d7-8a9b-4b2ffda0890a")
+		(uuid "49270592-63bc-44f9-bae2-ab63a3e71b7c")
 	)
 	(rectangle
 		(start 231.14 91.44)
@@ -4027,7 +3496,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "5b492073-d894-43fd-a4de-7137bc59a8f6")
+		(uuid "c3370409-f10c-4dac-a6cd-0e1ec0d934f9")
 	)
 	(text "BUZZER"
 		(exclude_from_sim no)
@@ -4039,7 +3508,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b2e52743-4c72-464a-95f8-447ac40cb2b0")
+		(uuid "86a7ae54-1624-417c-b52b-d969c57d273e")
 	)
 	(rectangle
 		(start 12.7 167.64)
@@ -4051,7 +3520,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "c78071ea-a683-4a26-9ee8-104c0cf08ad3")
+		(uuid "c94d65ad-26c4-4c25-87e1-d7f7c38c6dbf")
 	)
 	(text "OLED / BUTTON / EXPANSION"
 		(exclude_from_sim no)
@@ -4063,7 +3532,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "403b86d4-e3c1-4523-a8d3-c150aa8f6949")
+		(uuid "4e57355b-61b5-4131-9f93-d2db30ad9b1a")
 	)
 	(text "USB 5 V feeds VSYS through D1; Q1 connects the battery when USB is absent."
 		(exclude_from_sim no)
@@ -4074,7 +3543,18 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "78c24207-07c6-4ad6-afa4-45a504926919")
+		(uuid "75a139c2-6b53-4f81-b803-0bef5edccce7")
+	)
+	(text "J6 goes to a panel-mount power switch on the case (closed = ON)."
+		(exclude_from_sim no)
+		(at 15.24 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c77c0f1a-9a39-430e-b124-5833796f62ca")
 	)
 	(text "SuperMini 5V pin intentionally unconnected. Antenna end over keepout / board edge."
 		(exclude_from_sim no)
@@ -4085,7 +3565,18 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f4d6c63a-4914-4dc4-a5cd-da1a89dbce32")
+		(uuid "bc994985-8a71-48de-9601-01b1b7813694")
+	)
+	(text "Buzzer off-board on J7; D3 stays on board"
+		(exclude_from_sim no)
+		(at 233.68 99.568 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "db14cadb-6b66-4657-b6ec-def47ccd79d8")
 	)
 	(text "GPIO7 high enables the divider; BAT_SENSE = VSYS_SW / 2"
 		(exclude_from_sim no)
@@ -4096,7 +3587,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "143e764e-05e5-4f8d-bafd-fad5d55d42a3")
+		(uuid "ebf6267d-246d-4277-b892-5e754ffc4c34")
 	)
 	(text "R11-R14 value is a placeholder: tune for the LDRs used"
 		(exclude_from_sim no)
@@ -4107,7 +3598,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "41d555bf-7f8b-4262-836b-deec7c23408e")
+		(uuid "122b9908-a0f8-481e-bb5b-736280dd2788")
 	)
 	(text "R23/R24 DNP: most OLED modules already have I2C pull-ups"
 		(exclude_from_sim no)
@@ -4118,7 +3609,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "60c4385b-0a15-49d7-96aa-fea366dbcd9a")
+		(uuid "7e14745f-85a4-45c8-a3f4-73290d01915c")
 	)
 	(symbol
 		(lib_id "ivflow_lib:TP4056_Module_USB-C")
@@ -4130,7 +3621,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "da5e6b0c-3bc6-4df7-a905-cdfd7595b504")
+		(uuid "6f2a7fe0-4cf5-4c7f-b6bd-1673ca334afa")
 		(property "Reference" "U2"
 			(at 25.4 29.21 0)
 			(effects
@@ -4180,22 +3671,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "2105328f-eaff-4404-91a5-a0545d223358")
+			(uuid "5f690e7b-efbb-4629-a858-daf9b91c50c5")
 		)
 		(pin "2"
-			(uuid "73efb96e-6da1-449f-8fc5-bbc431e4787f")
+			(uuid "76215b04-1c0e-4729-99ae-ce263a48d7db")
 		)
 		(pin "3"
-			(uuid "cf492f77-a7bf-4878-8ea9-f7a9f0ae07de")
+			(uuid "1270ea3c-46d2-4ee0-849c-9fb1ac38b0c5")
 		)
 		(pin "4"
-			(uuid "1e32bf0b-bd1d-4ca6-b141-c06a6631a9a5")
+			(uuid "44484b2c-5251-45ee-8376-1cd619de51b4")
 		)
 		(pin "5"
-			(uuid "533c83d2-7e64-4596-8610-95407db5174a")
+			(uuid "69732594-1b24-4c23-94bb-2d9e51035b7f")
 		)
 		(pin "6"
-			(uuid "fede975f-1532-4fa1-9dd7-23819ebc9baa")
+			(uuid "822c830f-17b0-482a-a8bf-3453d44fa774")
 		)
 		(instances
 			(project "ivflow"
@@ -4214,7 +3705,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f4de2862-f840-4dfc-ba16-9c0f122b5e64")
+		(uuid "c5c5d48d-c842-4bf0-8ae7-ff3312625dae")
 	)
 	(label "VBUS"
 		(at 20.32 33.02 180)
@@ -4224,7 +3715,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "04d89108-7f6e-42bc-87ff-1c86733df756")
+		(uuid "2972b7a6-b4e3-406f-8b91-73ea3d16fc6d")
 	)
 	(wire
 		(pts
@@ -4234,7 +3725,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e5472bb2-5f5e-46f0-bca2-c2e18c5d5059")
+		(uuid "3f8ad46b-5501-4663-a030-74e2f6ad922d")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4246,7 +3737,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "071e65ab-c18f-4343-b57f-35e91dd23658")
+		(uuid "3a9ac3a6-cd7a-40bf-8623-02ef5fdb7037")
 		(property "Reference" "#PWR01"
 			(at 13.97 43.18 90)
 			(effects
@@ -4292,7 +3783,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6f364a43-6c88-41c5-92b8-38026634ec3d")
+			(uuid "08ccf1d9-f4a4-4ef6-8985-bc07b8971b1c")
 		)
 		(instances
 			(project "ivflow"
@@ -4311,7 +3802,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "de127e03-05a2-4669-ad37-50d725857a26")
+		(uuid "6d689d31-e711-4aeb-b4e4-6b7f9acffad8")
 	)
 	(label "VBAT_P"
 		(at 45.72 33.02 0)
@@ -4321,7 +3812,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "1db5a54a-06ca-43b4-95f0-4c5138830473")
+		(uuid "eb58014c-b5e7-47f4-83be-d887dd51abfa")
 	)
 	(wire
 		(pts
@@ -4331,7 +3822,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "91f9a0f6-773c-471c-a6db-3b1a994423d0")
+		(uuid "4894fd25-ee69-432b-a0d3-9be05e72604e")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4343,7 +3834,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "a42bb394-311f-4bff-93ec-d59f064b9bbd")
+		(uuid "dd257719-ef62-4845-8c66-98b4b08f9be5")
 		(property "Reference" "#PWR02"
 			(at 52.07 35.56 90)
 			(effects
@@ -4389,7 +3880,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d4cb4ac3-e532-4ee3-bcdc-2a36b25fbfb7")
+			(uuid "34ce2ab0-bda5-4f96-9fd5-3d8798af3ea4")
 		)
 		(instances
 			(project "ivflow"
@@ -4408,7 +3899,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d8bc1b60-8800-49a8-a8d1-e222279093d8")
+		(uuid "bf317b50-2ebe-4f07-bc73-a59b8a94e852")
 	)
 	(label "BATT+"
 		(at 45.72 40.64 0)
@@ -4418,7 +3909,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fae44ca0-6595-4150-9af6-8bb1bf07c449")
+		(uuid "8fa87144-3fd3-40d1-8a54-72e5a6a8c4f7")
 	)
 	(wire
 		(pts
@@ -4428,7 +3919,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3043a16f-8322-4424-9ce8-3ad607022342")
+		(uuid "b73a6824-be06-41be-96f1-49be7ae3651e")
 	)
 	(label "BATT-"
 		(at 45.72 43.18 0)
@@ -4438,7 +3929,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "bf53e4c3-c819-44bd-909b-31ad11197d39")
+		(uuid "c4905917-a77d-426f-926c-c24a499a07ee")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -4450,7 +3941,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "59e6d2b4-8a9a-44b9-9252-e27aa9f9a4ca")
+		(uuid "20225625-40f1-49b5-9de4-0c50ae6a5851")
 		(property "Reference" "J1"
 			(at 73.66 38.1 0)
 			(effects
@@ -4467,7 +3958,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
 			(at 73.66 40.64 0)
 			(effects
 				(font
@@ -4494,11 +3985,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C131337"
+			(at 73.66 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "92ffc819-6dd5-4e96-9a9f-4d112bdab23b")
+			(uuid "fdff815e-2efb-4417-bc87-34bfad4a0ff8")
 		)
 		(pin "2"
-			(uuid "b0c90639-1517-4810-87ac-779baf847735")
+			(uuid "a7cf977b-6d6a-47a6-94f9-8f76d0841f9b")
 		)
 		(instances
 			(project "ivflow"
@@ -4517,7 +4017,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f88c5c4d-ad77-4fda-a2dd-d0b17a9f9794")
+		(uuid "a90d5f09-22ef-4547-9e3c-a7a5d5ff8826")
 	)
 	(label "BATT+"
 		(at 66.04 40.64 180)
@@ -4527,7 +4027,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "33f95253-dcb7-444e-8d64-82c64ae97b5f")
+		(uuid "c0d79797-edc0-4f42-bb66-24631a1bd7cd")
 	)
 	(wire
 		(pts
@@ -4537,7 +4037,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "13921726-ba19-4ecd-b905-457b4fb94599")
+		(uuid "8b77b84d-5746-4616-9a17-3d696545d9a0")
 	)
 	(label "BATT-"
 		(at 66.04 43.18 180)
@@ -4547,7 +4047,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "4566639e-aac0-40ba-9a5b-b849a194c7b6")
+		(uuid "5bc64bcd-5ed4-49b1-855c-3bba06fdef28")
 	)
 	(symbol
 		(lib_id "Diode:SS14")
@@ -4559,7 +4059,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "a83ac51a-ebd2-4335-9f3c-6fd413938b0e")
+		(uuid "3afd8211-a65f-4e2f-ae9d-1397582d68e1")
 		(property "Reference" "D1"
 			(at 99.06 33.02 0)
 			(effects
@@ -4576,7 +4076,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA_Handsoldering"
 			(at 99.06 26.035 0)
 			(effects
 				(font
@@ -4603,11 +4103,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C2480"
+			(at 99.06 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "37b9ed9b-4286-44f6-9d40-b90e2815aaf8")
+			(uuid "7353f6cf-b128-422d-968a-3705d7577a68")
 		)
 		(pin "2"
-			(uuid "f69347af-8e22-4399-a090-9f7c5fd5cddd")
+			(uuid "f003282b-e195-43bf-93ad-3787e59426c8")
 		)
 		(instances
 			(project "ivflow"
@@ -4626,7 +4135,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a8161c2a-f699-428e-a5a4-b039e92fd980")
+		(uuid "e2964188-eb67-4e88-abf0-bb67600435be")
 	)
 	(label "VBUS"
 		(at 92.71 30.48 180)
@@ -4636,7 +4145,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "7e594b28-f683-4fd0-813a-5f608c28e963")
+		(uuid "ca8df77d-7503-48e3-baf5-34227b5230dc")
 	)
 	(wire
 		(pts
@@ -4646,7 +4155,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "04e7b59a-7a4e-4a55-8cbd-4a6a26d02d8d")
+		(uuid "fb03b0b6-9fd2-4afb-b681-5c899f240db4")
 	)
 	(label "VSYS"
 		(at 105.41 30.48 0)
@@ -4656,7 +4165,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "1fb3ca67-21ac-45ab-9237-0070d726626c")
+		(uuid "b748f9d3-2aec-427c-9d1b-ce0a5ade9fa4")
 	)
 	(symbol
 		(lib_id "Transistor_FET:AO3401A")
@@ -4668,7 +4177,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "59f32a52-6467-4c0e-9329-8706c3220d93")
+		(uuid "525af460-e5be-4a93-b1d2-2e5dd4879a46")
 		(property "Reference" "Q1"
 			(at 104.14 56.515 0)
 			(effects
@@ -4687,7 +4196,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23_Handsoldering"
 			(at 104.14 60.325 0)
 			(effects
 				(font
@@ -4716,14 +4225,23 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C15127"
+			(at 99.06 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "2064c26a-8f50-4b04-9477-ae642e950e9e")
+			(uuid "09eaf6fe-9c67-49eb-82d5-cbef639caa31")
 		)
 		(pin "2"
-			(uuid "8e8bbca7-2245-4952-ae9a-6516bde79e80")
+			(uuid "b42df688-4de3-4bdc-a1e1-64d0eff41bb5")
 		)
 		(pin "3"
-			(uuid "86912925-8126-435c-81f9-ee949d09abec")
+			(uuid "85ddf076-0c77-4ba7-bee5-6a3b090df67a")
 		)
 		(instances
 			(project "ivflow"
@@ -4742,7 +4260,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0ed4936a-7b86-4f8d-a29e-24946b4e83f9")
+		(uuid "3073b522-a460-4239-ad03-f418d1c0d7b8")
 	)
 	(label "VBUS"
 		(at 91.44 58.42 180)
@@ -4752,7 +4270,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "05a66f3f-3551-4c71-b650-eb2ba9c5fad3")
+		(uuid "d91fed75-6b86-4673-907f-f02da1b2a562")
 	)
 	(wire
 		(pts
@@ -4762,7 +4280,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4e393d4b-ff39-4211-990d-c9802e99a344")
+		(uuid "5096bb83-b4c7-4926-924b-41aebe9495eb")
 	)
 	(label "VBAT_P"
 		(at 101.6 50.8 90)
@@ -4772,7 +4290,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "833186dd-429a-4e91-85f2-14df7e1116ad")
+		(uuid "d8bde948-6e9b-46c3-a8d2-4c437579fe6f")
 	)
 	(wire
 		(pts
@@ -4782,7 +4300,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3aefb6ea-3eb6-4946-9821-3673a3459c5f")
+		(uuid "481265ef-5381-4ddc-8308-36b8c6ab1f2c")
 	)
 	(label "VSYS"
 		(at 101.6 66.04 270)
@@ -4792,7 +4310,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1356f75f-add4-4486-924a-4267b2fae53c")
+		(uuid "1546878b-9d92-4b64-94e9-1b8a486fcaf5")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -4804,7 +4322,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "e3ea5fd0-7330-4ea1-8119-6fa85a9a96e0")
+		(uuid "ec89927e-a33e-4c2b-8142-15bdde4a8b3c")
 		(property "Reference" "R1"
 			(at 123.19 57.15 0)
 			(effects
@@ -4823,7 +4341,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 117.602 58.42 0)
 			(effects
 				(font
@@ -4850,11 +4368,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C149504"
+			(at 119.38 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "ad21c107-6f3e-4932-8ce9-2b3c21b3e8e6")
+			(uuid "8d4870d2-d6d0-4fa0-9501-0a70b91873b9")
 		)
 		(pin "2"
-			(uuid "53ac834c-337d-421c-8299-b8a2a52fb09e")
+			(uuid "20ec348f-0e96-4174-b642-d9983d91d6b2")
 		)
 		(instances
 			(project "ivflow"
@@ -4873,7 +4400,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d8f3cab5-992d-4727-8084-4fdcf38dfbec")
+		(uuid "954f3551-7842-4cc8-8a1e-acf82c6ea1fc")
 	)
 	(label "VBUS"
 		(at 119.38 52.07 90)
@@ -4883,7 +4410,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "51e40a45-c63b-442b-a720-f3d6b161c67a")
+		(uuid "5b4767d5-9f32-4414-a284-7f6990b9232e")
 	)
 	(wire
 		(pts
@@ -4893,7 +4420,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fc43230b-b71e-4e21-981d-b7164728d859")
+		(uuid "746f2cee-b7a7-45f1-aee2-aa4dbbcb28ef")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4905,7 +4432,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "c1eeca3a-e16b-44f4-a5fd-598576fb822d")
+		(uuid "d4af6b6c-1bd0-4f99-a68b-3388bf0e05b3")
 		(property "Reference" "#PWR03"
 			(at 119.38 71.12 0)
 			(effects
@@ -4951,7 +4478,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9fdcde4b-d551-4166-90ae-6c79aa58afd8")
+			(uuid "e4d53998-81d5-44b7-9d58-4d46637235ba")
 		)
 		(instances
 			(project "ivflow"
@@ -4963,8 +4490,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Switch:SW_SPDT")
-		(at 139.7 33.02 0)
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 144.78 33.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4972,25 +4499,25 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "98f22bdb-8bed-4626-aaab-bdf15e30f649")
-		(property "Reference" "SW1"
-			(at 139.7 27.94 0)
+		(uuid "142e24e3-311a-4fb8-bdca-dc1c4813f322")
+		(property "Reference" "J6"
+			(at 144.78 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "POWER"
-			(at 139.7 38.1 0)
+		(property "Value" "POWER SW"
+			(at 144.78 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 139.7 33.02 0)
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+			(at 144.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4999,7 +4526,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 139.7 40.64 0)
+			(at 144.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5007,8 +4534,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Slide switch, rated >= 1 A"
-			(at 139.7 33.02 0)
+		(property "Description" "JST-XH 2-pin to the panel-mount power switch (rated >= 1 A). Closed = ON"
+			(at 144.78 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C158012"
+			(at 144.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5017,18 +4553,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "ea196bfa-99c3-45b3-901e-bdb090e9e4bc")
+			(uuid "f3f74306-9055-4ca1-b961-d253702b105f")
 		)
 		(pin "2"
-			(uuid "974f0e0c-987c-4b63-961c-b9ec5fa6d6f0")
-		)
-		(pin "3"
-			(uuid "d78be0f6-e397-4e24-807c-854b24df8bb6")
+			(uuid "b1afd293-35cf-4ac2-91fd-efcb39318792")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "SW1")
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -5036,47 +4569,43 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 33.02) (xy 132.08 33.02)
+			(xy 139.7 33.02) (xy 137.16 33.02)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c76d5fca-0ecd-465b-93cd-d3e82d28aabb")
+		(uuid "080e9a50-7697-4637-a1db-7ff838a8c468")
 	)
 	(label "VSYS"
-		(at 132.08 33.02 180)
+		(at 137.16 33.02 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "8f04081f-cf86-4ea0-bd08-e43f79907c24")
+		(uuid "15e14e65-28ec-48e0-a8e3-0557ade16699")
 	)
 	(wire
 		(pts
-			(xy 144.78 30.48) (xy 147.32 30.48)
+			(xy 139.7 35.56) (xy 137.16 35.56)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e406f1bf-fa8a-4b7e-9d5b-a21fe837992b")
+		(uuid "806d803e-61ce-4c8c-a851-950fa2074b58")
 	)
 	(label "VSYS_SW"
-		(at 147.32 30.48 0)
+		(at 137.16 35.56 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "bb162397-c970-4c7d-9d5f-64ef9cb0b988")
-	)
-	(no_connect
-		(at 144.78 35.56)
-		(uuid "2af416c6-8f13-4614-b469-915b66166504")
+		(uuid "8db08af8-5b59-425b-98a9-1201ed2f4df6")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -5088,7 +4617,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "e70f5537-f422-4c5a-9db1-76060b417e36")
+		(uuid "3ca2726f-69f1-45e2-8a1f-771acc2ee44b")
 		(property "Reference" "C1"
 			(at 168.91 36.83 0)
 			(effects
@@ -5107,7 +4636,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 166.0652 41.91 0)
 			(effects
 				(font
@@ -5134,11 +4663,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C15850"
+			(at 165.1 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "4e809e76-b108-4753-bc43-ecf9466598d1")
+			(uuid "c6e6ff7d-7627-441b-a845-251a942920aa")
 		)
 		(pin "2"
-			(uuid "cccc2294-dde8-4a57-9074-62fa50c811e9")
+			(uuid "2b7da42e-8a2e-40ec-b43c-b0e4b5d40afe")
 		)
 		(instances
 			(project "ivflow"
@@ -5157,7 +4695,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e48ba6e7-d651-439e-8e2a-0c1d8579e2ab")
+		(uuid "662b93fe-1570-40e4-96f5-deec54eca61f")
 	)
 	(label "VSYS_SW"
 		(at 165.1 31.75 90)
@@ -5167,7 +4705,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6f3315ab-47d9-4fb5-a7ff-e111f48757de")
+		(uuid "eb6fbe66-ba51-4b77-8627-d7986f44ceb6")
 	)
 	(wire
 		(pts
@@ -5177,7 +4715,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cb0fbc09-a5d9-4f83-8015-82b93f65a2ca")
+		(uuid "41097b41-eceb-409f-98a8-e0388305eb3f")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5189,7 +4727,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "fa87e9c1-5931-43e9-8d70-d70e7f273650")
+		(uuid "e56cece4-48f7-4263-bc50-c70762935119")
 		(property "Reference" "#PWR04"
 			(at 165.1 50.8 0)
 			(effects
@@ -5235,7 +4773,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "a31240dd-4eaa-4ebd-aca8-de15337b356e")
+			(uuid "f2815566-8fb5-4c39-abe5-758850b3f65e")
 		)
 		(instances
 			(project "ivflow"
@@ -5256,7 +4794,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "9b588794-5c43-464f-b421-3110aa4593d8")
+		(uuid "f2acebc9-4a1d-4e0c-8433-d4ebcbda78a2")
 		(property "Reference" "#FLG01"
 			(at 175.26 26.035 0)
 			(effects
@@ -5302,7 +4840,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b7f56ad4-be29-4fe7-8339-9af4eb4a9d71")
+			(uuid "d9981eca-e7b2-4f9e-aea7-5ae4851d14b0")
 		)
 		(instances
 			(project "ivflow"
@@ -5321,7 +4859,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "514cfef3-7805-4de4-9973-905b8865a160")
+		(uuid "a2726d4b-1e21-466c-999f-6298fe6e12ac")
 	)
 	(label "VSYS_SW"
 		(at 175.26 30.48 270)
@@ -5331,7 +4869,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "b57198db-070a-4115-ac77-3b1801ac865f")
+		(uuid "0c5cb5d4-4a07-46b5-8ec0-54857ce16af8")
 	)
 	(symbol
 		(lib_id "Regulator_Linear:AP2112K-3.3")
@@ -5343,7 +4881,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "5f207a13-9e5d-4f75-9043-632c69d26193")
+		(uuid "0e67f9ed-d6c5-4b48-97c6-8505418f8f0b")
 		(property "Reference" "U3"
 			(at 139.7 65.405 0)
 			(effects
@@ -5362,7 +4900,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
 			(at 144.78 62.865 0)
 			(effects
 				(font
@@ -5389,20 +4927,29 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C51118"
+			(at 144.78 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "eed35fe4-8aec-4454-abd3-9a3680f0fd5b")
+			(uuid "065bf122-16bc-4bea-a241-a4b3550343fd")
 		)
 		(pin "2"
-			(uuid "f48edfd4-4b1b-4a56-8a19-37bde987ffe9")
+			(uuid "a463d449-6297-4eef-b641-a70f2b9c7571")
 		)
 		(pin "3"
-			(uuid "4a2dca6c-17f0-4101-90e7-e1bbf0bf18e5")
+			(uuid "ffc18720-745d-4b16-bb24-fc2785af49a7")
 		)
 		(pin "4"
-			(uuid "968f4288-ac00-4e6f-9a31-29ff33826d8d")
+			(uuid "3284d09b-57eb-4df0-bd77-72d5d0aae5f3")
 		)
 		(pin "5"
-			(uuid "b88114dc-48fd-4ef7-9750-4d4a6f147bad")
+			(uuid "39e4cd35-9329-46ba-b82c-cfa6da2ca432")
 		)
 		(instances
 			(project "ivflow"
@@ -5421,7 +4968,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "77a015e3-eafe-46c6-9438-e44a700a1ff9")
+		(uuid "821e632a-a3b5-4359-9846-05eafa63ab62")
 	)
 	(label "VSYS_SW"
 		(at 134.62 68.58 180)
@@ -5431,7 +4978,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "4501f0ce-8a31-48e4-89ae-c5034eb8a15c")
+		(uuid "f8e81a35-abcb-4b61-aef4-7a2c12809e11")
 	)
 	(wire
 		(pts
@@ -5441,7 +4988,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c08644aa-e398-4517-a714-ef242edb4b41")
+		(uuid "94a707c9-afae-4fc8-aa4d-019ac2bacd1f")
 	)
 	(label "VSYS_SW"
 		(at 134.62 71.12 180)
@@ -5451,7 +4998,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "af0c3426-13f0-403e-808e-ce0c09c9c9af")
+		(uuid "59416587-a46e-4faa-92c0-583dc3f6caaf")
 	)
 	(wire
 		(pts
@@ -5461,7 +5008,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fa90ffbe-bb93-4634-9ca7-1dca1e3b0def")
+		(uuid "c8b9e33c-df4e-411e-af8d-25076fc685a8")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5473,7 +5020,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "1f745a56-e20f-47bb-b8ef-070ab3d790aa")
+		(uuid "6ce1e0bb-31e4-434a-ac90-9856d9f5a127")
 		(property "Reference" "#PWR05"
 			(at 144.78 87.63 0)
 			(effects
@@ -5519,7 +5066,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "fb7ff11a-f0f7-4f35-bd77-c94bd612a10d")
+			(uuid "e12dbcb1-79ff-41c3-a8b0-df14d3b12d90")
 		)
 		(instances
 			(project "ivflow"
@@ -5532,7 +5079,7 @@
 	)
 	(no_connect
 		(at 149.86 71.12)
-		(uuid "ffbc1f50-2d17-4514-9e76-e39d940ee751")
+		(uuid "0e876466-209c-4a19-a3e5-1fa00be0cc29")
 	)
 	(wire
 		(pts
@@ -5542,7 +5089,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "16403a9f-eb8d-4f94-b4dc-b6e60eafbddc")
+		(uuid "95c142f7-9d9a-47a2-8679-417e1281c72f")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -5554,7 +5101,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "f07c2605-50c9-44f8-9ba6-b7e577401449")
+		(uuid "e63adaa2-678c-4c30-94fb-06553ddbd843")
 		(property "Reference" "#PWR06"
 			(at 151.13 68.58 90)
 			(effects
@@ -5600,7 +5147,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "cbc5254c-4ce4-4026-bd85-93ad3c9196b8")
+			(uuid "fee36d2c-dc13-41c7-a2f9-7f01789f96ad")
 		)
 		(instances
 			(project "ivflow"
@@ -5621,7 +5168,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "0f252ab5-31dc-4625-b0fc-438fc99e93cc")
+		(uuid "0f85141e-bbde-4d3f-b14f-77c7302e503f")
 		(property "Reference" "C2"
 			(at 168.91 72.39 0)
 			(effects
@@ -5640,7 +5187,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 166.0652 77.47 0)
 			(effects
 				(font
@@ -5667,11 +5214,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C15850"
+			(at 165.1 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "b4c6d987-851b-40c4-89e9-15f724f21c50")
+			(uuid "d6920bb1-50da-4a7b-b90a-bd7a3144f056")
 		)
 		(pin "2"
-			(uuid "ee62e11d-178d-4f56-95ea-89a697dd36bd")
+			(uuid "7232dfd1-368b-411c-a556-c7bbc8d70cb3")
 		)
 		(instances
 			(project "ivflow"
@@ -5690,7 +5246,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "185c0703-37cf-4f31-8ca3-5327da246e49")
+		(uuid "38285267-8b56-4491-a2c5-bb2667ef1f05")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -5702,7 +5258,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "e0267f88-f945-4640-954e-b21fe324821f")
+		(uuid "0cc3298a-9e5f-4d09-8922-05d1a39a03ab")
 		(property "Reference" "#PWR07"
 			(at 165.1 71.12 0)
 			(effects
@@ -5748,7 +5304,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f99810f1-cdbb-4ea2-a932-6067b4c13acf")
+			(uuid "a78ebef3-c3ca-4749-baa8-6a0bd93ba976")
 		)
 		(instances
 			(project "ivflow"
@@ -5767,7 +5323,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4e2a4c24-2231-4978-bbc1-5140bdaf9164")
+		(uuid "d5129880-c4f9-4d11-888c-fa72e02880b2")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5779,7 +5335,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "6322114d-6c85-4ea8-b437-381c50c2676e")
+		(uuid "95271fae-7037-4253-a5fa-99406af70cfc")
 		(property "Reference" "#PWR08"
 			(at 165.1 86.36 0)
 			(effects
@@ -5825,7 +5381,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "3d373a80-ac18-4d06-9aa0-dc8ec7601d07")
+			(uuid "8193fb20-47c3-41ba-b169-ba3fe6e896c6")
 		)
 		(instances
 			(project "ivflow"
@@ -5846,7 +5402,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "60ce3646-7714-4216-9c46-f6a78c0c6670")
+		(uuid "ea6739b5-e20d-4308-b5c2-12a410710c2c")
 		(property "Reference" "C3"
 			(at 179.07 72.39 0)
 			(effects
@@ -5865,7 +5421,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 176.2252 77.47 0)
 			(effects
 				(font
@@ -5892,11 +5448,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C49678"
+			(at 175.26 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "d9fabd4f-de22-42c7-bb91-5c139c7cbbde")
+			(uuid "39b68cca-2b06-4b39-aca4-8fe5281323fb")
 		)
 		(pin "2"
-			(uuid "80567d45-1dc4-406b-bf0c-239e2429ace4")
+			(uuid "35776cb2-6661-4dd8-91ed-3f7959c5a721")
 		)
 		(instances
 			(project "ivflow"
@@ -5915,7 +5480,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "77b79133-69fb-41ab-aa81-c92fd86c68e4")
+		(uuid "f8ab51ad-f442-446c-886b-342976afea33")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -5927,7 +5492,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "0365b75c-1415-46bb-8625-f678a95dee23")
+		(uuid "aebce79e-abe2-44b0-9bbc-f86c6022e77a")
 		(property "Reference" "#PWR09"
 			(at 175.26 71.12 0)
 			(effects
@@ -5973,7 +5538,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "88f7d92c-ccb3-464a-8758-693321059513")
+			(uuid "779254ed-3ea1-44ed-b564-9438f40fd0b1")
 		)
 		(instances
 			(project "ivflow"
@@ -5992,7 +5557,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0158cad6-1890-4c63-8ea7-2fefbaf1d8ae")
+		(uuid "67f00ccd-e1ce-41fe-b7e9-6a8a1bd57760")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -6004,7 +5569,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "05d8fbe3-069a-4390-b7dc-c72902e44680")
+		(uuid "9c4a11b2-d33a-4872-82d9-f830048c2ed3")
 		(property "Reference" "#PWR10"
 			(at 175.26 86.36 0)
 			(effects
@@ -6050,7 +5615,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d3561bd7-7e55-4190-9577-98ed753889c6")
+			(uuid "13f5268c-ac3c-43ac-b526-6a8632a541ae")
 		)
 		(instances
 			(project "ivflow"
@@ -6071,7 +5636,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "de8d4406-7cdf-4c2a-81ef-caad7c998983")
+		(uuid "c8528622-a56e-4617-8fa1-b26501afb157")
 		(property "Reference" "U1"
 			(at 226.06 34.29 0)
 			(effects
@@ -6121,52 +5686,52 @@
 			)
 		)
 		(pin "1"
-			(uuid "79e513bd-a322-4185-beef-33a8447f9bae")
+			(uuid "b608f089-e88a-4a66-92dd-580f3f6e6023")
 		)
 		(pin "2"
-			(uuid "e68bd993-7b05-424d-8ced-7c214f616f22")
+			(uuid "1c197791-1aba-4349-949b-6e897e43492e")
 		)
 		(pin "3"
-			(uuid "09fb0410-fda3-4e7b-8063-6ad2643556a0")
+			(uuid "253a6d8c-5339-4cf5-8292-2d010dc0ca27")
 		)
 		(pin "4"
-			(uuid "3dc1567b-d98d-461a-ab6e-ab09516f5525")
+			(uuid "83f53cdc-7654-405c-ada0-e37eaca9a730")
 		)
 		(pin "5"
-			(uuid "f194ebef-93bb-4f7c-a756-7bda30d242a9")
+			(uuid "407a7df7-ee59-420c-adf3-920f24506765")
 		)
 		(pin "6"
-			(uuid "f43d87ab-e8aa-46be-8063-e7499252f9b1")
+			(uuid "30a357ee-d458-4f68-99b5-7d682490255e")
 		)
 		(pin "7"
-			(uuid "58b4ab62-add4-44ab-b206-4fc71304e6f4")
+			(uuid "3d16b4bf-b5dc-4750-9870-8631aec4780f")
 		)
 		(pin "8"
-			(uuid "991f07e9-57d3-4cf4-b68c-501d158a5be1")
+			(uuid "cacf02ef-0fbf-4664-a440-13e7282d75be")
 		)
 		(pin "9"
-			(uuid "62a19b99-149c-4202-acd2-4a0da5e0f9d9")
+			(uuid "26f06d31-dd08-4d9a-9065-2125f19063d0")
 		)
 		(pin "10"
-			(uuid "b9bdeeef-ce82-4c7e-82a9-4bc9d7407788")
+			(uuid "2c73de95-0bec-44d9-b4ec-2fe9506f3844")
 		)
 		(pin "11"
-			(uuid "8bb16f97-139d-462e-a853-c04432b6fb8a")
+			(uuid "082a9c75-8612-43b9-b23b-8e9dfe31585e")
 		)
 		(pin "12"
-			(uuid "18266972-7e9d-4f3d-8f7f-9fb765102d06")
+			(uuid "58e8bbfa-bb9c-4364-bc4f-6f75636b323d")
 		)
 		(pin "13"
-			(uuid "cd07cfbe-721e-4f0b-99b2-500461087ca9")
+			(uuid "c0983967-e840-472f-9619-bae5c34cf0af")
 		)
 		(pin "14"
-			(uuid "d24c6d4c-6d2e-4cb2-8ab6-c7eb7c1d65ea")
+			(uuid "f5477d26-1c60-43b4-83b7-dd0538cd37a0")
 		)
 		(pin "15"
-			(uuid "bc2f73f5-bdb1-4c3b-9b83-90d1764e521c")
+			(uuid "2488a343-88b6-423e-af00-436a39739362")
 		)
 		(pin "16"
-			(uuid "72cf7bea-3401-43d7-b85e-7849c58f4c38")
+			(uuid "d47dc1ca-12c8-42fb-8d9c-8dcfee0a8006")
 		)
 		(instances
 			(project "ivflow"
@@ -6179,7 +5744,7 @@
 	)
 	(no_connect
 		(at 223.52 38.1)
-		(uuid "a9a0bade-0640-428e-9142-73702965697e")
+		(uuid "04235c56-e79a-413c-97b8-9abca79e825e")
 	)
 	(wire
 		(pts
@@ -6189,7 +5754,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5d4fdda1-7f88-4e5b-88b7-a29850d5f717")
+		(uuid "06f2c679-85d3-49cf-a428-d1ecc1b65cd0")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -6201,7 +5766,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "ff7b85ef-3940-4f7c-a19f-eb696b0e5a2f")
+		(uuid "517eb808-258b-4a5b-a052-6bc55392a36a")
 		(property "Reference" "#PWR11"
 			(at 224.79 40.64 90)
 			(effects
@@ -6247,7 +5812,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "c13f9dac-6526-4c79-bbcf-65d4e09c5f15")
+			(uuid "0f38efc8-90c6-4044-ab2d-73042d3d031f")
 		)
 		(instances
 			(project "ivflow"
@@ -6266,7 +5831,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d40748b8-ea6d-4957-b233-9a704b6844a1")
+		(uuid "457dabe4-75b8-428c-8a0d-fec81925fddb")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -6278,7 +5843,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "7c7b760b-86d3-4c96-826d-84fa73f39287")
+		(uuid "8ab7a10e-e8d0-46a6-9608-9924cdd52494")
 		(property "Reference" "#PWR12"
 			(at 214.63 68.58 90)
 			(effects
@@ -6324,7 +5889,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1041d0b7-b752-45c2-ace8-ede54542cd82")
+			(uuid "470338a6-b384-4da8-bc4d-605ff05eb4c8")
 		)
 		(instances
 			(project "ivflow"
@@ -6343,7 +5908,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "40d2977c-f06a-4eea-8b0a-480de30914f9")
+		(uuid "813f72ca-9268-42fa-b7a8-5f9411453bf7")
 	)
 	(label "LDR1"
 		(at 251.46 38.1 0)
@@ -6353,7 +5918,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "61717b62-285a-47aa-b726-c0670f32ec1d")
+		(uuid "9920a41e-6b17-4319-859c-4b3ab9ccf062")
 	)
 	(wire
 		(pts
@@ -6363,7 +5928,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4a6f67ff-e8c5-4769-9404-057d12470e54")
+		(uuid "44bd222d-5e10-4694-a160-522cdbb47d4b")
 	)
 	(label "LDR2"
 		(at 251.46 40.64 0)
@@ -6373,7 +5938,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b4717d95-9fee-4719-8ef1-3a41000f5b7d")
+		(uuid "0ba5fe53-c64b-464a-8b83-028a5c8939d8")
 	)
 	(wire
 		(pts
@@ -6383,7 +5948,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "49e76bdd-28b5-47d8-a247-85b9ce4efbab")
+		(uuid "921959c6-0211-4c68-8a51-becbf04a8138")
 	)
 	(label "BAT_SENSE"
 		(at 251.46 43.18 0)
@@ -6393,7 +5958,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "635f4596-d9f3-4b67-8763-18a55ca5ea48")
+		(uuid "01ad0f89-d1d5-4518-87a9-9f058efa9822")
 	)
 	(wire
 		(pts
@@ -6403,7 +5968,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6b963060-ad98-411b-b5de-f90093afc3aa")
+		(uuid "3effec35-44c4-4017-8fbc-a82b74417cb2")
 	)
 	(label "LDR3"
 		(at 251.46 45.72 0)
@@ -6413,7 +5978,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a81f8dff-3a1e-441e-8d7f-8726e11f8b38")
+		(uuid "489986eb-1300-4e1d-9350-d89fe6db76d8")
 	)
 	(wire
 		(pts
@@ -6423,7 +5988,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b5345d65-6f1c-45ce-aaf3-29437a4f54f2")
+		(uuid "b78713ad-85e1-4b54-b0bf-4cec59842158")
 	)
 	(label "LDR4"
 		(at 251.46 48.26 0)
@@ -6433,7 +5998,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fea92d1b-3771-4a5b-8f3a-b50fa66adbf1")
+		(uuid "198ff9a5-9007-42f9-a860-c9b9fd9e830e")
 	)
 	(wire
 		(pts
@@ -6443,7 +6008,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "61f18a12-3cc3-4ee2-b526-3059593e7fa6")
+		(uuid "7443d789-9182-4cce-8692-27005c7b5694")
 	)
 	(label "LED_EN"
 		(at 251.46 50.8 0)
@@ -6453,7 +6018,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "18cdd5b3-d276-48c4-a00e-9810f55f9eb5")
+		(uuid "b42b06d1-5084-4252-80b5-3a3b0a07767e")
 	)
 	(wire
 		(pts
@@ -6463,7 +6028,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ddb08d26-8773-4007-8e4d-1f06d841736b")
+		(uuid "a1beb2d0-401d-449a-adea-fd8f8638f034")
 	)
 	(label "BUZ_EN"
 		(at 251.46 53.34 0)
@@ -6473,7 +6038,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "ec535d2b-f895-488d-b84f-6eb06abc675a")
+		(uuid "cfc6aab8-cc7d-40d8-af48-0662de83631f")
 	)
 	(wire
 		(pts
@@ -6483,7 +6048,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "64a76eac-7066-47cb-a04b-1055146684f9")
+		(uuid "10ae4734-2f2c-401f-9902-662922e905b6")
 	)
 	(label "BAT_EN"
 		(at 251.46 55.88 0)
@@ -6493,7 +6058,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "35768196-fa50-4fc2-94a9-99e262ed5954")
+		(uuid "abbcf572-3e9b-42cf-9f10-46452d1dc1af")
 	)
 	(wire
 		(pts
@@ -6503,7 +6068,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5b869984-efdf-41a7-99d5-32cc00e7070f")
+		(uuid "1b3fef57-b354-4b67-ab81-aace5dc38765")
 	)
 	(label "SDA"
 		(at 251.46 58.42 0)
@@ -6513,7 +6078,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b424dc4f-a5d3-4c6e-ae66-b83c0bdc76be")
+		(uuid "3b73d538-8fb0-480c-a29f-ed92b43df229")
 	)
 	(wire
 		(pts
@@ -6523,7 +6088,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4b60dea7-3c8b-4eec-a11c-a7eead0163c4")
+		(uuid "f3f428b2-12fa-429b-bb56-7fe708091e1f")
 	)
 	(label "SCL"
 		(at 251.46 60.96 0)
@@ -6533,7 +6098,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c0c51c55-164c-4457-be16-565c2071609b")
+		(uuid "9ac4140e-756f-4797-83c7-72b4b92f32fb")
 	)
 	(wire
 		(pts
@@ -6543,7 +6108,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "785877ab-32c7-4085-98d9-035435ab0e94")
+		(uuid "311e2a84-a891-4832-bef5-366d59361118")
 	)
 	(label "BTN"
 		(at 251.46 63.5 0)
@@ -6553,7 +6118,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "174fd3e6-6a75-47a4-8092-1ace0c4a57e0")
+		(uuid "f7cae48a-d8e5-40ac-9da0-e52cbfa20db9")
 	)
 	(wire
 		(pts
@@ -6563,7 +6128,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "bd725b84-59c8-4655-80bc-458dba4b9b88")
+		(uuid "03608945-4162-449f-a94c-7b102781b6f2")
 	)
 	(label "EXP_IO20"
 		(at 251.46 66.04 0)
@@ -6573,7 +6138,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b3a774bb-34af-4ad1-800e-0f3c5d3ed6ef")
+		(uuid "4b90f4a7-01d4-4030-8ccb-1510d2965bf9")
 	)
 	(wire
 		(pts
@@ -6583,7 +6148,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f261c323-6d86-4904-927f-1729c955b98d")
+		(uuid "8ae562b0-143d-438e-bc12-45d89266b258")
 	)
 	(label "EXP_IO21"
 		(at 251.46 68.58 0)
@@ -6593,7 +6158,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6f2b81a6-4c19-4e72-95a5-920a0d4c439d")
+		(uuid "da675a9a-55ec-463d-80d9-f151a025b8e2")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -6605,7 +6170,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "aefb2ca1-5455-4152-8a46-0a7d87068f2e")
+		(uuid "38908146-8d79-4e25-8491-a5bd25e1e85d")
 		(property "Reference" "C4"
 			(at 204.47 52.07 0)
 			(effects
@@ -6624,7 +6189,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 201.6252 57.15 0)
 			(effects
 				(font
@@ -6651,11 +6216,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C45783"
+			(at 200.66 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "d6b64e3b-ae4f-4d32-a912-3bcfb7bd5515")
+			(uuid "deaa0b4e-2576-49a9-b4ab-d3746fff20f0")
 		)
 		(pin "2"
-			(uuid "754713d3-32cf-4e8f-b52a-40eacd69d839")
+			(uuid "cedadd36-4dcf-4a81-9f54-c31adfc2875c")
 		)
 		(instances
 			(project "ivflow"
@@ -6674,7 +6248,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7d49438c-24f8-4260-9409-3e0c6b8d0fb4")
+		(uuid "6f80653e-bd01-498a-9f96-199326ac5130")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -6686,7 +6260,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "4ed2c5a3-5f66-4c33-b001-cf24a0b2eeb1")
+		(uuid "797c8c6a-d12a-4018-a356-d9dcf345b329")
 		(property "Reference" "#PWR13"
 			(at 200.66 50.8 0)
 			(effects
@@ -6732,7 +6306,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "156c4560-d10c-40cb-a3eb-ebe60f322e2c")
+			(uuid "e9fc159f-8f66-43fa-ae92-ad30b111d8fd")
 		)
 		(instances
 			(project "ivflow"
@@ -6751,7 +6325,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "87125cf6-06eb-49c3-a15f-b4d9968231ca")
+		(uuid "3419df71-408d-44cd-a6d5-f590ce27c502")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -6763,7 +6337,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "e270de5d-ef1a-486c-853d-43bdb4460e7b")
+		(uuid "a7fa1280-3af9-4a2e-8ae7-96338ba89cac")
 		(property "Reference" "#PWR14"
 			(at 200.66 66.04 0)
 			(effects
@@ -6809,7 +6383,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "fa7c45a5-74e9-46ae-95ca-073900d29212")
+			(uuid "74594219-4674-4571-b3cc-76242fc0d6f9")
 		)
 		(instances
 			(project "ivflow"
@@ -6830,7 +6404,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "1d9c2e98-3550-492c-8d68-f94c73e78966")
+		(uuid "bd680ba2-d922-444d-affe-77d2fb5663ba")
 		(property "Reference" "R2"
 			(at 26.67 115.57 0)
 			(effects
@@ -6849,7 +6423,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 21.082 116.84 0)
 			(effects
 				(font
@@ -6876,11 +6450,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C149504"
+			(at 22.86 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "ae4d3135-ea57-4b3c-ab4c-4c0e2e5f549d")
+			(uuid "e3800c53-80f2-4e0d-ab34-0bbecb72e2c4")
 		)
 		(pin "2"
-			(uuid "dc521f22-93a6-4047-9fd5-b256c08c6fa1")
+			(uuid "2696bd9f-ccdb-4ac0-a893-dcfeb6217602")
 		)
 		(instances
 			(project "ivflow"
@@ -6899,7 +6482,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c3054b94-b0b1-4c18-8646-c6c73bd891c9")
+		(uuid "863f95d4-fbc6-40a5-8813-79568382f906")
 	)
 	(label "VSYS_SW"
 		(at 22.86 110.49 90)
@@ -6909,7 +6492,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "698ed359-e893-442c-a013-ea70277c6f8d")
+		(uuid "48e7e555-4a28-4a43-a7cb-e03378323428")
 	)
 	(wire
 		(pts
@@ -6919,7 +6502,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "78cf2872-b8b5-439d-99e7-661e0ac348d1")
+		(uuid "48853d1f-5e46-41a7-8d1e-6ccf3922a439")
 	)
 	(label "BAT_SENSE"
 		(at 22.86 123.19 270)
@@ -6929,7 +6512,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "08df64c4-0715-4bd4-9c41-5dbba1283023")
+		(uuid "79720a41-7f21-43ef-b1bb-e9a55ca3e036")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -6941,7 +6524,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "3f9702c7-7485-424b-8a4d-0a45b2d43827")
+		(uuid "793029c9-08d9-4d29-b2f4-63369a811f42")
 		(property "Reference" "C5"
 			(at 39.37 115.57 0)
 			(effects
@@ -6960,7 +6543,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 36.5252 120.65 0)
 			(effects
 				(font
@@ -6987,11 +6570,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C49678"
+			(at 35.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "e959f3f2-9390-49ab-88d4-6db4c15eb82a")
+			(uuid "f99884ae-3641-4da3-8771-2f42a14ec1c0")
 		)
 		(pin "2"
-			(uuid "d9d4f3c1-2b3d-4798-bb1d-808091a2e86f")
+			(uuid "959aaac8-e4d7-4db5-a676-be6278a60e28")
 		)
 		(instances
 			(project "ivflow"
@@ -7010,7 +6602,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "eb65fb7d-6227-423c-950e-68321d7d9b54")
+		(uuid "a3086cca-f2eb-48ff-b569-40de1c06f0ba")
 	)
 	(label "BAT_SENSE"
 		(at 35.56 110.49 90)
@@ -7020,7 +6612,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0ec984e8-59ee-41d9-9350-30ae85d52e5f")
+		(uuid "b76d6ac5-9053-4db0-bbe4-5cf7eed22b54")
 	)
 	(wire
 		(pts
@@ -7030,7 +6622,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f5040cf5-31f2-4eed-8273-850afce02f34")
+		(uuid "47e6d62f-bcd2-41a5-9246-99f00da3db9f")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7042,7 +6634,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "57d3aa1e-70bf-430f-8355-469fd76d4ee9")
+		(uuid "28c66204-780f-4e27-b416-97d9413d8ec0")
 		(property "Reference" "#PWR15"
 			(at 35.56 129.54 0)
 			(effects
@@ -7088,7 +6680,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "052b90c6-7d7a-4c82-98dc-09c420a93b7a")
+			(uuid "79f0d651-4968-4167-904f-ee0bf5beeee5")
 		)
 		(instances
 			(project "ivflow"
@@ -7109,7 +6701,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "c4b504db-22be-47ce-a9b4-12e9c1097886")
+		(uuid "763d739e-593c-4b99-84f3-fe8fdc578ccc")
 		(property "Reference" "R3"
 			(at 52.07 115.57 0)
 			(effects
@@ -7128,7 +6720,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 46.482 116.84 0)
 			(effects
 				(font
@@ -7155,11 +6747,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C149504"
+			(at 48.26 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "3e5342db-dab7-4339-bb78-9d0ff6600c16")
+			(uuid "b575ee40-7777-493f-a8e8-84b7b84bd3d5")
 		)
 		(pin "2"
-			(uuid "07777d88-746c-4e80-a032-b7e6635fc08d")
+			(uuid "7dc6b1df-7bbb-40b3-b4c2-7e155aa0f820")
 		)
 		(instances
 			(project "ivflow"
@@ -7178,7 +6779,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "932938bc-8e77-4867-b8cf-319c4fa94a7f")
+		(uuid "8d82fa85-e069-4ae2-a5ab-3c8d97a6372b")
 	)
 	(label "BAT_SENSE"
 		(at 48.26 110.49 90)
@@ -7188,7 +6789,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "daca13f3-81f1-4e86-9c2b-53d7a901db42")
+		(uuid "3dd31ced-9a51-4c9f-b977-7669e5dfd0d8")
 	)
 	(wire
 		(pts
@@ -7198,7 +6799,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "09e3438e-30dc-41b2-a98c-e93872bd8eef")
+		(uuid "67fbe809-d1a1-46ad-8442-1cc986ca58ec")
 	)
 	(label "Q2_D"
 		(at 48.26 123.19 270)
@@ -7208,7 +6809,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "9e6a67b1-c32e-4924-bbd5-6f0eb92e17ca")
+		(uuid "3d3e9f65-cef4-424c-880e-68dd55b9869e")
 	)
 	(symbol
 		(lib_id "Transistor_FET:2N7002")
@@ -7220,7 +6821,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "75d4db8c-27eb-4377-8a39-e4b0353fa87e")
+		(uuid "0315cc0d-052a-4e51-a66b-0ddc5ef3805a")
 		(property "Reference" "Q2"
 			(at 63.5 142.875 0)
 			(effects
@@ -7239,7 +6840,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23_Handsoldering"
 			(at 63.5 146.685 0)
 			(effects
 				(font
@@ -7268,14 +6869,23 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 58.42 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "e42fb967-ca28-495f-aed4-fe443628f085")
+			(uuid "c1840ad6-b540-47d2-af1e-2fc3ba696c1c")
 		)
 		(pin "2"
-			(uuid "7613febb-d5ea-473d-893a-b8cbbe6739bb")
+			(uuid "aeec5f29-03c5-4c18-95ed-a5afdcdf6c57")
 		)
 		(pin "3"
-			(uuid "e8f038fa-f450-42ba-9fa1-c3edf8e3e14c")
+			(uuid "5271092d-4b5b-4b20-b363-b3bf801ad497")
 		)
 		(instances
 			(project "ivflow"
@@ -7294,7 +6904,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c753d59f-9c95-45d2-aa27-a4650fc9c756")
+		(uuid "5ceeb730-c9f3-4ced-9eab-5418a3fc644d")
 	)
 	(label "Q2_D"
 		(at 60.96 137.16 90)
@@ -7304,7 +6914,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0aaf8d93-ee4e-435a-9c95-a0e44c970ebe")
+		(uuid "d7978e06-26cc-4130-9db2-d83777f9a361")
 	)
 	(wire
 		(pts
@@ -7314,7 +6924,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "253d9852-3c7d-4fd4-96bf-40942928ea2d")
+		(uuid "7aeb7732-d20b-4062-8636-3de6afddf30d")
 	)
 	(label "Q2_G"
 		(at 50.8 144.78 180)
@@ -7324,7 +6934,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "649d02a5-6b67-4010-8e96-0917e84cb879")
+		(uuid "2342af8b-6192-4ebe-a51e-9d4f58e16a49")
 	)
 	(wire
 		(pts
@@ -7334,7 +6944,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3faa3211-b33a-4bdb-bf00-6868df47b029")
+		(uuid "7a75a7bc-0827-446e-8212-08cc8673c0de")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7346,7 +6956,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "693c06a1-0636-44c2-bb18-9e1c7477c458")
+		(uuid "8e2a7580-4980-4ab2-8c13-974b06d71f51")
 		(property "Reference" "#PWR16"
 			(at 60.96 158.75 0)
 			(effects
@@ -7392,7 +7002,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "addbccbf-9755-41c7-a9aa-272c73fc2d59")
+			(uuid "44d876ac-941b-483e-904a-dcb9472974e7")
 		)
 		(instances
 			(project "ivflow"
@@ -7413,7 +7023,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "7aa6a9b9-b0e0-44fd-9501-b529510a5d02")
+		(uuid "209386ab-7928-4e43-b123-d9708ebca01d")
 		(property "Reference" "R4"
 			(at 69.85 115.57 0)
 			(effects
@@ -7432,7 +7042,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 64.262 116.84 0)
 			(effects
 				(font
@@ -7459,11 +7069,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17408"
+			(at 66.04 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "45773a68-1b06-4283-bd0d-d6cf0954c141")
+			(uuid "1894cc0f-9889-41c9-8489-8a1022c08013")
 		)
 		(pin "2"
-			(uuid "104256de-d59b-4279-ad6c-69ef186c750c")
+			(uuid "51740e9c-4792-4372-97f3-c7662c8cd7f2")
 		)
 		(instances
 			(project "ivflow"
@@ -7482,7 +7101,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fbe52f1d-3e23-44b0-a1bd-0f37c8093645")
+		(uuid "a3226e1d-f1b6-4b1b-b563-c9fb4d2a6dca")
 	)
 	(label "BAT_EN"
 		(at 66.04 110.49 90)
@@ -7492,7 +7111,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "23a40cc6-67f5-4916-8e0d-45b76494d5f1")
+		(uuid "998cd051-69c7-4f0c-8f19-ad06194564f0")
 	)
 	(wire
 		(pts
@@ -7502,7 +7121,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "590598f9-e22d-49ae-b232-98b07dff16a0")
+		(uuid "b92f80ab-d6dc-4332-b3d4-97f6bea97d87")
 	)
 	(label "Q2_G"
 		(at 66.04 123.19 270)
@@ -7512,7 +7131,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "3351eaec-4315-422b-aa68-8f18ec047b24")
+		(uuid "eacbc409-b907-45d1-b2bf-7a0e2afb3b58")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -7524,7 +7143,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "9538ac89-4f1c-4231-86a4-9317c7b077e2")
+		(uuid "5858f1df-0ef0-413d-aa55-0684eb103659")
 		(property "Reference" "R5"
 			(at 82.55 115.57 0)
 			(effects
@@ -7543,7 +7162,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 76.962 116.84 0)
 			(effects
 				(font
@@ -7570,11 +7189,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C149504"
+			(at 78.74 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "ddaedf62-08b3-4e6d-972a-fee8f236ba8b")
+			(uuid "d54ab496-0d93-4ab6-b729-5db7ab039465")
 		)
 		(pin "2"
-			(uuid "c19b4e17-21e6-4f47-976d-ca04ba150b57")
+			(uuid "fc53176a-0942-4cb6-83d5-743d3a751393")
 		)
 		(instances
 			(project "ivflow"
@@ -7593,7 +7221,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8b41c197-0910-4988-88a3-e09928157abe")
+		(uuid "df052133-7bf7-4cd7-b2d9-afd376b0b069")
 	)
 	(label "Q2_G"
 		(at 78.74 110.49 90)
@@ -7603,7 +7231,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "3fba4c44-dfe6-468f-9597-6a0742abc123")
+		(uuid "9a4f85bc-eb32-4f6a-8a46-54390a3abe8a")
 	)
 	(wire
 		(pts
@@ -7613,7 +7241,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4f7b0ac6-4efd-4d66-8eff-5193455290a5")
+		(uuid "4fdec9fa-f4b7-42fb-aba4-54d6e402e93d")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7625,7 +7253,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "8088ee49-d39b-4d8c-9396-a3a54b9e0b19")
+		(uuid "e8f73bb5-3cd6-4b53-92a2-c20e14e9b80f")
 		(property "Reference" "#PWR17"
 			(at 78.74 129.54 0)
 			(effects
@@ -7671,7 +7299,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "de094880-d196-46fa-aae3-fc03a26cf5b9")
+			(uuid "a0c26425-0047-4fe7-a073-007d984be90f")
 		)
 		(instances
 			(project "ivflow"
@@ -7692,7 +7320,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "9ce89417-175d-49c3-82f9-2ff20ea83801")
+		(uuid "c448641b-e4b5-46cc-bc7f-262e89916e9e")
 		(property "Reference" "J2"
 			(at 167.64 114.3 0)
 			(effects
@@ -7709,7 +7337,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 167.64 121.92 0)
 			(effects
 				(font
@@ -7736,20 +7364,29 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C157991"
+			(at 167.64 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "e566c209-de9e-4a85-88cc-7eaaef88471d")
+			(uuid "c7836a62-4e2d-465c-827b-808a14062893")
 		)
 		(pin "2"
-			(uuid "da64dcdf-9bb3-40ca-bac2-b428ddbc250d")
+			(uuid "5d38e5bb-4207-44e0-8c72-f19be8ee2fe8")
 		)
 		(pin "3"
-			(uuid "f70706fc-a008-414d-856f-fa1a23bf7348")
+			(uuid "7a557bf9-a27b-4f48-8fd4-0458024af01f")
 		)
 		(pin "4"
-			(uuid "1098c3aa-45ba-43ff-8b06-9be1d4aeea36")
+			(uuid "9751391c-820e-49a3-8dde-6d30e8400bb5")
 		)
 		(pin "5"
-			(uuid "3bee698a-4404-4ad1-98f0-fa59d44d6611")
+			(uuid "103db1fe-ed78-482c-ba0b-b84ba051d8dd")
 		)
 		(instances
 			(project "ivflow"
@@ -7768,7 +7405,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7a0dcba6-3fa1-4115-99e7-b39c38b616e7")
+		(uuid "13f949db-d0f4-4153-ad7e-6b8a456902e6")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -7780,7 +7417,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "2b4ffd79-fefd-4fdd-98f7-1ed6572c6a3f")
+		(uuid "14459373-68cb-423a-ae53-5470d4cab3cf")
 		(property "Reference" "#PWR18"
 			(at 163.83 116.84 90)
 			(effects
@@ -7826,7 +7463,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d28ad3bd-1173-4df8-a6b5-408fdfa6ddac")
+			(uuid "31e521c1-9c38-41f6-ac86-6094aae4237b")
 		)
 		(instances
 			(project "ivflow"
@@ -7845,7 +7482,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "febedc40-bbf9-4416-a086-d46edbca8924")
+		(uuid "ed31d46b-d051-4619-8d81-0b845406df72")
 	)
 	(label "LDR1"
 		(at 160.02 119.38 180)
@@ -7855,7 +7492,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "e3d1c3df-114e-47ed-8e47-24b232ee42af")
+		(uuid "e1dbed0d-cd95-4007-bf56-acd6dba7c0ae")
 	)
 	(wire
 		(pts
@@ -7865,7 +7502,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ec0ec72e-847f-44fe-a7be-e7feac336c1e")
+		(uuid "d9b62686-9613-48de-9aac-c13d0934529e")
 	)
 	(label "LDR2"
 		(at 160.02 121.92 180)
@@ -7875,7 +7512,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "76106dd4-b74b-47cc-af2c-8d36b7f32aba")
+		(uuid "a988b485-0aa8-4376-84de-5b26deed1899")
 	)
 	(wire
 		(pts
@@ -7885,7 +7522,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b28450f6-2f2a-40da-98c0-6f4c9c066807")
+		(uuid "0a2bba43-ea25-41ac-9cc6-a015a433dead")
 	)
 	(label "LDR3"
 		(at 160.02 124.46 180)
@@ -7895,7 +7532,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1beedc47-8386-4526-9c38-c22293143fce")
+		(uuid "eb7a5704-a3db-4ecc-a9d7-37687951d758")
 	)
 	(wire
 		(pts
@@ -7905,7 +7542,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "828a2d9e-e3d5-4d7d-896d-bdaf153ebdf4")
+		(uuid "4ab378c3-e0c2-49e5-a627-aa7ba1d02e59")
 	)
 	(label "LDR4"
 		(at 160.02 127 180)
@@ -7915,7 +7552,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "5b2c476a-4428-4872-b692-fc3add24553a")
+		(uuid "78146df9-ed38-41ac-aa60-49b8c2ac6079")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -7927,7 +7564,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "4237e95f-9d35-4770-8c89-054dab815e92")
+		(uuid "e3d40a33-cb00-4f06-b089-9d7c435bc005")
 		(property "Reference" "R20"
 			(at 199.39 110.49 0)
 			(effects
@@ -7946,7 +7583,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 193.802 111.76 0)
 			(effects
 				(font
@@ -7973,11 +7610,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17841"
+			(at 195.58 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "7c22c5ba-ef53-4a54-a9ae-f2620c20f3c7")
+			(uuid "53cc7654-03be-431a-beb6-9e651613b20f")
 		)
 		(pin "2"
-			(uuid "f03c23e3-4efe-4683-907a-6c1e6477bf87")
+			(uuid "529e05fa-2a8f-47c3-ae4f-66e1ffeac9b4")
 		)
 		(instances
 			(project "ivflow"
@@ -7996,7 +7642,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "bb42d8dc-dfda-4e78-a6a1-aaa3b22eca96")
+		(uuid "cdbd25ca-a44c-4e50-a72f-a2b6464eeee2")
 	)
 	(label "LED_EN"
 		(at 195.58 105.41 90)
@@ -8006,7 +7652,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0b9c3afb-87bd-4662-a4ea-86314e964b48")
+		(uuid "f008ef07-4a3b-4cd9-bf72-2cad9c1afa50")
 	)
 	(wire
 		(pts
@@ -8016,7 +7662,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "549e9be2-1ed3-4e1f-9ec0-11589fac3fe5")
+		(uuid "ee3e48e4-90eb-49e8-a9d4-c605244101e6")
 	)
 	(label "LED_A"
 		(at 195.58 118.11 270)
@@ -8026,7 +7672,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "d7224f46-9994-42bd-b1df-eef4d70531b4")
+		(uuid "445419dc-3ec9-444a-a647-d7c69287c980")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -8038,7 +7684,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "132f3b61-c949-423e-985d-77e2f5f72cd1")
+		(uuid "9f9c6b6f-0a87-4152-b310-9bb1ae89dd85")
 		(property "Reference" "J3"
 			(at 220.98 109.22 0)
 			(effects
@@ -8055,7 +7701,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 220.98 111.76 0)
 			(effects
 				(font
@@ -8082,11 +7728,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C158012"
+			(at 220.98 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "bff0e9de-b466-40d0-98b9-efa80739f411")
+			(uuid "6fbc78be-952b-4de3-8bd7-2c8ddacb1c96")
 		)
 		(pin "2"
-			(uuid "1cc06493-3585-4e04-9060-f290ddf99f7b")
+			(uuid "03469896-718f-45b5-9ce1-f3ef974c3308")
 		)
 		(instances
 			(project "ivflow"
@@ -8105,7 +7760,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b026903c-0ced-458a-9c74-f3ad50feabde")
+		(uuid "1d7471c1-f8b9-4831-87f5-0a3f23899175")
 	)
 	(label "LED_A"
 		(at 213.36 111.76 180)
@@ -8115,7 +7770,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "e7e06328-0adc-4410-b4fe-0449f5b89398")
+		(uuid "8f4e2c82-7753-48ee-ac9a-64d39659d39d")
 	)
 	(wire
 		(pts
@@ -8125,7 +7780,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "08702196-4bc3-469c-a11a-20aef0be39e5")
+		(uuid "6d1aa501-6114-4773-9f93-be2fc137c293")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -8137,7 +7792,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "830aef00-e4d9-48fa-8702-32ab06cfe6d9")
+		(uuid "3aeb76a4-89e7-49c5-b1c7-85033c681974")
 		(property "Reference" "#PWR19"
 			(at 207.01 114.3 90)
 			(effects
@@ -8183,7 +7838,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ba29d7a3-9fc0-488e-aa59-9baf3f9b3c9d")
+			(uuid "3ddd2a66-053c-4f61-a352-7e992f2b1909")
 		)
 		(instances
 			(project "ivflow"
@@ -8195,7 +7850,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Buzzer")
+		(lib_id "Connector_Generic:Conn_01x02")
 		(at 266.7 111.76 0)
 		(unit 1)
 		(body_style 1)
@@ -8204,27 +7859,25 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "132cc15c-8f2a-472d-8331-748a793967db")
-		(property "Reference" "BZ1"
-			(at 270.51 110.49 0)
+		(uuid "e6fb5e87-b7e5-4969-85f6-6c4bef4bde9c")
+		(property "Reference" "J7"
+			(at 266.7 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "BUZZER"
-			(at 270.51 113.03 0)
+			(at 266.7 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 266.065 109.22 0)
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+			(at 266.7 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8233,7 +7886,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 266.065 109.22 0)
+			(at 266.7 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8241,7 +7894,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "3-5 V active buzzer, 12 mm THT"
+		(property "Description" "JST-XH 2-pin to the off-board 3-5 V active buzzer. 1 = +, 2 = -"
+			(at 266.7 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C158012"
 			(at 266.7 111.76 0)
 			(effects
 				(font
@@ -8251,15 +7913,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "484d3373-ed86-4ac9-a61b-4137700a5f32")
+			(uuid "ada4f5c5-ae3b-46d0-bb70-456a17b57e67")
 		)
 		(pin "2"
-			(uuid "a9cd3d28-8ce5-4f86-8a74-5f2581952b0a")
+			(uuid "b44d6982-4bca-46a5-9862-1f08c2ccdbd6")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "BZ1")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -8267,43 +7929,43 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 109.22) (xy 261.62 109.22)
+			(xy 261.62 111.76) (xy 259.08 111.76)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a3bdab30-a0b1-4477-b9b0-06c8c20395f1")
+		(uuid "6ffc007d-be48-4c66-8061-1c809f9a5a5a")
 	)
 	(label "VSYS_SW"
-		(at 261.62 109.22 180)
+		(at 259.08 111.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "b962f8e6-f11b-4660-9470-ab0ff78c9b23")
+		(uuid "95ff634d-bf96-4791-b295-331f2aa7cb49")
 	)
 	(wire
 		(pts
-			(xy 264.16 114.3) (xy 261.62 114.3)
+			(xy 261.62 114.3) (xy 259.08 114.3)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "548acd25-ef68-44eb-9452-1a09a09581ed")
+		(uuid "a7c54a25-a688-463e-a76a-92692f96bb13")
 	)
 	(label "BUZ_N"
-		(at 261.62 114.3 180)
+		(at 259.08 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "0ab1e7ac-1b1c-41d0-8f6c-6b93cbccd181")
+		(uuid "0ce2b80e-8de2-42b8-9766-6a4d0c26a50d")
 	)
 	(symbol
 		(lib_id "Diode:1N4148W")
@@ -8315,7 +7977,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "3995079c-4945-4dd5-a48e-cd3188222d71")
+		(uuid "7a026f32-b268-4188-b3f6-d15bb6d65b9a")
 		(property "Reference" "D3"
 			(at 273.05 128.27 90)
 			(effects
@@ -8377,11 +8039,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 279.4 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "befe3eb4-b5c5-40a6-809c-7893be5534be")
+			(uuid "d8b70083-3bf5-49d6-948f-6d8b3417bf99")
 		)
 		(pin "2"
-			(uuid "3a0cfec7-db71-479e-9716-7d3268dc6ed5")
+			(uuid "8e0ee56a-9b7f-4480-a5ca-3c290bcb0c4e")
 		)
 		(instances
 			(project "ivflow"
@@ -8400,7 +8071,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9bccc687-2a7e-4375-96fd-dd6b8ef1ed1b")
+		(uuid "d3625dc5-4596-4959-bfbf-de7c58e424e0")
 	)
 	(label "VSYS_SW"
 		(at 279.4 123.19 90)
@@ -8410,7 +8081,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "7e7de8c6-5ff3-4086-b810-84328321449f")
+		(uuid "96491b29-f66a-4641-95cf-e47b1fbce8d9")
 	)
 	(wire
 		(pts
@@ -8420,7 +8091,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6eeb5ef0-0fe8-4729-a955-7759c495b895")
+		(uuid "c9cfe18e-ada9-41c7-99b5-86a255523515")
 	)
 	(label "BUZ_N"
 		(at 279.4 135.89 270)
@@ -8430,7 +8101,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "35b6f9ea-4bdb-468a-a531-cd8fd6c45b8f")
+		(uuid "8c75edb7-4d37-4e1d-93b7-c526a9d6001d")
 	)
 	(symbol
 		(lib_id "Transistor_FET:AO3400A")
@@ -8442,7 +8113,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "13b2c860-acd7-41d4-829f-89d15677cf15")
+		(uuid "329ee3fa-1c8a-4803-87ac-f9d73878ff41")
 		(property "Reference" "Q3"
 			(at 266.7 140.335 0)
 			(effects
@@ -8461,7 +8132,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23_Handsoldering"
 			(at 266.7 144.145 0)
 			(effects
 				(font
@@ -8490,14 +8161,23 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C20917"
+			(at 261.62 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "231798c3-953d-4f56-b8b3-ff7e66f63ac2")
+			(uuid "1614cc93-10b6-4967-8208-1dcb81f2d310")
 		)
 		(pin "2"
-			(uuid "1c83eac7-4656-4778-b83d-425c43d8c853")
+			(uuid "287ea40c-3cc8-4a8f-8f6d-4af4ff3823e6")
 		)
 		(pin "3"
-			(uuid "1bd2b4c0-19da-4fef-aa60-a77e01a6e4e3")
+			(uuid "d51764ad-f56b-43c7-9577-29909972c439")
 		)
 		(instances
 			(project "ivflow"
@@ -8516,7 +8196,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e0ebe3fb-d8e6-4538-b0af-8541f31e7180")
+		(uuid "4d17a9bc-c203-476a-831d-9db51e3bf5aa")
 	)
 	(label "BUZ_N"
 		(at 264.16 134.62 90)
@@ -8526,7 +8206,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "52124afd-2ab2-4ac1-8d1c-52b9a23e14c2")
+		(uuid "507ffb8e-4bfc-46ca-aee6-c595bab7fcec")
 	)
 	(wire
 		(pts
@@ -8536,7 +8216,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "848b701f-cbf4-48e0-bfab-4c560113d739")
+		(uuid "f5685c29-1080-4408-abbe-56a2e9af73ed")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -8548,7 +8228,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "92ed008b-a714-4ac1-8ac5-20956172bf43")
+		(uuid "a9975446-12ee-4dce-b83d-0fa744fdce8b")
 		(property "Reference" "#PWR20"
 			(at 264.16 156.21 0)
 			(effects
@@ -8594,7 +8274,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "1e8c6c08-c6c3-4040-8b9c-237013ab40d8")
+			(uuid "e43c4ae0-481d-4b8e-978f-1c9405b577eb")
 		)
 		(instances
 			(project "ivflow"
@@ -8615,7 +8295,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "7509aedd-fecc-49f2-80ac-5a4995c232d3")
+		(uuid "052650ec-6108-4b00-9b18-46002489765b")
 		(property "Reference" "R21"
 			(at 246.38 138.43 90)
 			(effects
@@ -8632,7 +8312,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 246.38 144.018 90)
 			(effects
 				(font
@@ -8659,11 +8339,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17408"
+			(at 246.38 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "d40b5947-45b8-4623-9ae6-cb2351c2429f")
+			(uuid "8c3e4f78-c6a3-4bde-902a-3d6a441decb2")
 		)
 		(pin "2"
-			(uuid "ac47f477-221d-454a-a6ef-8e96edb6f340")
+			(uuid "22303b0e-95f3-4a16-bbfe-0f7f951b5303")
 		)
 		(instances
 			(project "ivflow"
@@ -8682,7 +8371,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9ee948ad-a0a5-406e-acfd-d84d371ed0a3")
+		(uuid "5521d29b-3d98-4068-8ce4-f4202f01579d")
 	)
 	(label "BUZ_EN"
 		(at 240.03 142.24 180)
@@ -8692,7 +8381,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "78a36aa8-bd50-4ee2-b982-c95aac580bc7")
+		(uuid "e9818f5a-a8c2-49d9-9cc2-570cde8b0d6f")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -8704,7 +8393,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "b971aa5f-a764-4aa5-9909-3a413ab67018")
+		(uuid "f6b5a951-d3ff-45de-919c-ea802780089f")
 		(property "Reference" "R22"
 			(at 254 153.67 0)
 			(effects
@@ -8723,7 +8412,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 254.762 154.94 0)
 			(effects
 				(font
@@ -8750,11 +8439,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C149504"
+			(at 256.54 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "f747b88c-5f43-40dc-b5d6-481243d5f917")
+			(uuid "3184349e-31db-4287-880a-f6f821db0c54")
 		)
 		(pin "2"
-			(uuid "e8a50a1d-d9f3-46fd-80f8-c5f26436304c")
+			(uuid "5a0e79cf-6db2-4593-9559-2c875392c712")
 		)
 		(instances
 			(project "ivflow"
@@ -8773,7 +8471,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "82292667-f631-4859-924e-c695f14df12b")
+		(uuid "c6139476-ab56-4ace-8fd0-5177d56da2a3")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -8785,7 +8483,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "f35faccf-06f1-4ea0-b81f-d0bbb37d7ea7")
+		(uuid "6599c512-a660-4b8c-a77e-c3ffb4f9d45c")
 		(property "Reference" "#PWR21"
 			(at 256.54 167.64 0)
 			(effects
@@ -8831,7 +8529,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "7c5ca23d-55a3-45d5-8d29-da24eb01ab49")
+			(uuid "95fa23bf-08cc-4207-8005-2d326fa45b73")
 		)
 		(instances
 			(project "ivflow"
@@ -8852,7 +8550,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "7c7663d9-a43d-497c-bc14-6c60eff2cd26")
+		(uuid "66343bbc-f328-4c9d-b577-8fbff5b03c0a")
 		(property "Reference" "J4"
 			(at 43.18 177.8 0)
 			(effects
@@ -8869,7 +8567,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 43.18 182.88 0)
 			(effects
 				(font
@@ -8897,16 +8595,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "a6da7b7a-e37b-4df9-adf7-91729acf59c7")
+			(uuid "9aab7b55-1a25-449b-87d8-b3d9243ebc08")
 		)
 		(pin "2"
-			(uuid "fdc6e91b-edb6-40f5-a17d-0a90fccd8122")
+			(uuid "464ed628-8aee-4dd2-93c4-b087f7b1d8da")
 		)
 		(pin "3"
-			(uuid "31b89fa8-7fa6-440e-addb-857882551fcf")
+			(uuid "f6233afc-1fd8-4242-b645-5c8b5a5f6338")
 		)
 		(pin "4"
-			(uuid "29a738e1-2038-4951-9ebc-f667620a4432")
+			(uuid "c5845443-a172-42ee-b118-574dc141d5aa")
 		)
 		(instances
 			(project "ivflow"
@@ -8925,7 +8623,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "73054d39-1b13-461a-9c2a-594017b61381")
+		(uuid "7275bd0b-06f2-4d77-b9fc-5d29bb04ebe0")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -8937,7 +8635,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "ef80f3b4-3224-4b0b-8cf3-f509fc02b040")
+		(uuid "ac85c5af-c5d0-419c-99f2-7c185ef046f7")
 		(property "Reference" "#PWR22"
 			(at 24.13 180.34 90)
 			(effects
@@ -8983,7 +8681,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ddf0288c-2d43-4e79-b97b-9cf3b1b578b9")
+			(uuid "c99299f1-e47c-4118-a7df-e2ab8cdaa682")
 		)
 		(instances
 			(project "ivflow"
@@ -9002,7 +8700,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a80ec729-61a3-4d90-b9a6-f39bd98f4ba6")
+		(uuid "1e521873-4060-4973-bfbe-1ce6bec83014")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -9014,7 +8712,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "7321e421-7133-4eed-bc3b-5ec1770ddc4e")
+		(uuid "87906236-bd04-41b2-918e-32aafe3e3b6b")
 		(property "Reference" "#PWR23"
 			(at 39.37 182.88 90)
 			(effects
@@ -9060,7 +8758,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "16c75cdd-0479-4197-b408-c3462fedc766")
+			(uuid "82f4c3bf-2147-4e3c-bde4-8c98c3702c9c")
 		)
 		(instances
 			(project "ivflow"
@@ -9079,7 +8777,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b85ce03e-b210-40a8-9424-8a6830f5cd10")
+		(uuid "649e7f26-1444-4d0f-8392-6ed77d4f7ea2")
 	)
 	(label "SCL"
 		(at 35.56 185.42 180)
@@ -9089,7 +8787,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "9e08418f-5675-4e49-b026-1d3b36694f10")
+		(uuid "e6a410c2-63ee-47e9-ac39-45c7e5bec74f")
 	)
 	(wire
 		(pts
@@ -9099,7 +8797,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3fba5140-6557-4b04-ae3d-9221dfbcfff8")
+		(uuid "a1757bf4-ec51-4bda-9709-ef13fb96d982")
 	)
 	(label "SDA"
 		(at 35.56 187.96 180)
@@ -9109,7 +8807,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "0eb30573-8f98-4436-9345-ce4c298617c9")
+		(uuid "a715168d-84a1-4dca-a353-c6298537bfd4")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -9117,11 +8815,11 @@
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp yes)
-		(uuid "c6516cf7-0914-44eb-83d4-f5b5624eaf39")
+		(uuid "d7b155f3-431c-4abf-8bc6-c2d1a351ae0b")
 		(property "Reference" "R23"
 			(at 77.47 181.61 0)
 			(effects
@@ -9140,7 +8838,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 71.882 182.88 0)
 			(effects
 				(font
@@ -9167,11 +8865,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17673"
+			(at 73.66 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "e7b97f80-a41a-460e-90b5-d166be2d5dc8")
+			(uuid "cd82d295-fcad-4e45-ac00-c0049cfba87b")
 		)
 		(pin "2"
-			(uuid "e736165a-5836-43b8-ac71-6733aec872f0")
+			(uuid "34ecde7c-17f9-4825-a8e1-9bf1e7486d2b")
 		)
 		(instances
 			(project "ivflow"
@@ -9190,7 +8897,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "23dc00d5-2321-41ef-855c-efc97f8bc799")
+		(uuid "0a7362d1-91cb-4696-9039-a7d53a08968e")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -9202,7 +8909,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "414e2c7a-94e0-4ce7-8369-87152dbc20f2")
+		(uuid "62560d99-03b9-41fe-a288-397101cbe27a")
 		(property "Reference" "#PWR24"
 			(at 73.66 180.34 0)
 			(effects
@@ -9248,7 +8955,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f326ac3c-c760-44d7-bcb1-365dfd3787cf")
+			(uuid "af4586bd-d55d-48dd-a0e9-e7e00f61f00e")
 		)
 		(instances
 			(project "ivflow"
@@ -9267,7 +8974,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fbfe042c-6cb2-41d5-8bdd-874e0679b95c")
+		(uuid "442d07a5-ce3f-4029-bdc9-a5b617aa9276")
 	)
 	(label "SDA"
 		(at 73.66 189.23 270)
@@ -9277,7 +8984,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "73c959ab-53a3-4630-9eb0-c9b42be6b970")
+		(uuid "a24b689e-a4e3-42cd-abb4-00cbae557f51")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -9285,11 +8992,11 @@
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp yes)
-		(uuid "54e8ec38-122e-456f-94e9-ab3a47b3496e")
+		(uuid "da7725dd-a0c5-4797-a28e-f69ba984b151")
 		(property "Reference" "R24"
 			(at 87.63 181.61 0)
 			(effects
@@ -9308,7 +9015,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 82.042 182.88 0)
 			(effects
 				(font
@@ -9335,11 +9042,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17673"
+			(at 83.82 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "445906f0-4f73-42d7-b981-7cf6839b7388")
+			(uuid "57e85417-782c-4b22-b9d5-0fd8d004cf88")
 		)
 		(pin "2"
-			(uuid "87edebf0-ed62-4f78-bb48-1600af11aae9")
+			(uuid "40563a96-74ab-409d-8a1e-a28afc3e55a1")
 		)
 		(instances
 			(project "ivflow"
@@ -9358,7 +9074,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6e5874ca-8f7a-4b4e-a2ab-44aa7a99e1ca")
+		(uuid "f3044c1f-ab51-4c65-bec9-fc22503d033b")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -9370,7 +9086,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "30a06e64-1559-42aa-90a8-1814d6ad0ac6")
+		(uuid "765cbc27-df45-46c5-8ac9-43b7167b28a3")
 		(property "Reference" "#PWR25"
 			(at 83.82 180.34 0)
 			(effects
@@ -9416,7 +9132,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5ee80fa6-bdf1-4202-8071-62eccbdd307a")
+			(uuid "6464c76b-6211-48c7-bb92-13b9e1a4e82f")
 		)
 		(instances
 			(project "ivflow"
@@ -9435,7 +9151,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e6d74b86-724d-4e05-bb87-3cfbc46f26c8")
+		(uuid "61adf4ec-6af1-4345-b136-bb79685f6037")
 	)
 	(label "SCL"
 		(at 83.82 189.23 270)
@@ -9445,11 +9161,11 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "c7fc8978-4083-44eb-9956-66dcbf94e906")
+		(uuid "e2b19b79-b61c-4bf7-ad2c-278279dc0c3b")
 	)
 	(symbol
-		(lib_id "Switch:SW_Push")
-		(at 106.68 180.34 0)
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 114.3 180.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9457,26 +9173,25 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "8fb5a556-d2d0-4faa-bfc8-299fccdc117e")
-		(property "Reference" "SW2"
-			(at 107.95 177.8 0)
+		(uuid "fd028f24-4e0c-4b92-9ec4-d1ec31f34fa9")
+		(property "Reference" "J8"
+			(at 114.3 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "BUTTON"
-			(at 106.68 181.864 0)
+			(at 114.3 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 106.68 175.26 0)
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+			(at 114.3 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9485,7 +9200,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 106.68 175.26 0)
+			(at 114.3 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9493,8 +9208,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
-			(at 106.68 180.34 0)
+		(property "Description" "JST-XH 2-pin to the off-board push button (BTN to GND)"
+			(at 114.3 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C158012"
+			(at 114.3 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9503,15 +9227,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "316cf71c-0d20-4962-a984-535b61033770")
+			(uuid "cafd455f-a529-4c45-9c9e-fe717353e976")
 		)
 		(pin "2"
-			(uuid "c2ee7bc8-e563-4de7-89f1-bcd9b4224b3d")
+			(uuid "2851e411-f87d-45ac-8f50-14addd71b079")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "SW2")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -9519,27 +9243,37 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 180.34) (xy 99.06 180.34)
+			(xy 109.22 180.34) (xy 106.68 180.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e7f0dec4-2c39-4b79-8307-4320ed43851a")
+		(uuid "c5e0673b-acad-448d-b4bd-52c35839d19a")
 	)
 	(label "BTN"
-		(at 99.06 180.34 180)
+		(at 106.68 180.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "90f5eb51-c687-47ba-a15b-7fef1b8e06ea")
+		(uuid "6e9f514f-948b-4826-9fdf-fed961c9d4f5")
+	)
+	(wire
+		(pts
+			(xy 109.22 182.88) (xy 106.68 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92dbe5ec-c00f-4627-ac05-97e58f560ad9")
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 106.68 190.5 90)
+		(lib_id "power:GND")
+		(at 106.68 182.88 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9547,17 +9281,18 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "21c1b397-3786-4383-adfb-274064bb4bf5")
-		(property "Reference" "C6"
-			(at 106.68 186.69 90)
+		(uuid "996ab363-49a9-4418-aa51-d3280d43e6c0")
+		(property "Reference" "#PWR26"
+			(at 100.33 182.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Value" "100n"
-			(at 106.68 194.31 90)
+		(property "Value" "GND"
+			(at 101.88 182.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9565,7 +9300,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 110.49 189.5348 90)
+			(at 106.68 182.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9574,7 +9309,75 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 106.68 190.5 90)
+			(at 106.68 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \\\"GND\\\" , ground"
+			(at 106.68 182.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e79a65c2-7769-41f8-a878-2466364e5ca1")
+		)
+		(instances
+			(project "ivflow"
+				(path "/5226476a-c803-4268-9324-1436557aadc2"
+					(reference "#PWR26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 127 182.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7eb28bfe-fcd6-4204-81c5-42fec1287242")
+		(property "Reference" "C6"
+			(at 130.81 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 130.81 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 127.9652 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9583,7 +9386,16 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 106.68 190.5 90)
+			(at 127 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
+			(at 127 182.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9592,10 +9404,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "e26145e7-a13d-4ec7-9a0f-64f9cdc3a01a")
+			(uuid "aae1977f-50fe-4ebf-93ea-e01d92228149")
 		)
 		(pin "2"
-			(uuid "90f95e15-e918-439f-b9f7-e020b432396a")
+			(uuid "0d4a0763-6e3f-4901-86a9-25d6aafa436b")
 		)
 		(instances
 			(project "ivflow"
@@ -9608,17 +9420,37 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 190.5) (xy 113.03 190.5)
+			(xy 127 179.07) (xy 127 176.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b25f7562-c4b2-4a5e-872e-0f0d57a670fe")
+		(uuid "dd49f756-4b28-4a4f-9524-379ea4ee234c")
+	)
+	(label "BTN"
+		(at 127 176.53 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e0c6f3c9-e074-4356-993c-5c89fcc55977")
+	)
+	(wire
+		(pts
+			(xy 127 186.69) (xy 127 189.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e3922ff-ccec-4066-899d-38bc2cd78d99")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 113.03 190.5 90)
+		(at 127 189.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9626,9 +9458,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "d4d1ce5d-9251-45b1-b9a2-c9b312be74a6")
-		(property "Reference" "#PWR26"
-			(at 119.38 190.5 90)
+		(uuid "7e4c2c49-afd4-46c1-88b1-d7932c3d806b")
+		(property "Reference" "#PWR27"
+			(at 127 195.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9637,7 +9469,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 117.83 190.5 90)
+			(at 127 193.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9645,7 +9477,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 113.03 190.5 90)
+			(at 127 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9654,7 +9486,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 113.03 190.5 90)
+			(at 127 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9663,7 +9495,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \\\"GND\\\" , ground"
-			(at 113.03 190.5 90)
+			(at 127 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9672,12 +9504,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "cd57d2b0-cdb1-4225-b35d-dec91b634067")
+			(uuid "85fc6133-2c09-4308-a04f-9b48c5fcdef5")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR26")
+					(reference "#PWR27")
 					(unit 1)
 				)
 			)
@@ -9693,7 +9525,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "edd5c2dd-12e3-4e6d-9950-3d6f861d021d")
+		(uuid "47ea9f1c-dfb8-4894-a4df-d2b66b444cb9")
 		(property "Reference" "J5"
 			(at 157.48 175.26 0)
 			(effects
@@ -9710,7 +9542,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 			(at 157.48 182.88 0)
 			(effects
 				(font
@@ -9738,19 +9570,19 @@
 			)
 		)
 		(pin "1"
-			(uuid "b4c2fef5-41c2-4257-b29d-cd13d9e2ad17")
+			(uuid "941f9df6-81de-45a3-9979-a70993df1aaf")
 		)
 		(pin "2"
-			(uuid "656f4592-843d-4887-96f0-7d8e81ad7666")
+			(uuid "0ae6e435-d3ef-4e64-9993-6a06aef6e1f2")
 		)
 		(pin "3"
-			(uuid "53776374-9d43-47b3-ab38-62ba5ec29208")
+			(uuid "f03a198f-7077-45f3-821b-146420d9f428")
 		)
 		(pin "4"
-			(uuid "f0f3eb68-fc48-4e52-9213-7251a86e0907")
+			(uuid "fae65d89-f920-4dda-9d54-de529ca48a7c")
 		)
 		(pin "5"
-			(uuid "879b5940-e15d-4063-b35f-cefebdd4356d")
+			(uuid "e64054c8-e6be-40f8-94a6-b88cb4905abe")
 		)
 		(instances
 			(project "ivflow"
@@ -9769,7 +9601,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "046f590b-eeb9-4e3c-bfd5-8988fcbc0172")
+		(uuid "6de8f4ad-b177-46f2-be12-b15839a92903")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -9781,8 +9613,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "d068de94-e2e0-402c-b029-b5b9362d15ba")
-		(property "Reference" "#PWR27"
+		(uuid "44078be1-4283-435b-aba0-c5d64c91076d")
+		(property "Reference" "#PWR28"
 			(at 143.51 177.8 90)
 			(effects
 				(font
@@ -9827,12 +9659,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "67138124-fe01-4132-a98b-0b73812405df")
+			(uuid "91b9cd8d-9e24-4890-a82b-8accf33e9fd1")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR27")
+					(reference "#PWR28")
 					(unit 1)
 				)
 			)
@@ -9846,7 +9678,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "71d3f12f-da38-4546-8374-7262851bb370")
+		(uuid "1f1b69b2-46e0-41b2-9e4f-83e8c474c2ef")
 	)
 	(label "VSYS_SW"
 		(at 149.86 180.34 180)
@@ -9856,7 +9688,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "6a07f026-5c4a-4b46-bbcb-bef2c3717264")
+		(uuid "ad533b95-b920-41fd-b8de-9d2cf6b348ee")
 	)
 	(wire
 		(pts
@@ -9866,7 +9698,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1212f655-ea71-4bee-a314-aabad5ef5206")
+		(uuid "1ead65f7-af8e-4404-ac43-35ac773f7a81")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -9878,8 +9710,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "b1754eca-6c38-4bb8-949f-2dd5311ce43a")
-		(property "Reference" "#PWR28"
+		(uuid "e7c5d8a8-2d50-4d28-9a81-2e1067154e64")
+		(property "Reference" "#PWR29"
 			(at 153.67 182.88 90)
 			(effects
 				(font
@@ -9924,12 +9756,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "abfa385d-5993-42e1-8b94-aeb42c6c0446")
+			(uuid "1ca2107a-d768-4912-8d1a-89798ea3ad2d")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR28")
+					(reference "#PWR29")
 					(unit 1)
 				)
 			)
@@ -9943,7 +9775,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3fb82323-680a-4bb3-81f9-b7a666c6bead")
+		(uuid "e86eff9a-de43-4441-8da3-8085c3f1f50a")
 	)
 	(label "EXP_IO20"
 		(at 149.86 185.42 180)
@@ -9953,7 +9785,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "855e67b7-c9bf-46a4-8e1b-5e5c98c79112")
+		(uuid "f9b86644-2504-413a-8a9c-ba2da72f42af")
 	)
 	(wire
 		(pts
@@ -9963,7 +9795,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3be7fd2f-979a-41d2-b9b4-836f86c39ff0")
+		(uuid "24d8b5c7-72cb-4349-9755-4dfee89c445a")
 	)
 	(label "EXP_IO21"
 		(at 149.86 187.96 180)
@@ -9973,7 +9805,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "b96b08a1-2f5a-4b50-8b43-482210751ce5")
+		(uuid "3fa693e5-7b2f-41c7-ab54-3c91f00857c4")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -9985,7 +9817,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "ac43e054-3127-4787-a4c6-e70df7644d54")
+		(uuid "0647cd99-c8c3-45b2-bc37-481e0c689ecd")
 		(property "Reference" "R11"
 			(at 105.41 110.49 0)
 			(effects
@@ -10004,7 +9836,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 99.822 111.76 0)
 			(effects
 				(font
@@ -10031,11 +9863,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17414"
+			(at 101.6 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "80bb9696-572f-4afa-8cac-cb07b8153365")
+			(uuid "eaee9eb3-5a75-4083-9842-90df1d00f75d")
 		)
 		(pin "2"
-			(uuid "1968a2cd-3b07-4c0e-b056-2ca0cf229600")
+			(uuid "7ed9a0f1-fca5-45f2-be22-921b64880e0c")
 		)
 		(instances
 			(project "ivflow"
@@ -10054,7 +9895,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "69c4bd1e-c8a9-4d97-8219-89ac8e9f5989")
+		(uuid "ea11f31f-1f7e-4446-877b-25ab4a92ea4a")
 	)
 	(label "LDR1"
 		(at 101.6 105.41 90)
@@ -10064,7 +9905,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "4b16a47d-f7db-4a0d-b17d-a6efdc10a0a2")
+		(uuid "1abc9e44-24b7-493a-b757-e2e133fe9f18")
 	)
 	(wire
 		(pts
@@ -10074,7 +9915,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "75cdd249-c589-4898-a0f8-2388d25f3789")
+		(uuid "d44fecd9-10a1-4b8b-83cd-5f6288083a8e")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10086,8 +9927,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "2604279a-56e0-498b-99e6-a551c0281dca")
-		(property "Reference" "#PWR29"
+		(uuid "f67ac052-d15d-48a5-84bf-561383dbc91f")
+		(property "Reference" "#PWR30"
 			(at 101.6 124.46 0)
 			(effects
 				(font
@@ -10132,12 +9973,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "9b622ae4-4a46-4178-b586-9fb5fa1d3c14")
+			(uuid "ad180615-2814-4a78-af79-cd3c36c0805d")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR29")
+					(reference "#PWR30")
 					(unit 1)
 				)
 			)
@@ -10153,7 +9994,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "d08e6055-a319-4fa8-999a-e90562e126ef")
+		(uuid "729a81c2-1985-4574-8195-8c2304d996ad")
 		(property "Reference" "C11"
 			(at 110.49 133.35 0)
 			(effects
@@ -10172,7 +10013,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 107.6452 138.43 0)
 			(effects
 				(font
@@ -10199,11 +10040,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1710"
+			(at 106.68 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "d6dbdcc6-5d7d-4d3d-823a-4383b31e00d4")
+			(uuid "d7abb74e-80dd-49b3-a8a9-b5297a99638f")
 		)
 		(pin "2"
-			(uuid "cdd2ee3b-4258-4dbb-9355-9f2d42661e75")
+			(uuid "23ed27d2-152e-47f6-9ca4-31ff961304ca")
 		)
 		(instances
 			(project "ivflow"
@@ -10222,7 +10072,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ec8c3b7d-98c7-45d6-ad19-689e3f9c53a1")
+		(uuid "dd163b93-aab2-432f-91f4-aa5fb5352663")
 	)
 	(label "LDR1"
 		(at 106.68 128.27 90)
@@ -10232,7 +10082,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "4d6aa317-735d-4f3a-b78f-8615d3dea157")
+		(uuid "b6e1d978-a224-4243-b68a-336cf622556f")
 	)
 	(wire
 		(pts
@@ -10242,7 +10092,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2663843d-63af-4fbf-8bcf-0074d87eca82")
+		(uuid "4b402f7a-b786-47d6-8233-06da73570050")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10254,8 +10104,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "6bba2f07-442b-44e7-ab6c-b1742a149e48")
-		(property "Reference" "#PWR30"
+		(uuid "29a43be0-7604-43d3-b2f2-dc9933973484")
+		(property "Reference" "#PWR31"
 			(at 106.68 147.32 0)
 			(effects
 				(font
@@ -10300,12 +10150,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e7329c7a-367d-4d97-abe4-bb50e18271e6")
+			(uuid "a1c85c82-2099-4140-a859-2d5434b4df43")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR30")
+					(reference "#PWR31")
 					(unit 1)
 				)
 			)
@@ -10321,7 +10171,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "81987cbc-72c3-4898-94af-32968fb30d1b")
+		(uuid "78d088b0-efbe-4c47-91c0-4386a79b4e8a")
 		(property "Reference" "R12"
 			(at 118.11 110.49 0)
 			(effects
@@ -10340,7 +10190,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 112.522 111.76 0)
 			(effects
 				(font
@@ -10367,11 +10217,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17414"
+			(at 114.3 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "6ec769eb-81cc-4eb9-81c3-dacdc44d3e32")
+			(uuid "ea05ce7f-e68c-4c2c-96c6-cfc2e835bc2b")
 		)
 		(pin "2"
-			(uuid "0d9a21bb-8222-4322-aa09-26f26cac569b")
+			(uuid "ee1c2fbc-c9e0-42c2-a82a-deef0f48ab90")
 		)
 		(instances
 			(project "ivflow"
@@ -10390,7 +10249,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "df078fe5-1094-40ed-8332-e7b8b773b2ef")
+		(uuid "785fb762-0476-4afd-ae35-b8d7281c29fb")
 	)
 	(label "LDR2"
 		(at 114.3 105.41 90)
@@ -10400,7 +10259,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d195817e-69c2-4606-b99a-4588f5c9f927")
+		(uuid "dd780298-d7e4-4064-90f5-a06e347c2a8e")
 	)
 	(wire
 		(pts
@@ -10410,7 +10269,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "62df5712-ccd6-4488-8317-7846d2f00644")
+		(uuid "5aa89ed1-836f-4d60-acff-85cb765b6e25")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10422,8 +10281,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "e5c1b06d-51b0-4e30-83a1-0ee3a97c4503")
-		(property "Reference" "#PWR31"
+		(uuid "187736ca-f793-49de-9864-81577d59278c")
+		(property "Reference" "#PWR32"
 			(at 114.3 124.46 0)
 			(effects
 				(font
@@ -10468,12 +10327,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c5fdfbae-9046-4bd8-aefa-dedf16553e5e")
+			(uuid "4672debc-9a55-4389-afd8-63866a550b80")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR31")
+					(reference "#PWR32")
 					(unit 1)
 				)
 			)
@@ -10489,7 +10348,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "b2f295f9-8309-4254-bc51-17103d29ce72")
+		(uuid "eaef3bd5-055e-4ab4-af9a-5697faa80622")
 		(property "Reference" "C12"
 			(at 123.19 133.35 0)
 			(effects
@@ -10508,7 +10367,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 120.3452 138.43 0)
 			(effects
 				(font
@@ -10535,11 +10394,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1710"
+			(at 119.38 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "f7b7a55a-637d-47fa-9003-4ee99fed9daf")
+			(uuid "3274a080-eb2d-480c-9c26-5d1407ec191e")
 		)
 		(pin "2"
-			(uuid "cccebd93-f35d-400d-b736-cbcff3109306")
+			(uuid "8766bdd5-d517-4e6a-8804-c04f278a87d1")
 		)
 		(instances
 			(project "ivflow"
@@ -10558,7 +10426,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8c836d92-f622-4056-aba3-c9d0564254bf")
+		(uuid "06333414-57fd-45d9-91da-ec833e61cab3")
 	)
 	(label "LDR2"
 		(at 119.38 128.27 90)
@@ -10568,7 +10436,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f7caa255-ad48-42c0-910b-81b4e01e85cf")
+		(uuid "e496bea9-fc79-41db-a8b5-7b393577d914")
 	)
 	(wire
 		(pts
@@ -10578,7 +10446,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6c222d83-f7c4-4f11-bea0-1d4a076472bd")
+		(uuid "c24098e4-a565-4ae9-9ca7-61ac0e1cc870")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10590,8 +10458,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "f7028b88-7c19-4c27-b0dc-d385ad3ab28c")
-		(property "Reference" "#PWR32"
+		(uuid "311a43e9-b2d9-4147-8cc4-5ff173a5a97d")
+		(property "Reference" "#PWR33"
 			(at 119.38 147.32 0)
 			(effects
 				(font
@@ -10636,12 +10504,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "02dd5616-c111-4624-9128-086f18811f77")
+			(uuid "aef52200-3985-4b09-ae80-61c82b1253ab")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR32")
+					(reference "#PWR33")
 					(unit 1)
 				)
 			)
@@ -10657,7 +10525,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "035c67f7-4631-4479-ac80-2b06d8f7923b")
+		(uuid "1eb102c3-6e34-47a1-ad98-e9f3d3b2921a")
 		(property "Reference" "R13"
 			(at 130.81 110.49 0)
 			(effects
@@ -10676,7 +10544,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 125.222 111.76 0)
 			(effects
 				(font
@@ -10703,11 +10571,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17414"
+			(at 127 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "1040e4c5-5192-4f69-8245-72b5fdbde63c")
+			(uuid "269232bb-6dc7-4fd6-8fe2-47a116793fbd")
 		)
 		(pin "2"
-			(uuid "e83dddb2-e544-4a30-a645-4792daa2978d")
+			(uuid "094f6f67-cc71-4738-987d-4913282aaa31")
 		)
 		(instances
 			(project "ivflow"
@@ -10726,7 +10603,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6535dcf8-04b6-48b2-9738-e52b38109966")
+		(uuid "da530a90-f840-408c-8ee9-5ac09a3f3e1e")
 	)
 	(label "LDR3"
 		(at 127 105.41 90)
@@ -10736,7 +10613,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "24bc33fe-320c-4524-b2f2-52fd3ad96612")
+		(uuid "4f046d66-d33e-48bb-8c3d-73eec7fec065")
 	)
 	(wire
 		(pts
@@ -10746,7 +10623,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e9680506-b1ee-42fb-b492-795606c66d7d")
+		(uuid "06a84943-90e3-4dee-89a6-e0395f661117")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10758,8 +10635,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "0d02e27d-a45a-40ab-96a4-9e6b8dc0f91b")
-		(property "Reference" "#PWR33"
+		(uuid "8e6725fb-51c7-4492-ae04-ea5f46c77595")
+		(property "Reference" "#PWR34"
 			(at 127 124.46 0)
 			(effects
 				(font
@@ -10804,12 +10681,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "2bf6d7fe-f5da-4844-8936-ceaed8e5e153")
+			(uuid "bea25166-4dc1-4af4-8a3c-2d208b18837a")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR33")
+					(reference "#PWR34")
 					(unit 1)
 				)
 			)
@@ -10825,7 +10702,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "6882638a-ae7e-4ddb-9102-b0b99b4ea86c")
+		(uuid "9f7a5fa4-0401-4a2c-b041-34e3b4a54949")
 		(property "Reference" "C13"
 			(at 135.89 133.35 0)
 			(effects
@@ -10844,7 +10721,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 133.0452 138.43 0)
 			(effects
 				(font
@@ -10871,11 +10748,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1710"
+			(at 132.08 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "ffd5bdd4-e3ef-4d67-b3a8-dbe286bd0692")
+			(uuid "f4b13ada-72f7-4fc8-b532-043306761937")
 		)
 		(pin "2"
-			(uuid "dd3a117b-35e1-408d-a47b-1f67bd651e1e")
+			(uuid "8faeb87b-94fe-4e8f-bba9-233ec5320a27")
 		)
 		(instances
 			(project "ivflow"
@@ -10894,7 +10780,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e0d7c198-68af-4eff-bd34-a00ec43df5bc")
+		(uuid "0d88fa7d-72f7-4ecc-8862-73ab8ad1df10")
 	)
 	(label "LDR3"
 		(at 132.08 128.27 90)
@@ -10904,7 +10790,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b86e26af-2193-4e34-bcf6-aca09e5dc36f")
+		(uuid "f3f29481-85b2-460b-8959-42d73b82f87d")
 	)
 	(wire
 		(pts
@@ -10914,7 +10800,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "88ff80b4-3fed-4435-8b12-ecd77f6572b5")
+		(uuid "baaffda4-9104-46fa-8725-2e1442639ad9")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10926,8 +10812,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "cb819709-dc9b-4b50-979b-7c857a9554bc")
-		(property "Reference" "#PWR34"
+		(uuid "60c32d62-9e77-4199-9d80-55b999aa5f5b")
+		(property "Reference" "#PWR35"
 			(at 132.08 147.32 0)
 			(effects
 				(font
@@ -10972,12 +10858,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "b0f56758-286f-4e2a-a643-69cb571e4a85")
+			(uuid "e8eef40e-b424-4a8f-bb7d-3b28d7c6602e")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR34")
+					(reference "#PWR35")
 					(unit 1)
 				)
 			)
@@ -10993,7 +10879,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "4df1c49c-2bf5-489c-9330-74450ba671ad")
+		(uuid "a77c2fb2-ea94-48e8-8511-c65ced2d8063")
 		(property "Reference" "R14"
 			(at 143.51 110.49 0)
 			(effects
@@ -11012,7 +10898,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 137.922 111.76 0)
 			(effects
 				(font
@@ -11039,11 +10925,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17414"
+			(at 139.7 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "741c75c8-2bf2-49e0-9dd2-acbc6fc20ea1")
+			(uuid "ba7fca8a-6ba9-4547-86c5-ec96a8147d02")
 		)
 		(pin "2"
-			(uuid "96bf7962-3314-4d73-a783-d16875e745cf")
+			(uuid "ebd8955d-3889-4b71-a312-5592cc48359d")
 		)
 		(instances
 			(project "ivflow"
@@ -11062,7 +10957,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6507dfeb-56f2-418f-9a52-ca21ad386786")
+		(uuid "7bc6918b-4f04-4788-a0ca-f28804b05f06")
 	)
 	(label "LDR4"
 		(at 139.7 105.41 90)
@@ -11072,7 +10967,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "61ab969d-939a-4fc6-8589-eb282dbd98a2")
+		(uuid "c9ca436d-f5fa-43d3-9c6a-b744e6c4c688")
 	)
 	(wire
 		(pts
@@ -11082,7 +10977,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9797bf7e-8aa5-490c-a883-f946fb18a68b")
+		(uuid "0b12b838-4961-4b5e-bca7-c4e6a76327db")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -11094,8 +10989,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "10b8be34-5bd0-4d8b-a98f-ce020a46bfc8")
-		(property "Reference" "#PWR35"
+		(uuid "60ecbada-d948-46e2-8ee5-fcd4f066d1c9")
+		(property "Reference" "#PWR36"
 			(at 139.7 124.46 0)
 			(effects
 				(font
@@ -11140,12 +11035,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "21a2758b-f1c2-46c3-8c9a-ab24aa1ed9e1")
+			(uuid "f431c084-f71a-4ad7-b9bf-ede4bc7b1dff")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR35")
+					(reference "#PWR36")
 					(unit 1)
 				)
 			)
@@ -11161,7 +11056,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "6b7449bd-b43c-4100-b295-9c79a462cdcf")
+		(uuid "34620db3-ecf7-4c5e-ad64-0d8dc63c7ad0")
 		(property "Reference" "C14"
 			(at 148.59 133.35 0)
 			(effects
@@ -11180,7 +11075,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 145.7452 138.43 0)
 			(effects
 				(font
@@ -11207,11 +11102,20 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1710"
+			(at 144.78 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
-			(uuid "9b7e8121-c25f-47ac-bc32-ff4d777f50e7")
+			(uuid "85f46232-3163-4f20-956f-4704f731bd12")
 		)
 		(pin "2"
-			(uuid "69a1a334-ea2c-4e6c-a7df-216e34d4cfaf")
+			(uuid "b527199a-a8ff-44ef-9a14-da18e46fa481")
 		)
 		(instances
 			(project "ivflow"
@@ -11230,7 +11134,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8d96f4f3-5b02-4bdf-8972-95b904334039")
+		(uuid "a0f00718-0402-4403-8f58-0a2a3ae2220e")
 	)
 	(label "LDR4"
 		(at 144.78 128.27 90)
@@ -11240,7 +11144,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "14c2af72-f8b4-460c-8493-fe0e1fcf526f")
+		(uuid "07d86cdd-ea98-47a5-9d54-2987b37ef07f")
 	)
 	(wire
 		(pts
@@ -11250,7 +11154,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "acd3908f-3c4f-426a-9754-3936fb210c86")
+		(uuid "e6fe8b4e-bf1a-46e0-a633-65adcd971a1a")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -11262,8 +11166,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "3ab66698-57fb-4302-a55a-2f2b69331edb")
-		(property "Reference" "#PWR36"
+		(uuid "0d6a9fef-eadb-49a9-88d1-3858ed2f466a")
+		(property "Reference" "#PWR37"
 			(at 144.78 147.32 0)
 			(effects
 				(font
@@ -11308,12 +11212,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "db547d97-8b14-48e9-9c8c-d9ca42a83df9")
+			(uuid "796f99f0-642a-4c59-8cab-6fc906204be3")
 		)
 		(instances
 			(project "ivflow"
 				(path "/5226476a-c803-4268-9324-1436557aadc2"
-					(reference "#PWR36")
+					(reference "#PWR37")
 					(unit 1)
 				)
 			)
@@ -11327,7 +11231,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "78b4b9b1-4439-4b4e-8c90-24b7831019f4")
+		(uuid "6e761db4-51a0-4c6a-b40c-5c4b07aa1c76")
 	)
 	(wire
 		(pts
@@ -11337,65 +11241,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "57ca0b2f-fed5-4cb2-87c2-35e7cefdb8ac")
-	)
-	(wire
-		(pts
-			(xy 101.6 180.34) (xy 101.6 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c531ea5-4cab-4685-8386-75029d833890")
-	)
-	(wire
-		(pts
-			(xy 101.6 190.5) (xy 102.87 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5880d15-8092-482a-8b41-2f020f9a35e9")
-	)
-	(wire
-		(pts
-			(xy 111.76 180.34) (xy 111.76 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c07db864-2479-4950-ade3-8833c96e7217")
-	)
-	(wire
-		(pts
-			(xy 111.76 190.5) (xy 110.49 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df078a27-9963-4501-b25a-c6d7a390c4c1")
+		(uuid "e203c7b6-b07b-4a0d-8988-4b95b3a11293")
 	)
 	(junction
 		(at 256.54 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "70b3cec0-2c57-4a1b-9d25-935a65a74653")
-	)
-	(junction
-		(at 101.6 180.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cb8c69c2-c3c8-4ce0-92fd-8a1a3ce689ab")
-	)
-	(junction
-		(at 110.49 190.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f81c3607-9280-4195-bf2d-1c0154b2cc7c")
+		(uuid "a32d5722-94e3-4027-a571-4a310f23e4dd")
 	)
 	(label "Q3_G"
 		(at 256.54 142.24 90)
@@ -11405,7 +11257,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c5cce9d4-f194-4bcc-898a-d8f22113886d")
+		(uuid "3e623c94-29cf-4403-abed-af014fcf7760")
 	)
 	(sheet_instances
 		(path "/"

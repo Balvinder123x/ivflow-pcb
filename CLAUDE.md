@@ -54,6 +54,8 @@ Current status, tool paths and open questions live in `PROGRESS.md` — read it 
 
 Design principle (decided 2026-10-31): off-board parts (OLED, LDR strip, LED) plug
 in through connectors so the assembled PCB only needs the parts attached.
+Extended 2026-11-01: the power switch, buzzer and button are also off-board on
+JST-XH 2-pin connectors (J6 POWER SW, J7 BUZZER, J8 BUTTON). D3 and C6 stay on the board.
 
 ### Nets and circuit
 
@@ -64,7 +66,7 @@ POWER
 - Power path: D1 SS14 Schottky, anode VBUS → cathode VSYS.
   Q1 P-MOSFET (AO3401A or DMG2305UX, SOT-23): drain = VBAT_P,
   source = VSYS, gate = VBUS. R1 100k from Q1 gate to GND.
-- SW1 slide switch (rated ≥1 A): VSYS → VSYS_SW.
+- J6 POWER SW (JST-XH 2-pin) to a panel-mount switch rated ≥1 A: pin 1 VSYS, pin 2 VSYS_SW.
 - U3 AP2112K-3.3 (SOT-23-5): VIN = VSYS_SW, EN = VSYS_SW, OUT = +3V3.
   C1 10 µF on VIN, C2 10 µF + C3 100 nF on OUT, C4 22 µF bulk near U1's 3V3 pin.
 - +3V3 → U1 3V3 pin. GND → U1 GND.
@@ -88,22 +90,24 @@ LED (illuminates the drip chamber) — off-board, on a cable
 - The 5 mm LED itself is mounted at the drip chamber; silk marks + / −.
 
 BUZZER
-- BZ1 3–5 V active buzzer (THT, 12 mm): + to VSYS_SW, − to Q3 drain.
+- J7 BUZZER (JST-XH 2-pin) to an off-board 3–5 V active buzzer: pin 1 (+) VSYS_SW,
+  pin 2 (−) Q3 drain.
 - Q3 AO3400A: source GND, gate = GPIO6 via R21 100 Ω, R22 100k gate → GND.
-- D3 1N4148W across BZ1 (cathode to VSYS_SW).
+- D3 1N4148W on the board across J7 (cathode to VSYS_SW).
 
 OLED + BUTTON + EXPANSION
 - J_OLED pins 1-4: GND, +3V3, SCL = GPIO9, SDA = GPIO8.
 - R23, R24 4.7k pull-ups SDA/SCL → +3V3, marked DNP (most modules have them).
-- SW2 tactile button: GPIO10 → GND. C6 100 nF across it.
+- J8 BUTTON (JST-XH 2-pin) to an off-board push button: pin 1 GPIO10, pin 2 GND.
+  C6 100 nF across it, on the board.
 - J_EXP 1×5 header: GND, VSYS_SW, +3V3, GPIO20, GPIO21 (future servo / spare).
 
 ### Layout rules
 - 2 layers, GND pour on both, stitched with vias every ~5 mm.
 - Tracks: 0.25 mm signals, 0.5 mm power (VBUS, VBAT_P, VSYS, VSYS_SW, +3V3).
   Vias 0.3 mm drill / 0.6 mm pad. Use JLCPCB 2-layer minimums as DRC rules.
-- Silkscreen: label every connector pin, the switch ON position,
-  battery polarity, and "IVFlow v1".
+- Silkscreen: label every connector pin and its function (POWER SW, BUZZER +/−,
+  BUTTON, LED +/−), battery polarity, and "IVFlow v1".
 - 4× M2 mounting holes in the corners unless I say otherwise.
 
 ## Stages
