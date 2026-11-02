@@ -106,7 +106,7 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - Previews: `docs/stage4_render_top.png` (3D), `docs/stage4_placement.png` (ratsnest).
   - From now on the board and schematic are linked by UUID: no regeneration of either,
     targeted edits only (once the user edits the board in KiCad).
-- [ ] **5. Routing + pours + DRC** — done, 🛑 waiting for review (2026-11-02)
+- [x] **5. Routing + pours + DRC** — approved 2026-11-03
   - `scripts/route_board.py`: Specctra DSN export → Freerouting (100 passes max) → session
     import → GND zones on F.Cu and B.Cu (clearance 0.3, min width 0.25, thermal reliefs) →
     94 GND stitching vias on a 5 mm grid, each placed only where both pours are solid → refill.
@@ -118,7 +118,16 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     ERC 0/0.
   - Previews: `docs/stage5_routing_front.png`, `docs/stage5_routing_back.png` (tracks without
     pour), `docs/stage5_render_top.png`, `docs/stage5_render_bottom.png`.
-- [ ] 6. Fab outputs
+- [ ] **6. Fab outputs** — done, 🛑 waiting for review (2026-11-03)
+  - `scripts/make_fab.py` → `fab/` (see `fab/README.md`). Runs ERC + DRC first and stops
+    unless both are clean (ERC 0/0, DRC 0 violations / 0 unconnected / 0 footprint errors).
+  - Gerbers: F/B Cu, Paste, Silkscreen, Mask, Edge.Cuts; Protel extensions, no X2, soldermask
+    subtracted from silk. Drill: Excellon mm, PTH and NPTH separate, Gerber X2 drill maps.
+    Zipped as `fab/ivflow_gerbers_jlcpcb.zip` (14 files). Job file: 61.1 × 52.1 mm, 2 layers, 1.6 mm.
+  - BOM: JLCPCB format (24 lines, DNP + off-board excluded) and full BOM (26 lines).
+  - CPL: 38 parts (JLCPCB rotations not corrected; only matters for JLCPCB assembly).
+  - Schematic PDF, 1:1 assembly drawing PDF, 3D renders top/bottom.
+  - **Before ordering:** print the 1:1 PDF at 100 % and check the real SuperMini.
 
 ## Power-path / safety review (2026-11-01)
 TP4056 is only a charger; the board adds the rest:
@@ -132,7 +141,8 @@ TP4056 is only a charger; the board adds the rest:
 
 ## Open questions
 None blocking. When the parts arrive (before ordering the PCB):
-1. Print the board 1:1 and check the SuperMini sits on its pads (pins centred assumption).
+1. Print `fab/ivflow_assembly_top_1to1.pdf` at 100 % (outline must measure 61 × 52 mm) and
+   check the SuperMini's pins line up with U1 (pins-centred assumption).
 2. Check the battery plug is JST-PH 2.0 with red = pin 1, and the OLED pin order.
 
 Resolved 2026-11-01: power switch → J6 connector; buzzer + button → J7/J8 connectors;
