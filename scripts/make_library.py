@@ -193,7 +193,7 @@ def add_keepout(fp, pts):
     z.SetDoNotAllowVias(True)
     z.SetDoNotAllowZoneFills(True)
     z.SetDoNotAllowPads(False)
-    z.SetDoNotAllowFootprints(False)
+    z.SetDoNotAllowFootprints(True)
     ls = pcbnew.LSET()
     ls.AddLayer(pcbnew.F_Cu)
     ls.AddLayer(pcbnew.B_Cu)
@@ -240,27 +240,34 @@ def supermini_footprint():
         add_tht_pad(fp, str(i + 1), x, y, square=(i == 0))
         # Pin names between the rows so they stay readable once the module is lifted off
         label = name.replace("GPIO", "")
-        if row == 0:
-            add_text(fp, label, x + 1.25, y, pcbnew.F_SilkS, 0.8, 0.12, pcbnew.GR_TEXT_H_ALIGN_LEFT)
-        else:
-            add_text(fp, label, x - 1.25, y, pcbnew.F_SilkS, 0.8, 0.12, pcbnew.GR_TEXT_H_ALIGN_RIGHT)
+        # Centred text (not left/right justified) so it stays clear of the pad when the
+        # footprint is rotated and KiCad turns the text upright
+        off = HDR_PAD / 2 + 0.25 + len(label) * 0.9 / 2
+        add_text(fp, label, x + off if row == 0 else x - off, y, pcbnew.F_SilkS, 1.0, 0.15)
 
-    # Module outline (silk + fab) and courtyard; the courtyard includes the USB-C overhang
+    # Module outline (silk + fab). The module sits ~8.5 mm up on its sockets, so the
+    # courtyard covers only the two socket strips: low SMD parts may go underneath,
+    # except under the antenna (keepout below).
     usb = p["usb_overhang"] or 0
     add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_SilkS, 0.12)
     add_rect(fp, -W / 2, top, W / 2, -top, pcbnew.F_Fab, 0.1)
-    add_rect(fp, -W / 2 - 0.25, top - usb - 0.25, W / 2 + 0.25, -top + 0.25, pcbnew.F_CrtYd, 0.05)
+    half = 4 * PITCH + 0.25           # socket body is 8 x 2.54 mm long, +0.25 margin
+    yc = y0 + 3.5 * PITCH
+    for x in (-S / 2, S / 2):
+        add_rect(fp, x - PITCH / 2 - 0.25, yc - half, x + PITCH / 2 + 0.25, yc + half, pcbnew.F_CrtYd, 0.05)
     if usb:
         add_line(fp, -W / 4, top - usb, W / 4, top - usb, pcbnew.F_Fab, 0.1)
         add_text(fp, f"USB-C ~{usb:g} mm overhang", 0, top - usb - 1.0, pcbnew.F_Fab, 0.8, 0.12)
-    add_text(fp, "USB", 0, top + 1.5, pcbnew.F_SilkS, size=1.0)
+    # "ANT" marks the antenna end on silk; the USB end is marked on F.Fab only, so the
+    # space under the module's USB end stays free for parts.
+    add_text(fp, "USB", 0, top + 1.5, pcbnew.F_Fab, size=1.0)
     add_text(fp, "ANT", 0, -top - 1.5, pcbnew.F_SilkS, size=1.0)
     if not p["verified"]:
         add_text(fp, "PUBLISHED DIMS", 0, -2.0, pcbnew.F_Fab, 1.0, 0.15)
         add_text(fp, "pins assumed centred", 0, 2.0, pcbnew.F_Fab, 0.8, 0.12)
         add_text(fp, "check on arrival", 0, 3.2, pcbnew.F_Fab, 0.8, 0.12)
 
-    # Antenna end: no tracks, vias or pour on either layer between the socket rows
+    # Antenna end: no tracks, vias, pour or parts on either layer between the socket rows
     inner = S / 2 - HDR_PAD / 2 - 0.3
     ant_top = -top - p["antenna_len"]
     add_keepout(fp, [(-inner, ant_top), (inner, ant_top), (inner, -top), (-inner, -top)])

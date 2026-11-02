@@ -54,7 +54,7 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
 
 ## Stages
 - [x] **0. Environment + skeleton** — approved, committed
-- [ ] **1. Custom library** — done, 🛑 waiting for review
+- [x] **1. Custom library** — approved 2026-11-02
   - `scripts/make_library.py` generates `ivflow/ivflow_lib/`
   - Symbol `ESP32-C3_SuperMini` ✔ — pin order **confirmed** from the user's board diagram (2026-10-31):
     top view, USB up: left row GPIO5,6,7,8,9,10,20,21 (pads 1-8); right row 5V, GND, 3V3,
@@ -63,13 +63,15 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     (also confirmed by the user's breadboard count); USB-C overhang ~2 mm (user, in courtyard);
     pins assumed centred (no source gives the offset). Marked "PUBLISHED DIMS – check on arrival"
     on F.Fab. **Before ordering the PCB: print the board 1:1 and lay the real SuperMini on it.**
+    Courtyard = the two socket strips only (module stands ~8.5 mm up, low SMD parts may sit
+    underneath); antenna keepout also forbids footprints. Pin names 1.0 mm, centred (2026-11-02).
   - Symbol `TP4056_Module_USB-C` ✔ (pads 1 IN+, 2 IN−, 3 BAT+, 4 BAT−, 5 OUT+, 6 OUT−), no
     footprint (module is off-board on J9).
 - [x] **2. Schematic + ERC** — approved 2026-11-01 (connector polarities checked by the user)
   - One A4 sheet, blocks: Power, MCU, Battery sense, Sensors, LED, Buzzer, OLED/Button/Expansion
   - Netlist check: all 116 pin connections match the spec (with J9, 2026-11-01)
   - ERC: 0 errors, 0 warnings
-- [ ] **3. Footprints + BOM** — done, 🛑 waiting for review
+- [x] **3. Footprints + BOM** — approved 2026-11-02
   - Footprints + `LCSC` field set per part in `scripts/make_schematic.py` (schematic regenerated;
     it had not been edited in KiCad). Hand-soldering pad variants for 0805 / SOT-23 / SOT-23-5 / SMA.
   - Connectors: J1 JST-PH B2B-PH-K; J2 JST-XH B5B-XH-A; J3, J6, J7, J8 JST-XH B2B-XH-A;
@@ -86,7 +88,24 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - Connector silkscreen labels defined in `scripts/silk_labels.py` (title naming the part that
     plugs in + a label per pin, "+"/"−" drawn large). Added to each footprint in Stage 4 so they
     move with the connector. Preview: `docs/connector_labels.png`.
-- [ ] 4. Outline, holes, placement
+- [ ] **4. Outline, holes, placement** — done, 🛑 waiting for review (2026-11-02)
+  - `scripts/make_board.py` builds `ivflow.kicad_pcb` from kicad-cli's netlist export of the
+    schematic (footprints, values, nets, symbol UUID links, fields). Placement table `PLACE`
+    in the script. Refuses to overwrite a populated board without `--force`.
+  - Board 61 × 52 mm, 4 × M2 holes (MountingHole_2.2mm_M2, NPTH) 3.2 mm from the corners,
+    "IVFlow v1" on silk. Connector labels from `scripts/silk_labels.py` (reference printed
+    after each title).
+  - U1 turned 180°: antenna at the top edge over its keepout; USB-C points into the board and
+    the strip below it holds only SMD parts, so a cable still fits with the module plugged in.
+  - Under the module: LDR filters R11–R14/C11–C14 next to GPIO0–4, and C4.
+  - Rules in `ivflow.kicad_pro` (JLCPCB 2-layer): clearance/track min 0.127, via min
+    0.5/0.3, copper-to-edge 0.3, hole-to-hole 0.5, silk text ≥ 1.0/0.15 mm. Net classes:
+    Default 0.25 mm, Power 0.5 mm (VBUS, VBAT_P, VSYS, VSYS_SW, +3V3, BATT+, BATT−).
+  - DRC (`--schematic-parity`): 0 violations, 0 footprint errors, 84 unconnected pads
+    (expected: no tracks until Stage 5). ERC still 0/0.
+  - Previews: `docs/stage4_render_top.png` (3D), `docs/stage4_placement.png` (ratsnest).
+  - From now on the board and schematic are linked by UUID: no regeneration of either,
+    targeted edits only (once the user edits the board in KiCad).
 - [ ] 5. Routing + pours + DRC
 - [ ] 6. Fab outputs
 
