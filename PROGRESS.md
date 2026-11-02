@@ -139,6 +139,15 @@ TP4056 is only a charger; the board adds the rest:
 - Firmware must add a low-battery shutdown (≈3.3–3.4 V via BAT_SENSE): DW01A's cut-off is too
   deep for Li-Po life, and AP2112K drops out below ≈3.5 V input at full load.
 
+## Drop sensing notes (2026-11-03)
+- Concept validated by DripOMeter (open-source, HardwareX 2022, PMC9418544): green LED + LDR
+  voltage divider across the drip chamber, works in room light with a slit mask in the sensor
+  holder, dynamic baseline (1 Hz low-pass) + threshold to detect each drop. Same as IVFlow.
+- Tune on a breadboard before fixing values: R11–R14 (DripOMeter matched the series resistor to
+  the LDR's dark resistance). If R11–R14 go large (100k–1M), reduce C11–C14 (1 nF or DNP):
+  10 nF × large R would slow the signal further (the LDR itself already takes ~20–30 ms).
+- Fallback if the dip is too weak: IR LED + phototransistors on the same J2/J3 (R20 → ~150 Ω).
+
 ## Open questions
 None blocking. When the parts arrive (before ordering the PCB):
 1. Print `fab/ivflow_assembly_top_1to1.pdf` at 100 % (outline must measure 61 × 52 mm) and
