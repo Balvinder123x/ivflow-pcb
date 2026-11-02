@@ -9,7 +9,7 @@
 | kiutils | 1.4.8, `pip --user` into KiCad's Python |
 | git | 2.56.0, `C:\Program Files\Git\cmd\git.exe`; repo identity Balvinder123x <balvinder23166@iiitd.ac.in> |
 | Java | Temurin 21.0.13 JRE, `C:\Program Files\Eclipse Adoptium\jre-21.0.13.9-hotspot\bin\java.exe` |
-| Freerouting | not downloaded yet (Stage 5) |
+| Freerouting | 2.5.0 official jar in `tools/freerouting/` (git-ignored), run on a portable Temurin 25.0.5 JRE in `tools/jre25/` (SHA-256 verified; the jar needs Java 25). The native `freerouting-cli` 2.5.0 build crashed (GraalVM serialization error) and was removed. |
 
 ### Tooling rules
 kiutils 1.4.8 predates the KiCad 10 format and drops data when rewriting KiCad 10 files.
@@ -88,7 +88,7 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - Connector silkscreen labels defined in `scripts/silk_labels.py` (title naming the part that
     plugs in + a label per pin, "+"/"−" drawn large). Added to each footprint in Stage 4 so they
     move with the connector. Preview: `docs/connector_labels.png`.
-- [ ] **4. Outline, holes, placement** — done, 🛑 waiting for review (2026-11-02)
+- [x] **4. Outline, holes, placement** — approved 2026-11-02
   - `scripts/make_board.py` builds `ivflow.kicad_pcb` from kicad-cli's netlist export of the
     schematic (footprints, values, nets, symbol UUID links, fields). Placement table `PLACE`
     in the script. Refuses to overwrite a populated board without `--force`.
@@ -106,7 +106,18 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - Previews: `docs/stage4_render_top.png` (3D), `docs/stage4_placement.png` (ratsnest).
   - From now on the board and schematic are linked by UUID: no regeneration of either,
     targeted edits only (once the user edits the board in KiCad).
-- [ ] 5. Routing + pours + DRC
+- [ ] **5. Routing + pours + DRC** — done, 🛑 waiting for review (2026-11-02)
+  - `scripts/route_board.py`: Specctra DSN export → Freerouting (100 passes max) → session
+    import → GND zones on F.Cu and B.Cu (clearance 0.3, min width 0.25, thermal reliefs) →
+    94 GND stitching vias on a 5 mm grid, each placed only where both pours are solid → refill.
+  - Freerouting: 84 nets, 100 % routed in 3 passes, 0 violations. 14 signal vias.
+  - Widths: power nets 0.5 mm (necked to 0.375 mm only at SOT-23 pads), signals 0.25 mm
+    (0.187 mm at a few pin escapes). All above JLCPCB's 0.127 mm.
+  - Antenna area checked: no copper fill, tracks or vias on either layer.
+  - DRC (`--schematic-parity`): **0 violations, 0 unconnected pads, 0 footprint errors**.
+    ERC 0/0.
+  - Previews: `docs/stage5_routing_front.png`, `docs/stage5_routing_back.png` (tracks without
+    pour), `docs/stage5_render_top.png`, `docs/stage5_render_bottom.png`.
 - [ ] 6. Fab outputs
 
 ## Power-path / safety review (2026-11-01)
