@@ -468,6 +468,10 @@ def import_pcb(root, up_matrix):
         -cx, cm(P["pcb_y"]) - bx.minPoint.y, cm(P["pcb_z0"] + P["pcb_h"] / 2) - cz)
     m.transformBy(up_matrix)
     occ.transform2 = m
+    # parametric design: capture the position, or the next recompute moves the PCB back
+    design = adsk.fusion.Design.cast(app.activeProduct)
+    if design.snapshots.hasPendingSnapshot:
+        design.snapshots.add()
     print("PCB imported, board body found:", board is not None)
     return occ
 
