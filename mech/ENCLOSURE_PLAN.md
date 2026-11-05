@@ -8,13 +8,15 @@
 > - Parts: black chassis = front + sensor head in one print (OLED frame, PCB standoffs,
 >   battery cradle, channel, fork, LED/LDR pockets); white back shell held by 4 × M2 × 30
 >   through the PCB holes; black hinged door; 2 black side covers; acrylic face.
-> - LED and LDR row go in from the outside through side recesses closed by flush covers
->   (1 × M2 each); a wire hole runs from each recess down to the PCB (LED 3 × 3 mm, LDR 4 × 5 mm).
+> - Wires from the LED and LDR row run down grooves in the insert and through the shell floor
+>   to the PCB (LED 3 × 3.5 mm, LDR 3 × 5 mm).
 > - Channel front: U with 3.5 mm chamfers instead of a full V, so the 18.2 mm slit sits
 >   centred on the chamber axis; the 4 mm side foam centres the chamber.
 > - TP4056 stands in the middle behind the battery, USB-C out of the bottom centre.
-> - Colours (IVFlow identity): matte pearl white body, door and covers; black glossy face.
->   Light-tightness from wall thickness, black foam, tongue labyrinth and gasket instead.
+> - Colours (IVFlow identity): matte pearl white body and door; black glossy face. All light-
+>   path surfaces are in a **black sensor insert** that slides into the white head from the
+>   back (2 x M2 from below); LED and LDRs are mounted and wired in it on the bench, lead spaces
+>   sealed with black hot glue. No side covers any more. Black flocking/foam on the channel.
 > - Door: magnets + snap latch (arm in a flush track on the right side, finger scoop to
 >   release), tongue also closes the backs of the fork and tube slots, foam gasket groove.
 

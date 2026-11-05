@@ -174,8 +174,15 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     click at 1-2 deg.
   - Colour identity (user decision): matte pearl white body + black glossy acrylic face.
     White plastic leaks light, so the light-tightness comes from thick walls (head sides
-    14 mm), the black foam lining, the tongue labyrinth and the gasket. Put black tape inside
-    the two side covers (1.6 mm white is not opaque enough behind the LDRs).
+    14 mm), the black foam lining, the tongue labyrinth and the gasket.
+  - **Black sensor insert** (user request, replaces the side covers): the head is a pearl white
+    shell (2.4 mm sides, 1.5 mm top/floor) around a black-printed insert that holds the whole
+    light path (channel, fork/tube slots, LED hole, slit, LDR pocket, door magnet, middle hinge
+    knuckle). LED + LDRs are fitted and wired on the bench, lead spaces filled with black hot
+    glue, wires run down grooves in the insert and through the shell floor to J2/J3; the insert
+    slides in from the back and is held by 2 x M2 x 8 from below. Sides are now plain white.
+    Checks: 0 overlaps (55 bodies), door swing 0-90 deg clear of shell and insert, insert slides
+    out 40 mm without collision. Recommended: black flocking tape or foam on the channel walls.
 
 ## Power-path / safety review (2026-11-01)
 TP4056 is only a charger; the board adds the rest:

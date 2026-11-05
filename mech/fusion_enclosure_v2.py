@@ -46,7 +46,9 @@ P = dict(
     beam_from_top=13.5,
     led_hole=5.1, led_flange_d=6.2, led_tip_x=14.0,
     ldr_pocket_w=18.2, ldr_pocket_h=5.2, slit_h=1.2, slit_depth=3.0,
-    recess_d=3.4, cover_t=1.6,
+    shell_t=2.4, shell_floor=1.5,     # pearl white shell around the black sensor insert
+    insert_screw_x=18.5, insert_screw_y=50.0,
+    magnet_x=19.0,
     door_t=4.0, door_tongue=3.25, magnet_d=6.2, magnet_h=3.2, magnet_z=97.0,
     # electronics
     pcb_w=46.0, pcb_h=41.5, pcb_t=1.6, pcb_y=8.0, pcb_z0=36.0,
@@ -57,6 +59,7 @@ P["H"] = P["Hf"] + P["notch_d"]
 P["chamber_top"] = P["Hf"] - P["holder_above_chamber"]
 P["beam_z"] = P["Hf"] - P["beam_from_top"]
 P["yf"] = P["axis_y"] - P["channel_half"]          # channel front (foam on it)
+P["channel_z0"] = P["bz0"] + P["shell_floor"] + 2.0   # channel floor (insert floor 2 mm)
 HINGE = (-20.0, P["D_top"] + 2.6)
 
 app = adsk.core.Application.get()
@@ -206,7 +209,7 @@ def interior():
     W2, w, bz0 = P["W"] / 2, P["wall"], P["bz0"]
     fw, Dl, R = P["front_wall"], P["D_low"], P["R"] - w
     lower = inter(rrect_y(-W2 + w, W2 - w, w, bz0 + 15, fw, Dl - w, R), box(-W2, 0, 0, W2, Dl, bz0))
-    front_cav = rrect_y(-W2 + w, W2 - w, w, P["Hf"] - w, fw, P["yf"] - w, R)
+    front_cav = rrect_y(-W2 + w, W2 - w, w, P["Hf"] - w, fw, P["yf"] - 4.5, R)
     return add(lower, front_cav)
 
 
@@ -222,14 +225,6 @@ def pcb_holes():
     hx, hz = P["pcb_w"] / 2 - 3.2, P["pcb_h"] / 2 - 3.2
     zc = P["pcb_z0"] + P["pcb_h"] / 2
     return [(sx, sz) for sx in (-hx, hx) for sz in (zc - hz, zc + hz)]
-
-
-def side_recess(side):
-    """(x0, x1, y0, y1, z0, z1) of the LED (-1, left) or LDR (+1, right) cover recess."""
-    W2, bz = P["W"] / 2, P["beam_z"]
-    y1 = 50.0 if side < 0 else 54.0
-    xa, xb = W2 - P["recess_d"], W2 + 0.1
-    return (-xb, -xa, 31.0, y1, bz - 8, bz + 8) if side < 0 else (xa, xb, 31.0, y1, bz - 8, bz + 8)
 
 
 # ---------------------------------------------------------------- parts
@@ -256,41 +251,21 @@ def chassis_part(outer):
     for sx, sz in pcb_holes():
         add(c, cyl((sx, fw - 0.1, sz), (sx, P["pcb_y"], sz), 2.5))
         sub(c, cyl((sx, fw + 0.8, sz), (sx, P["pcb_y"] + 0.1, sz), 0.8))
-    # ---- sensor head
-    ch, cf, ay, yf = P["channel_half"], P["chamfer"], P["axis_y"], P["yf"]
-    z0, z1 = bz0 + 2.0, P["chamber_top"] + 0.5
-    cut = box(-ch, yf, z0, ch, Dt + 0.1, z1)
-    sub(cut, rbox(-ch, yf, z0 - 1, z1 + 1, cf * math.sqrt(2), cf * math.sqrt(2), 45),
-        rbox(ch, yf, z0 - 1, z1 + 1, cf * math.sqrt(2), cf * math.sqrt(2), 45))
-    sub(c, cut)
-    sub(c, slot_xy(P["spike_slot"] / 2, ay, Dt + 0.1, z1 - 0.1, Hf + 0.1, ay))     # top fork
-    sub(c, slot_xy(P["tube_slot"] / 2, ay, Dt + 0.1, bz0 - 1, z0 + 0.1, ay))       # tube slot
-    bz = P["beam_z"]
-    # side recesses for the covers + wire holes down to the electronics
+    # ---- sensor head: pearl white shell around the black sensor insert
+    ay = P["axis_y"]
+    x0i, x1i, yi, zb, zt = insert_box()
+    sub(c, box(x0i, yi, zb, x1i, Dt + 0.1, zt))                         # insert seat
+    lt = LATCH                                                          # shell rib carrying
+    add(c, box(lt["rib_x"] + 0.15, lt["rib_y"] + 0.15, lt["z0"] - 1.85,  # the latch notch
+               x1i + 0.01, Dt, lt["z1"] + 1.85))
+    sub(c, slot_xy(P["spike_slot"] / 2, ay, Dt + 0.1, zt - 0.1, Hf + 0.1, ay))       # top fork
+    sub(c, slot_xy(P["tube_slot"] / 2, ay, Dt + 0.1, bz0 - 1, zb + 0.1, ay))         # tube slot
     for s in (-1, 1):
-        x0, x1, ry0, ry1, rz0, rz1 = side_recess(s)
-        sub(c, box(x0, ry0, rz0, x1, ry1, rz1))
-        # LED: 3 x 3 mm (2 wires); LDR row: 4 x 5 mm (5 wires)
-        gx0, gx1, gy0, gy1 = (-24.8, -21.8, 31.0, 34.0) if s < 0 else (20.8, 24.8, 30.0, 35.0)
-        sub(c, box(gx0, gy0, bz0 - 1, gx1, gy1, rz0 + 0.1))
-        # cover screw pilot hole
-        sx = W2 - P["recess_d"]
-        sub(c, cyl((s * (sx + 0.1), ry1 - 2.5, bz + 5.5), (s * (sx - 4.5), ry1 - 2.5, bz + 5.5), 0.8))
-    # LED: 5.1 mm hole from the left recess to the channel, flange counterbore
-    xr = W2 - P["recess_d"]
-    sub(c, cyl((-xr - 0.1, ay, bz), (-ch + 0.1, ay, bz), P["led_hole"] / 2),
-        cyl((-xr - 0.1, ay, bz), (-xr + 1.0, ay, bz), P["led_flange_d"] / 2))
-    # LDR row: slit (1.2 x 18.2, 3 deep) from the channel, pocket 18.2 x 5.2 out to the recess
-    pw, ph, sh, sd = P["ldr_pocket_w"], P["ldr_pocket_h"], P["slit_h"], P["slit_depth"]
-    sub(c, box(ch - 0.1, ay - pw / 2, bz - sh / 2, ch + sd, ay + pw / 2, bz + sh / 2),
-        box(ch + sd, ay - pw / 2, bz - ph / 2, xr + 0.1, ay + pw / 2, bz + ph / 2))
-    # door hardware: magnet pocket (right), middle hinge knuckle (left)
-    mz = P["magnet_z"]
-    sub(c, cyl((19.75, Dt + 0.1, mz), (19.75, Dt - P["magnet_h"], mz), P["magnet_d"] / 2))
-    kx, ky = HINGE
-    add(c, box(kx - 2.5, Dt - 0.5, bz0 + 18.5, kx + 2.5, ky, bz0 + 39.5),
-        cyl((kx, ky, bz0 + 18.5), (kx, ky, bz0 + 39.5), 2.5))
-    sub(c, cyl((kx, ky, bz0 + 16), (kx, ky, bz0 + 42), 1.1))
+        gx0, gx1, gy0, gy1 = wire_hole(s)                               # wires down to the PCB
+        sub(c, box(gx0, gy0, bz0 - 1, gx1, gy1, zb + 0.1))
+        sx, sy_ = s * P["insert_screw_x"], P["insert_screw_y"]          # insert screws from below
+        sub(c, cyl((sx, sy_, bz0 - 1), (sx, sy_, zb + 0.1), 1.1),
+            cyl((sx, sy_, bz0 - 1), (sx, sy_, bz0 + 0.6), 2.0))
     # snap latch seat on the right side: flush track for the door's arm, notch for the barb,
     # finger scoop at the arm tip to release it
     L = LATCH
@@ -302,14 +277,63 @@ def chassis_part(outer):
     return c
 
 
-def cover_part(side):
-    x0, x1, ry0, ry1, rz0, rz1 = side_recess(side)
-    W2, t, k = P["W"] / 2, P["cover_t"], 0.15
-    xa, xb = (-W2, -W2 + t) if side < 0 else (W2 - t, W2)
-    c = box(xa, ry0 + k, rz0 + k, xb, ry1 - k, rz1 - k)
-    bz, sx = P["beam_z"], W2 - P["recess_d"]
-    sub(c, cyl((side * (W2 + 0.1), ry1 - 2.5, bz + 5.5), (side * (W2 - t - 0.1), ry1 - 2.5, bz + 5.5), 1.1))
-    return c
+def insert_box():
+    """Seat of the black sensor insert in the head: x0, x1, y_front, z_bottom, z_top."""
+    xi = P["W"] / 2 - P["shell_t"]
+    return -xi, xi, P["yf"] - 2.5, P["bz0"] + P["shell_floor"], P["chamber_top"] + 1.5
+
+
+def wire_hole(side):
+    """x0, x1, y0, y1 of the wire groove (LED: side -1, 2 wires; LDR: side +1, 5 wires)."""
+    xi = P["W"] / 2 - P["shell_t"]
+    return (-xi - 0.1, -xi + 3.0, 30.5, 34.0) if side < 0 else (xi - 3.1, xi + 0.1, 30.0, 35.0)
+
+
+def insert_part(outer):
+    """Black sensor insert: every surface the light touches. LED and LDRs are fitted and wired
+    on the bench, the lead spaces filled with black hot glue / silicone, then the insert slides
+    into the head from the back and is held by 2 x M2 x 8 from below."""
+    Dt, bz0, Hf = P["D_top"], P["bz0"], P["Hf"]
+    ch, cf, ay, yf, bz = P["channel_half"], P["chamfer"], P["axis_y"], P["yf"], P["beam_z"]
+    x0i, x1i, yi, zb, zt = insert_box()
+    k = 0.15
+    b = box(x0i + k, yi + k, zb + k, x1i - k, Dt, zt - k)
+    inter(b, cp(outer))                                                 # follows the rounded back edges
+    z0, z1 = P["channel_z0"], P["chamber_top"] + 0.5
+    cut = box(-ch, yf, z0, ch, Dt + 0.1, z1)
+    sub(cut, rbox(-ch, yf, z0 - 1, z1 + 1, cf * math.sqrt(2), cf * math.sqrt(2), 45),
+        rbox(ch, yf, z0 - 1, z1 + 1, cf * math.sqrt(2), cf * math.sqrt(2), 45))
+    sub(b, cut)
+    sub(b, slot_xy(P["spike_slot"] / 2, ay, Dt + 0.1, z1 - 0.1, Hf + 0.1, ay))
+    sub(b, slot_xy(P["tube_slot"] / 2, ay, Dt + 0.1, bz0 - 1, z0 + 0.1, ay))
+    xo = x1i - k                                                        # outer side faces
+    # LED (left): 5.1 mm hole, flange counterbore, lead space down to the wire groove
+    xf = P["led_tip_x"] + 8.6                                           # flange face
+    sub(b, cyl((-xo - 0.1, ay, bz), (-ch + 0.1, ay, bz), P["led_hole"] / 2),
+        cyl((-xo - 0.1, ay, bz), (-xf, ay, bz), P["led_flange_d"] / 2),
+        box(-xo - 0.1, 30.5, bz - 3.3, -xf + 0.01, ay + 3.3, bz + 3.3))
+    # LDR row (right): slit 1.2 x 18.2, 3 deep; pocket 18.2 x 5.2; lead space
+    pw, ph, sh, sd = P["ldr_pocket_w"], P["ldr_pocket_h"], P["slit_h"], P["slit_depth"]
+    xp = ch + sd + 5.2
+    sub(b, box(ch - 0.1, ay - pw / 2, bz - sh / 2, ch + sd, ay + pw / 2, bz + sh / 2),
+        box(ch + sd, ay - pw / 2, bz - ph / 2, xp, ay + pw / 2, bz + ph / 2),
+        box(xp - 0.01, 30.0, bz - 3.6, xo + 0.1, ay + pw / 2, bz + 3.6))
+    for s in (-1, 1):
+        gx0, gx1, gy0, gy1 = wire_hole(s)
+        sub(b, box(gx0, gy0, zb - 0.1, gx1, gy1, bz))
+        sx, sy_ = s * P["insert_screw_x"], P["insert_screw_y"]
+        sub(b, cyl((sx, sy_, zb - 0.1), (sx, sy_, zb + 8.0), 0.8))
+    # relief for the shell rib that carries the latch notch
+    L = LATCH
+    sub(b, box(L["rib_x"], yi, L["z0"] - 2.0, xo + 0.1, Dt + 0.1, L["z1"] + 2.0))   # full length: slides past the rib
+    # door hardware: magnet pocket (right), middle hinge knuckle (left)
+    mz, mx = P["magnet_z"], P["magnet_x"]
+    sub(b, cyl((mx, Dt + 0.1, mz), (mx, Dt - P["magnet_h"], mz), P["magnet_d"] / 2))
+    kx, ky = HINGE
+    add(b, box(kx - 2.5, Dt - 0.2, bz0 + 18.5, kx + 2.5, ky, bz0 + 39.5),
+        cyl((kx, ky, bz0 + 18.5), (kx, ky, bz0 + 39.5), 2.5))
+    sub(b, cyl((kx, ky, bz0 + 16), (kx, ky, bz0 + 42), 1.1))
+    return b
 
 
 def back_shell_part(outer):
@@ -353,7 +377,8 @@ def taper_right(body, x_back, x_front, y_back, y_front, z0, z1):
 
 
 # snap latch on the door's free edge (right side seen from the back)
-LATCH = dict(z0=91.0, z1=103.0, t=1.4, y_end=44.0, barb_y=(45.0, 47.0), barb_h=1.0)
+LATCH = dict(z0=91.0, z1=103.0, t=1.4, y_end=44.0, barb_y=(45.0, 47.0), barb_h=1.0,
+             rib_x=22.6, rib_y=40.7)   # shell rib (in the insert relief) holding the notch
 
 
 def door_part():
@@ -370,9 +395,10 @@ def door_part():
     # light seal 1: tongue into the channel (labyrinth), also closing the back of the fork
     # slot (top) and of the tube slot (bottom); right edges tapered so the door swings free
     z1c = P["chamber_top"] + 0.5
-    for x_half, za, zb, gap in ((ch - 0.3, bz0 + 2.3, z1c - 0.2, 0.3),
+    zc0 = P["channel_z0"]
+    for x_half, za, zb, gap in ((ch - 0.3, zc0 + 0.3, z1c - 0.2, 0.3),
                                 (P["spike_slot"] / 2 - 0.15, z1c - 0.3, Hf, 0.15),
-                                (P["tube_slot"] / 2 - 0.15, bz0, bz0 + 2.4, 0.15)):
+                                (P["tube_slot"] / 2 - 0.15, bz0, zc0 + 0.1, 0.15)):
         tg = box(-x_half, Dt - dt, za, x_half, Dt, zb)
         # the tip moves sideways by depth * dx/dy of its swing around the hinge
         ratio = (HINGE[1] - (Dt - dt)) / (x_half - HINGE[0])
@@ -397,7 +423,7 @@ def door_part():
         add(d, cyl((kx, ky, z0), (kx, ky, z1), 2.5))
     sub(d, cyl((kx, ky, bz0 - 1), (kx, ky, Hf + 1), 1.1))
     mz = P["magnet_z"]
-    sub(d, cyl((19.75, Dt - 0.1, mz), (19.75, Dt + P["magnet_h"], mz), P["magnet_d"] / 2))
+    sub(d, cyl((P["magnet_x"], Dt - 0.1, mz), (P["magnet_x"], Dt + P["magnet_h"], mz), P["magnet_d"] / 2))
     return d
 
 
@@ -419,8 +445,8 @@ def placeholders():
         "Buzzer 12 mm": cyl((-6, Dl - w - 9.5, 17), (-6, Dl - w, 17), 6.0),
         "Push button": cyl((-W2, 22, 17), (-W2 + 15, 22, 17), 6.0),
         "Power switch": box(W2 - 12, 28, 12, W2 - 2, 35.9, 22),
-        "LED 5 mm": add(cyl((-(W2 - P["recess_d"]), ay, bz), (-(W2 - P["recess_d"]) + 1.0, ay, bz), 2.9),
-                        cyl((-(W2 - P["recess_d"]) + 1.0, ay, bz), (-P["led_tip_x"], ay, bz), 2.5)),
+        "LED 5 mm": add(cyl((-P["led_tip_x"] - 9.6, ay, bz), (-P["led_tip_x"] - 8.6, ay, bz), 2.9),
+                        cyl((-P["led_tip_x"] - 8.6, ay, bz), (-P["led_tip_x"], ay, bz), 2.5)),
     }
     x0 = P["channel_half"] + P["slit_depth"]
     ldr = None
@@ -561,11 +587,10 @@ def run(_context: str):
                            (8, 8, 10), "IVFlow smoked acrylic")
 
         outer = outer_shape()
-        new_component(root, "Chassis", chassis_part(outer), pearl)
-        new_component(root, "Back shell", back_shell_part(outer), pearl)
-        new_component(root, "Door (with snap latch)", door_part(), pearl)
-        new_component(root, "LED cover", cover_part(-1), pearl)
-        new_component(root, "LDR cover", cover_part(1), pearl)
+        new_component(root, "Chassis (pearl white)", chassis_part(outer), pearl)
+        new_component(root, "Back shell (pearl white)", back_shell_part(outer), pearl)
+        new_component(root, "Door (pearl white, snap latch)", door_part(), pearl)
+        new_component(root, "Sensor insert (black)", insert_part(outer), black)
         new_component(root, "Face (black smoked acrylic 2 mm)", glass_shape(0.15), smoke or black, 1.0)
         for name, body in placeholders().items():
             new_component(root, "[placeholder] " + name, body, grey, 0.6 if "chamber" in name.lower() else 1.0)
