@@ -270,8 +270,9 @@ def chassis_part(outer):
     for s in (-1, 1):
         x0, x1, ry0, ry1, rz0, rz1 = side_recess(s)
         sub(c, box(x0, ry0, rz0, x1, ry1, rz1))
-        gx0, gx1 = (-24.8, -21.8) if s < 0 else (21.8, 24.8)
-        sub(c, box(gx0, 31.0, bz0 - 1, gx1, 34.0, rz0 + 0.1))
+        # LED: 3 x 3 mm (2 wires); LDR row: 4 x 5 mm (5 wires)
+        gx0, gx1, gy0, gy1 = (-24.8, -21.8, 31.0, 34.0) if s < 0 else (20.8, 24.8, 30.0, 35.0)
+        sub(c, box(gx0, gy0, bz0 - 1, gx1, gy1, rz0 + 0.1))
         # cover screw pilot hole
         sx = W2 - P["recess_d"]
         sub(c, cyl((s * (sx + 0.1), ry1 - 2.5, bz + 5.5), (s * (sx - 4.5), ry1 - 2.5, bz + 5.5), 0.8))

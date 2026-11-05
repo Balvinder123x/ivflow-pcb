@@ -9,7 +9,7 @@
 >   battery cradle, channel, fork, LED/LDR pockets); white back shell held by 4 × M2 × 30
 >   through the PCB holes; black hinged door; 2 black side covers; acrylic face.
 > - LED and LDR row go in from the outside through side recesses closed by flush covers
->   (1 × M2 each); a 3 × 3 mm wire hole runs from each recess down to the PCB.
+>   (1 × M2 each); a wire hole runs from each recess down to the PCB (LED 3 × 3 mm, LDR 4 × 5 mm).
 > - Channel front: U with 3.5 mm chamfers instead of a full V, so the 18.2 mm slit sits
 >   centred on the chamber axis; the 4 mm side foam centres the chamber.
 > - TP4056 stands in the middle behind the battery, USB-C out of the bottom centre.
