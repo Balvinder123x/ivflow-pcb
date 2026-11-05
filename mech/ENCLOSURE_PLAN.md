@@ -28,10 +28,12 @@ parameter.
 ## 2. Sensors in the holder (from the user's working prototype, 2026-11-05)
 
 - **Beam height**: centre **13.5 mm below the top edge** of the holder (prototype: 13–14 mm).
+  The holder's top edge sits **3 mm above the top of the drip chamber**, so the beam is
+  ~10.5 mm below the chamber top.
 - **One LED**, 5.1 mm diameter hole, on one side of the V (the prototype had 3 LEDs; now 1).
   The LED sits in a 6 mm deep black tube so its light goes straight across the chamber.
-- **LDRs**: the 4 LDRs in a horizontal row in a pocket **18.20 × 5.20 mm** on the opposite
-  side, centred on the beam.
+- **LDRs**: the 4 LDRs side by side in a horizontal row (confirmed) in a pocket
+  **18.20 × 5.20 mm** on the opposite side, centred on the beam.
 - **Slit** in front of the LDR faces: **18.2 × 1.2 mm, 3 mm deep** (a short tunnel), centred on
   the beam. Why: a drop is 3–6 mm tall, so a 1.2 mm slit is fully blocked by each drop
   (big, clear dip), while the 3 mm depth stops light that comes in at an angle (room light).
@@ -79,7 +81,8 @@ Estimated outer size **~55 W × 115 H × 42 D mm**, ~80–100 g with battery (cl
 | `buzzer` | 12 Ø × 9.5 mm | **(verify)** |
 | `button_hole` | 12 mm | **(verify)** |
 | `switch_hole` | 6.2 mm (MTS-102 mini toggle) | **(verify)** |
-| `beam_from_top` | 13.5 mm | user's prototype |
+| `beam_from_top` | 13.5 mm below the holder top | user's prototype |
+| `holder_above_chamber` | 3 mm (holder top above chamber top) | user's prototype |
 | `led_hole` | 5.1 mm, 6 mm deep tube | user measured |
 | `ldr_pocket` | 18.20 × 5.20 mm | user measured |
 | `slit_w` × `slit_h` × `slit_depth` | 18.2 × 1.2 × 3.0 mm | user's prototype + recommendation |
