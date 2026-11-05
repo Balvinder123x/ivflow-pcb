@@ -7,7 +7,7 @@ it refuses to run unless ERC and DRC are clean).
 |---|---|
 | `ivflow_gerbers_jlcpcb.zip` | Upload this to JLCPCB: Gerbers + Excellon drill files (contents in `gerbers/`) |
 | `ivflow_bom_jlcpcb.csv` | BOM in JLCPCB format (Comment, Designator, Footprint, LCSC Part #); on-board parts, DNP left out |
-| `ivflow_bom_full.csv` | Every schematic part, including R23/R24 (DNP) and the off-board TP4056 |
+| `ivflow_bom_full.csv` | Every schematic part, including the off-board TP4056 |
 | `ivflow_cpl_jlcpcb.csv` | Pick-and-place positions (only needed if JLCPCB assembles) |
 | `ivflow_assembly_top_1to1.pdf` | Assembly drawing at 1:1: part positions, references and values |
 | `ivflow_schematic.pdf` | Schematic |
@@ -18,14 +18,15 @@ Parts to buy and the off-board items are in `../ivflow/bom/shopping_list.md`.
 ## Before ordering
 
 1. Print `ivflow_assembly_top_1to1.pdf` at **100 % / actual size** (not "fit to page").
-   Check the scale: the board outline must measure **61 × 52 mm**.
+   Check the scale: the board outline must measure **46 × 41.5 mm**.
 2. Push the real SuperMini's pins through the paper at the U1 pads: both rows and all 8 pins
    per row must line up. The footprint uses published dimensions, so this is the one check
    left before ordering.
 
 ## JLCPCB order settings
 
-- Upload `ivflow_gerbers_jlcpcb.zip`. The viewer should show a 61 × 52 mm, 2-layer board.
+- Upload `ivflow_gerbers_jlcpcb.zip`. The viewer should show a 46 × 41.5 mm, 2-layer board
+  with parts on both sides (small SMD parts on the bottom).
 - Layers 2, thickness 1.6 mm, surface finish HASL, quantity 5 (minimum); other options default.
 - PCB assembly: off (hand-assembled). If you ever use JLCPCB assembly, check the part
   rotations in their preview: KiCad and JLCPCB use different zero orientations for some packages.

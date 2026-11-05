@@ -25,7 +25,6 @@ All resistors and capacitors are 0805.
 | R11–R14 | Resistor 10 kΩ 1% (placeholder: tune for your LDRs) | 4 | 10 | C17414 |
 | R4, R21 | Resistor 100 Ω 1% | 2 | 10 | C17408 |
 | R20 | Resistor 82 Ω 1% | 1 | 10 | C17841 |
-| R23, R24 | Resistor 4.7 kΩ 1%, **optional** (only if your OLED has no pull-ups) | 0–2 | 10 | C17673 |
 | C1, C2 | Capacitor 10 µF 25 V | 2 | 10 | C15850 |
 | C4 | Capacitor 22 µF 25 V | 1 | 5 | C45783 |
 | C3, C5, C6 | Capacitor 100 nF 50 V | 3 | 10 | C49678 |

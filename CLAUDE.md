@@ -102,7 +102,7 @@ BUZZER
 
 OLED + BUTTON + EXPANSION
 - J_OLED pins 1-4: GND, +3V3, SCL = GPIO9, SDA = GPIO8.
-- R23, R24 4.7k pull-ups SDA/SCL → +3V3, marked DNP (most modules have them).
+- No I2C pull-ups on the board (removed 2026-11-05): the OLED module provides them.
 - J8 BUTTON (JST-XH 2-pin) to an off-board push button: pin 1 GPIO10, pin 2 GND.
   C6 100 nF across it, on the board.
 - J_EXP 1×5 header: GND, VSYS_SW, +3V3, GPIO20, GPIO21 (future servo / spare).

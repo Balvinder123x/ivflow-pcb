@@ -128,6 +128,25 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
   - CPL: 38 parts (JLCPCB rotations not corrected; only matters for JLCPCB assembly).
   - Schematic PDF, 1:1 assembly drawing PDF, 3D renders top/bottom.
   - **Before ordering:** print the 1:1 PDF at 100 % and check the real SuperMini.
+- [ ] **v1 compact revision** — done, 🛑 waiting for review (2026-11-05)
+  - User request: smallest possible board, short recognisable labels.
+  - R23/R24 (DNP I2C pull-ups) removed from the schematic (OLED module has them). Netlist
+    check 112/112, ERC 0/0. C11–C14, C4 and J5 kept (user choice).
+  - Board **46 × 41.5 mm** (was 61 × 52, −40 % area), parts on both sides (user choice):
+    top = SuperMini, all connectors, LDR filters + C4 under the module; bottom = power path +
+    regulator (strip between the two connector rows), battery sense (under the module),
+    button cap / buzzer driver / LED resistor (right of the module). 4 × M2 corner holes kept.
+  - The USB-C plug path under the SuperMini is no longer kept free (connectors sit below it):
+    lift the module off its sockets to program it over USB.
+  - Silk labels: one short name + pin marks per connector — BAT + −, LDR + 1 2 3 4, LED + −,
+    BZ + −, BTN, SW, CHG I+ I− B+ B− O+ O−, OLED G V C D, EXP G VS 3V 20 21. J-numbers moved
+    to the fab layer (assembly drawing). "IVFlow v1" on the bottom silk.
+  - Rule `min_resolved_spokes` = 1 (two crowded THT GND pins get one thermal spoke on top; they
+    also join the bottom pour).
+  - Routed with Freerouting, GND pours + stitching vias. DRC 0 violations / 0 unconnected /
+    0 footprint errors. Fab outputs regenerated.
+  - Script fixes: footprints are loaded through one explicit PCB_IO plugin, and old items are
+    removed with `board.Delete()` (`Remove()` broke pcbnew's SWIG types).
 
 ## Power-path / safety review (2026-11-01)
 TP4056 is only a charger; the board adds the rest:

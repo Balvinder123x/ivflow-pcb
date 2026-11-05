@@ -121,9 +121,12 @@ def documents():
 if __name__ == "__main__":
     with tempfile.TemporaryDirectory() as tmp:
         checks(tmp)
-        if os.path.isdir(FAB):
-            shutil.rmtree(FAB)
-        os.makedirs(FAB)
+        # Clear old outputs but keep the hand-written README
+        os.makedirs(FAB, exist_ok=True)
+        for name in os.listdir(FAB):
+            path = os.path.join(FAB, name)
+            if name != "README.md":
+                shutil.rmtree(path) if os.path.isdir(path) else os.remove(path)
         gerbers()
         boms(tmp)
         cpl(tmp)

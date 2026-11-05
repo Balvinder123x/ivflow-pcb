@@ -140,10 +140,6 @@ PARTS = [
     dict(ref="J4", lib="Connector_Generic:Conn_01x04", value="OLED", block="OLED / BUTTON / EXPANSION",
          at=(12, 6), nets={"1": "GND", "2": "+3V3", "3": "SCL", "4": "SDA"}, stub={"1": 3},
          desc="1x4 2.54 mm header, jumper wires to the I2C OLED", fp=FP_HDR.format(4)),
-    dict(ref="R23", lib="Device:R", value="4.7k", block="OLED / BUTTON / EXPANSION", at=(24, 6), dnp=True,
-         nets={"1": "+3V3", "2": "SDA"}),
-    dict(ref="R24", lib="Device:R", value="4.7k", block="OLED / BUTTON / EXPANSION", at=(28, 6), dnp=True,
-         nets={"1": "+3V3", "2": "SCL"}),
     dict(ref="J8", lib="Connector_Generic:Conn_01x02", value="BUTTON", block="OLED / BUTTON / EXPANSION",
          at=(40, 5), nets={"1": "BTN", "2": "GND"}, fp=FP_XH2, lcsc=LCSC_XH2,
          desc="JST-XH 2-pin to the off-board push button (BTN to GND)"),
@@ -186,7 +182,7 @@ NOTES = [
     ("BUZZER", (1, 3.2), "Buzzer off-board on J7; D3 stays on board"),
     ("BATTERY SENSE", (1, 26.5), "GPIO7 high enables the divider; BAT_SENSE = VSYS_SW / 2"),
     ("SENSORS (LDR strip)", (1, 22.5), "R11-R14 value is a placeholder: tune for the LDRs used"),
-    ("OLED / BUTTON / EXPANSION", (1, 11.4), "R23/R24 DNP: most OLED modules already have I2C pull-ups"),
+    ("OLED / BUTTON / EXPANSION", (1, 11.4), "I2C pull-ups come from the OLED module (board pull-ups removed)"),
 ]
 
 # ---------------------------------------------------------------- geometry

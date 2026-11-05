@@ -170,11 +170,12 @@ if __name__ == "__main__":
     board = pcbnew.LoadBoard(PCB)
     if len(board.GetTracks()) and not FORCE:
         raise SystemExit(f"{PCB} already has tracks; refusing to reroute (use --force)")
+    # Delete (not Remove): Remove leaves orphaned objects that break pcbnew's SWIG types
     for t in list(board.GetTracks()):
-        board.Remove(t)
+        board.Delete(t)
     for z in list(board.Zones()):
         if not z.GetIsRuleArea():
-            board.Remove(z)
+            board.Delete(z)
     autoroute(board)
     zones = add_gnd_zones(board)
     fill(board)
