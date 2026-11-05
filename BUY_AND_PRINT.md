@@ -37,6 +37,30 @@ Everything is also in one zip: `release/IVFlow_v1_files.zip`.
 
 **Electronics subtotal ≈ ₹2,600 – 4,300** (incl. spares and the 5 PCBs).
 
+### One-click Robocraze cart (2026-11-06)
+
+Open this link while logged in to robocraze.com: it puts the items below in the cart
+(Shopify cart link; it may replace what is already in the cart).
+
+https://robocraze.com/cart/48465411506400:2,46170796261600:2,40192586645657:1,40194282946713:1,40192519176345:1,40192403865753:1,43224127930592:1,43703198351584:1,40192367689881:1,43046631801056:1
+
+| Item | Qty | ₹ each |
+|---|---|---|
+| ESP32-C3 Super Mini (unsoldered) | 2 | 254 |
+| TP4056 USB-C charger with protection | 2 | 19 |
+| 0.96" OLED I2C 4-pin (blue) | 1 | 179 |
+| 2-pin JST 2.54 mm cables (pack of 10) | 1 | 67 |
+| Female-female jumper wires 20 cm (40) | 1 | 52 |
+| 3.3 V small active buzzer | 1 | 17 |
+| 12 mm momentary push button PBS-11B | 1 | 19 |
+| 3-pin mini toggle switch 3 A | 1 | 15 |
+| 40×1 female berg strip (cut 2 × 8) | 1 | 12 |
+| 40×2 male berg strip (cut 1×4 and 1×5) | 1 | 9 |
+
+About ₹916 + shipping. **Not on Robocraze (buy elsewhere):** 5 mm LDRs, 5 mm green LED
+(only 10 mm green there), 5-pin and 6-pin JST-XH cables, 803040 battery with JST-PH plug
+(their 1000 mAh cell lists no size or connector), 6 × 3 mm magnets, M2 screws, SMD parts.
+
 ## 3. Enclosure
 
 | Item | Qty | Approx. ₹ | Notes |
