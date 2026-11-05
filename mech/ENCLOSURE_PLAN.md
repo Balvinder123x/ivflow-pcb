@@ -13,6 +13,10 @@
 > - Channel front: U with 3.5 mm chamfers instead of a full V, so the 18.2 mm slit sits
 >   centred on the chamber axis; the 4 mm side foam centres the chamber.
 > - TP4056 stands in the middle behind the battery, USB-C out of the bottom centre.
+> - Colours (IVFlow identity): matte pearl white body, door and covers; black glossy face.
+>   Light-tightness from wall thickness, black foam, tongue labyrinth and gasket instead.
+> - Door: magnets + snap latch (arm in a flush track on the right side, finger scoop to
+>   release), tongue also closes the backs of the fork and tube slots, foam gasket groove.
 
 **One unit that hangs on the drip chamber** (decided 2026-11-05, after the user's sketches;
 replaces the earlier clamp + box idea). Front: OLED. Back, top: a closed, light-tight chamber

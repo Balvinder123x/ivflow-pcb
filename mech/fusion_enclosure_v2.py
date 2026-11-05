@@ -291,6 +291,14 @@ def chassis_part(outer):
     add(c, box(kx - 2.5, Dt - 0.5, bz0 + 18.5, kx + 2.5, ky, bz0 + 39.5),
         cyl((kx, ky, bz0 + 18.5), (kx, ky, bz0 + 39.5), 2.5))
     sub(c, cyl((kx, ky, bz0 + 16), (kx, ky, bz0 + 42), 1.1))
+    # snap latch seat on the right side: flush track for the door's arm, notch for the barb,
+    # finger scoop at the arm tip to release it
+    L = LATCH
+    xt = W2 - L["t"] - 0.2
+    by0, by1 = L["barb_y"]
+    sub(c, box(xt, L["y_end"] - 0.4, L["z0"] - 0.4, W2 + 0.1, Dt + 0.1, L["z1"] + 0.4),
+        box(W2 - L["t"] - L["barb_h"] - 0.2, by0 - 0.2, L["z0"] - 0.4, xt + 0.1, by1 + 0.2, L["z1"] + 0.4),
+        box(W2 - 3.0, L["y_end"] - 3.0, 94.0, W2 + 0.1, L["y_end"] + 0.2, 100.0))
     return c
 
 
@@ -330,14 +338,59 @@ def back_shell_part(outer):
     return b
 
 
+def taper_right(body, x_back, x_front, y_back, y_front, z0, z1):
+    """Cut the +X side of a tongue so it narrows from x_back (at y_back) to x_front (at
+    y_front): the free edge swings towards +X when the door opens, so it must not bind."""
+    ux, uy = x_back - x_front, y_back - y_front
+    n = math.hypot(ux, uy)
+    ux, uy = ux / n, uy / n
+    px, py = (x_back + x_front) / 2, (y_back + y_front) / 2
+    nx, ny = uy, -ux                       # normal pointing to +X
+    if nx < 0:
+        nx, ny = -nx, -ny
+    a = math.degrees(math.atan2(uy, ux))
+    return sub(body, rbox(px + nx * 5, py + ny * 5, z0 - 0.1, z1 + 0.1, 30, 10, a))
+
+
+# snap latch on the door's free edge (right side seen from the back)
+LATCH = dict(z0=91.0, z1=103.0, t=1.4, y_end=44.0, barb_y=(45.0, 47.0), barb_h=1.0)
+
+
 def door_part():
     Dt, Hf, bz0, t = P["D_top"], P["Hf"], P["bz0"], P["door_t"]
-    ch = P["channel_half"]
-    d = add(box(-18.0, Dt, bz0 + 3, 24.0, Dt + t, Hf),
-            box(-15.0, Dt, bz0, 21.0, Dt + t, bz0 + 3.1),
+    ch, W2, dt = P["channel_half"], P["W"] / 2, P["door_tongue"]
+    xr = W2 - 3.0
+    # plate: flush with the head's right side, rounded like the head's back edge
+    d = add(box(-18.0, Dt, bz0 + 3, xr, Dt + t, Hf),
+            box(-15.0, Dt, bz0, xr, Dt + t, bz0 + 3.1),
             cyl((-15.0, Dt, bz0 + 3), (-15.0, Dt + t, bz0 + 3), 3.0),
-            cyl((21.0, Dt, bz0 + 3), (21.0, Dt + t, bz0 + 3), 3.0))
-    add(d, box(-ch + 0.3, Dt - P["door_tongue"], bz0 + 2.3, ch - 0.3, Dt, P["chamber_top"] + 0.2))
+            box(xr - 0.01, Dt, bz0, W2, Dt + 1.0, Hf),
+            cyl((xr, Dt + 1.0, bz0), (xr, Dt + 1.0, Hf), 3.0))
+    sub(d, box(-W2 - 1, Dt - 5, bz0 - 1, W2 + 1, Dt, Hf + 1))      # nothing in front of the plate
+    # light seal 1: tongue into the channel (labyrinth), also closing the back of the fork
+    # slot (top) and of the tube slot (bottom); right edges tapered so the door swings free
+    z1c = P["chamber_top"] + 0.5
+    for x_half, za, zb, gap in ((ch - 0.3, bz0 + 2.3, z1c - 0.2, 0.3),
+                                (P["spike_slot"] / 2 - 0.15, z1c - 0.3, Hf, 0.15),
+                                (P["tube_slot"] / 2 - 0.15, bz0, bz0 + 2.4, 0.15)):
+        tg = box(-x_half, Dt - dt, za, x_half, Dt, zb)
+        # the tip moves sideways by depth * dx/dy of its swing around the hinge
+        ratio = (HINGE[1] - (Dt - dt)) / (x_half - HINGE[0])
+        taper = dt * ratio + 0.25 - gap
+        if taper > 0:
+            taper_right(tg, x_half, x_half - taper, Dt, Dt - dt, za, zb)
+        add(d, tg)
+    # light seal 2: groove for black foam gasket tape (3 x 1.5 mm) beside the tongue
+    for s in (-1, 1):
+        sub(d, box(s * (ch + 1.0), Dt - 0.1, bz0 + 3.0, s * (ch + 2.5), Dt + 1.0, Hf - 3.0))
+    # snap latch: flexible arm along the head's right side, barb clicks into a notch;
+    # release by lifting the arm tip (finger scoop in the head)
+    L = LATCH
+    arm = box(W2 - L["t"], L["y_end"], L["z0"], W2, Dt + 0.5, L["z1"])
+    by0, by1 = L["barb_y"]
+    barb = box(W2 - L["t"] - L["barb_h"], by0, L["z0"], W2 - L["t"] + 0.01, by1, L["z1"])
+    sub(barb, rbox(W2 - L["t"] - L["barb_h"], by0, L["z0"] - 1, L["z1"] + 1, 1.8, 1.8, 45))  # lead-in ramp
+    add(d, arm, barb)
     kx, ky = HINGE
     sub(d, box(-23.0, Dt - 0.1, bz0 + 18.0, -16.5, Dt + t + 0.1, bz0 + 40.0))
     for z0, z1 in ((bz0, bz0 + 18.0), (bz0 + 40.0, Hf)):
@@ -499,19 +552,21 @@ def run(_context: str):
         root = asm.component
         SCRATCH["root"] = top
 
-        white = appearance(design, [["plastic", "white"]], (240, 240, 240), "IVFlow white")
+        # IVFlow identity: matte pearl white body, black glossy face
+        pearl = appearance(design, [["plastic", "matte", "white"], ["plastic", "white"]], (236, 233, 226),
+                           "IVFlow matte pearl white")
         black = appearance(design, [["plastic", "black"]], (58, 58, 62), "IVFlow matte black")
         grey = appearance(design, [["plastic", "grey"]], (150, 150, 150), "IVFlow placeholder")
         smoke = appearance(design, [["glass", "smoke"], ["glass", "tint"], ["acrylic"], ["glass"]],
-                           (35, 35, 45), "IVFlow smoked acrylic")
+                           (8, 8, 10), "IVFlow smoked acrylic")
 
         outer = outer_shape()
-        new_component(root, "Chassis (black)", chassis_part(outer), black)
-        new_component(root, "Back shell (white)", back_shell_part(outer), white)
-        new_component(root, "Door (black)", door_part(), black)
-        new_component(root, "LED cover (black)", cover_part(-1), black)
-        new_component(root, "LDR cover (black)", cover_part(1), black)
-        new_component(root, "Face (smoked acrylic 2 mm)", glass_shape(0.15), smoke or black, 0.85)
+        new_component(root, "Chassis", chassis_part(outer), pearl)
+        new_component(root, "Back shell", back_shell_part(outer), pearl)
+        new_component(root, "Door (with snap latch)", door_part(), pearl)
+        new_component(root, "LED cover", cover_part(-1), pearl)
+        new_component(root, "LDR cover", cover_part(1), pearl)
+        new_component(root, "Face (black smoked acrylic 2 mm)", glass_shape(0.15), smoke or black, 1.0)
         for name, body in placeholders().items():
             new_component(root, "[placeholder] " + name, body, grey, 0.6 if "chamber" in name.lower() else 1.0)
         try:

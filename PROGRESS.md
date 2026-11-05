@@ -166,6 +166,16 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     battery 4 mm higher and PCB at z 36 because of the rounded bottom corners.
   - Check: 0 overlapping pairs among 56 bodies (incl. the real PCB STEP).
   - Pictures: `docs/enclosure_v2_*.png`.
+  - Door lock + light seal (2026-11-05): snap latch on the free edge (flexible arm in a flush
+    track on the right side, barb clicks into a notch, finger scoop to release; print the door
+    in PETG, arm strain ~1.2 %), magnets kept. Light seal: tongue into the channel and into
+    the backs of the fork and tube slots (right edges tapered for the swing), groove for black
+    foam gasket tape beside the tongue. Swing test 0-90 deg: no collision except the barb's
+    click at 1-2 deg.
+  - Colour identity (user decision): matte pearl white body + black glossy acrylic face.
+    White plastic leaks light, so the light-tightness comes from thick walls (head sides
+    14 mm), the black foam lining, the tongue labyrinth and the gasket. Put black tape inside
+    the two side covers (1.6 mm white is not opaque enough behind the LDRs).
 
 ## Power-path / safety review (2026-11-01)
 TP4056 is only a charger; the board adds the rest:
