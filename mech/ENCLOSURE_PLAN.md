@@ -25,11 +25,19 @@ parameter.
 6. **Light-tight**: overlapping lip on the door seam, foam collars at the top and bottom
    openings, each LDR behind a 1 mm slit, the LED behind a 2 mm aperture.
 
-## 2. Sensors in the holder
+## 2. Sensors in the holder (from the user's working prototype, 2026-11-05)
 
-- One 5 mm green LED on one side of the V, 4 LDRs (GL5528, 5 mm) on the other in a 2 × 2 grid
-  (10 × 10 mm). Upper pair then lower pair = a real falling drop; flicker is rejected.
-- LDRs on a small perfboard behind the slits; short wires to J2 (LDR) and J3 (LED) on the PCB.
+- **Beam height**: centre **13.5 mm below the top edge** of the holder (prototype: 13–14 mm).
+- **One LED**, 5.1 mm diameter hole, on one side of the V (the prototype had 3 LEDs; now 1).
+  The LED sits in a 6 mm deep black tube so its light goes straight across the chamber.
+- **LDRs**: the 4 LDRs in a horizontal row in a pocket **18.20 × 5.20 mm** on the opposite
+  side, centred on the beam.
+- **Slit** in front of the LDR faces: **18.2 × 1.2 mm, 3 mm deep** (a short tunnel), centred on
+  the beam. Why: a drop is 3–6 mm tall, so a 1.2 mm slit is fully blocked by each drop
+  (big, clear dip), while the 3 mm depth stops light that comes in at an angle (room light).
+  Narrower than 1.0 mm would starve the LDRs of light and slow them; wider than 2 mm would
+  make the dip shallower. The slit is a parameter (`slit_h`) to tune on the real prototype.
+- LDRs wired on a small strip behind the pocket; short wires to J2 (LDR) and J3 (LED) on the PCB.
 
 ## 3. Colours
 
@@ -71,7 +79,10 @@ Estimated outer size **~55 W × 115 H × 42 D mm**, ~80–100 g with battery (cl
 | `buzzer` | 12 Ø × 9.5 mm | **(verify)** |
 | `button_hole` | 12 mm | **(verify)** |
 | `switch_hole` | 6.2 mm (MTS-102 mini toggle) | **(verify)** |
-| `ldr_d`, `led_d` | 5 mm | datasheet |
+| `beam_from_top` | 13.5 mm | user's prototype |
+| `led_hole` | 5.1 mm, 6 mm deep tube | user measured |
+| `ldr_pocket` | 18.20 × 5.20 mm | user measured |
+| `slit_w` × `slit_h` × `slit_depth` | 18.2 × 1.2 × 3.0 mm | user's prototype + recommendation |
 
 ## 6. Build order in Fusion
 
