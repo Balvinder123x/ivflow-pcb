@@ -147,6 +147,25 @@ All needed parts exist **except** `Transistor_FET:DMG2305UX` → Q1 = **AO3401A*
     0 footprint errors. Fab outputs regenerated.
   - Script fixes: footprints are loaded through one explicit PCB_IO plugin, and old items are
     removed with `board.Delete()` (`Remove()` broke pcbnew's SWIG types).
+- [ ] **Enclosure v1** (Fusion 360, `mech/fusion_enclosure.py`), 2026-11-05: first working
+  layout, 0 interferences. Problem found: the LED/LDR pockets faced closed wiring bays, so
+  they could not be fitted. Superseded by v2.
+- [ ] **Enclosure v2** — done, 🛑 waiting for review (2026-11-05)
+  - `mech/fusion_enclosure_v2.py` builds the Fusion document "IVFlow enclosure v2" through
+    `scripts/fusion_mcp.py` (direct HTTP to Fusion's MCP add-in; the VS Code extension does
+    not load the server). Save the document in Fusion by hand (Ctrl+S).
+  - Style from the user's inspiration: 54 × 146 mm, soft rounded front (R12, 3 mm edges),
+    full smoked-acrylic face with the OLED behind it, flat-bottom notch at the top where the
+    spike cap sits. User choices: no knob, no status LED, sensing zone closed (cap visible only).
+  - Parts: black chassis (front + sensor head, one print: everything mounts in it), white back
+    shell (4 × M2 through the PCB holes), black hinged door, 2 black side covers, 2 mm acrylic.
+  - LED and LDRs go in **from the outside**: side recesses with flush covers, wire holes from
+    the recesses down to the PCB. LDR slit now centred on the chamber axis (channel front is a
+    U with 3.5 mm chamfers; the side foam centres the chamber).
+  - TP4056 moved to the middle behind the battery (USB-C hole in the flat part of the bottom),
+    battery 4 mm higher and PCB at z 36 because of the rounded bottom corners.
+  - Check: 0 overlapping pairs among 56 bodies (incl. the real PCB STEP).
+  - Pictures: `docs/enclosure_v2_*.png`.
 
 ## Power-path / safety review (2026-11-01)
 TP4056 is only a charger; the board adds the rest:

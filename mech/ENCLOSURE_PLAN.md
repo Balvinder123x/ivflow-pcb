@@ -1,5 +1,19 @@
 # IVFlow v1 — enclosure plan
 
+> **Current model: v2** (`mech/fusion_enclosure_v2.py`, 2026-11-05). It keeps the holding
+> mechanism and sensor values below, with these changes:
+> - Look: 54 W × 146 H mm (58 deep at the head, 38 below), rounded (R12 front corners, 3 mm
+>   edges); the whole front is a 2 mm smoked acrylic face (laser cut) with the OLED behind
+>   it; flat-bottom notch at the top where the spike cap sits. No knob, no status LED.
+> - Parts: black chassis = front + sensor head in one print (OLED frame, PCB standoffs,
+>   battery cradle, channel, fork, LED/LDR pockets); white back shell held by 4 × M2 × 30
+>   through the PCB holes; black hinged door; 2 black side covers; acrylic face.
+> - LED and LDR row go in from the outside through side recesses closed by flush covers
+>   (1 × M2 each); a 3 × 3 mm wire hole runs from each recess down to the PCB.
+> - Channel front: U with 3.5 mm chamfers instead of a full V, so the 18.2 mm slit sits
+>   centred on the chamber axis; the 4 mm side foam centres the chamber.
+> - TP4056 stands in the middle behind the battery, USB-C out of the bottom centre.
+
 **One unit that hangs on the drip chamber** (decided 2026-11-05, after the user's sketches;
 replaces the earlier clamp + box idea). Front: OLED. Back, top: a closed, light-tight chamber
 holder. Inside: the PCB standing upright, battery and charger at the bottom (USB-C on the
